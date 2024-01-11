@@ -1,10 +1,14 @@
+import React from 'react';
+import { BrowserRouter, BrowserRouter as Router } from 'react-router-dom';
 import './App.css';
 
-function App() {
+import Navbar from './components/nav/Navbar';
+
+const App = () => {
   return (
-    <div className="App">
-      <h1>Local Deal Business</h1>
-    </div>
+    <BrowserRouter>
+      <Navbar/>
+    </BrowserRouter>
   );
 }
 
