@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
-import { ReactComponent as Hamburger } from '../../assets/icons/hamburger1.svg';
-import { ReactComponent as Brand } from '../../assets/icons/logo1.svg';
+import logoPng from '../../assets/icons/logo.png';
+import { ReactComponent as Hamburger } from '../../assets/icons/hamburger.svg';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -21,7 +21,7 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="container">
         <div className="logo">
-          <Brand />
+          <img src={logoPng} alt="Logo" />
         </div>
         <div className="menu-icon" onClick={handleShowNavbar}>
           <Hamburger />

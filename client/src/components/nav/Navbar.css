@@ -10,18 +10,21 @@ body {
 .container {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 0 15px;
+  padding: 0 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 100%;
 }
 
+.logo img {
+  max-height: 45px;
+}
+
 .navbar {
   height: 80px;
   background-color: white;
   position: relative;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .menu-icon {
@@ -70,8 +73,14 @@ body {
     align-items: center;
     height: 100%;
   }
+
   .nav-elements ul li:not(:last-child) {
     margin-right: 18px;
+  }
+
+  .logo img {
+    max-height: 45px;
+    max-width: 155px;
   }
 }
 
@@ -105,5 +114,9 @@ body {
   .nav-elements ul li {
     margin-right: unset;
     margin-top: 20px;
+  }
+
+  .logo img {
+    max-height: 35px;
   }
 }
