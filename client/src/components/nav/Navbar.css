@@ -63,7 +63,7 @@ body {
 }
 
 @media (max-width: 1024px) {
-  .container{
+  .container {
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -89,10 +89,12 @@ body {
     height: calc(100vh - 80px);
     transition: all 0.3s ease-in;
     overflow: hidden;
+    z-index: 999;
   }
 
   .nav-elements.active {
-    width: 100%;
+    width: 100vw;
+    z-index: 1000;
   }
 
   .nav-elements ul {
@@ -103,7 +105,5 @@ body {
   .nav-elements ul li {
     margin-right: unset;
     margin-top: 20px;
-    
   }
-  
 }

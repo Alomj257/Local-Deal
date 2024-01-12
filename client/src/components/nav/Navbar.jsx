@@ -1,17 +1,21 @@
-import { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
-import { ReactComponent as Hamburger } from '../../assets/icons/hamburger1.svg'
-import { ReactComponent as Brand } from '../../assets/icons/logo1.svg'
-import './Navbar.css'
+import { ReactComponent as Hamburger } from '../../assets/icons/hamburger1.svg';
+import { ReactComponent as Brand } from '../../assets/icons/logo1.svg';
+import './Navbar.css';
 
 const Navbar = () => {
-  const [showNavbar, setShowNavbar] = useState(false)
+  const [showNavbar, setShowNavbar] = useState(false);
 
   const handleShowNavbar = () => {
-    setShowNavbar(!showNavbar) 
-  }
+    setShowNavbar(!showNavbar);
+  };
+
+  const closeNavbar = () => {
+    setShowNavbar(false);
+  };
 
   return (
     <nav className="navbar">
@@ -22,34 +26,36 @@ const Navbar = () => {
         <div className="menu-icon" onClick={handleShowNavbar}>
           <Hamburger />
         </div>
-        <div className={`nav-elements  ${showNavbar && 'active'}`}>
+        <div className={`nav-elements ${showNavbar && 'active'}`} onClick={closeNavbar}>
           <ul>
             <li>
-              <NavLink to="/">Home</NavLink>
+              <NavLink to="/" onClick={closeNavbar}>Home</NavLink>
             </li>
             <li>
-              <NavLink to="/about">About</NavLink>
+              <NavLink to="/about" onClick={closeNavbar}>About</NavLink>
             </li>
             <li>
-              <NavLink to="/location">Location</NavLink>
+              <NavLink to="/location" onClick={closeNavbar}>Location</NavLink>
             </li>
             <li>
-              <NavLink to="/categories">Categories</NavLink>
+              <NavLink to="/categories" onClick={closeNavbar}>Categories</NavLink>
             </li>
             <li>
-              <NavLink to="/promotions">Promotions</NavLink>
+              <NavLink to="/promotions" onClick={closeNavbar}>Promotions</NavLink>
             </li>
             <li>
-              <NavLink to="/contact">Contact</NavLink>
+              <NavLink to="/contact" onClick={closeNavbar}>Contact</NavLink>
             </li>
             <li>
-              <NavLink to="/login"><FontAwesomeIcon icon={faUser}></FontAwesomeIcon></NavLink>
+              <NavLink to="/login" onClick={closeNavbar}>
+                <FontAwesomeIcon icon={faUser} />
+              </NavLink>
             </li>
           </ul>
         </div>
       </div>
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
