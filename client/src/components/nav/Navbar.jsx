@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faTimes } from '@fortawesome/free-solid-svg-icons'; // Import close icon
 import logoPng from '../../assets/icons/logo.png';
 import { ReactComponent as Hamburger } from '../../assets/icons/hamburger.svg';
 import './Navbar.css';
@@ -24,7 +24,13 @@ const Navbar = () => {
           <img src={logoPng} alt="Logo" />
         </div>
         <div className="menu-icon" onClick={handleShowNavbar}>
-          <Hamburger />
+          {showNavbar ? (
+            // Show close icon when the navbar is open
+            <FontAwesomeIcon icon={faTimes} />
+          ) : (
+            // Show hamburger icon when the navbar is closed
+            <Hamburger />
+          )}
         </div>
         <div className={`nav-elements ${showNavbar && 'active'}`} onClick={closeNavbar}>
           <ul>
@@ -47,7 +53,7 @@ const Navbar = () => {
               <NavLink to="/contact" onClick={closeNavbar}>Contact</NavLink>
             </li>
             <li>
-              <NavLink to="/login" onClick={closeNavbar}>
+              <NavLink to="/adminlogin" onClick={closeNavbar}>
                 <FontAwesomeIcon icon={faUser} />
               </NavLink>
             </li>

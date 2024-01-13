@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import './Home.css';
 import Service from '../Services/Service';
-import image1 from '../../assets/homeimages/home3.png';
+import image1 from '../../assets/homeimages/Home.png';
+import image2 from '../../assets/homeimages/4.png';
+import image3 from '../../assets/homeimages/5.png';
+import image4 from '../../assets/homeimages/Collections.png';
+import image5 from '../../assets/homeimages/Features.png';
 
-const images = [image1];
+const images = [image1, image2, image3, image4, image5];
 
 const Slideshow = ({ images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
