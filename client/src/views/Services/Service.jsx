@@ -12,7 +12,7 @@ function Service() {
                     <div className="row text-center align-items-center">
                         <div className="col-lg-12">
                             <div className="section-title">
-                                <h2>DISCOVER OUR SERVICE</h2>
+                                <h2>Discover our service</h2>
                                 <p>Your local deal haven for top-notch products and friendly service. We appreciate your support!</p>
                             </div>
                         </div>
@@ -23,7 +23,7 @@ function Service() {
 
                         <div className="col-sm-6 mb-4 col-lg-4">
                             <div className="feature-box-1">
-                                <div className="icon">
+                                <div className="service-icon">
                                     <i className="fa fa-desktop"></i>
                                 </div>
                                 <div className="feature-content">
@@ -35,7 +35,7 @@ function Service() {
 
                         <div className="col-sm-6 mb-4 col-lg-4">
                             <div className="feature-box-1">
-                                <div className="icon">
+                                <div className="service-icon">
                                     <i className="fa fa-user"></i>
                                 </div>
                                 <div className="feature-content">
@@ -47,7 +47,7 @@ function Service() {
 
                         <div className="col-sm-6 mb-4 col-lg-4">
                             <div className="feature-box-1">
-                                <div className="icon">
+                                <div className="service-icon">
                                     <i className="fa fa-comment"></i>
                                 </div>
                                 <div className="feature-content">
@@ -59,7 +59,7 @@ function Service() {
 
                         <div className="col-sm-6 mb-4 col-lg-4">
                             <div className="feature-box-1">
-                                <div className="icon">
+                                <div className="service-icon">
                                     <i className="fa fa-image"></i>
                                 </div>
                                 <div className="feature-content">
@@ -71,7 +71,7 @@ function Service() {
 
                         <div className="col-sm-6 mb-4 col-lg-4">
                             <div className="feature-box-1">
-                                <div className="icon">
+                                <div className="service-icon">
                                     <i className="fa fa-th"></i>
                                 </div>
                                 <div className="feature-content">
@@ -83,7 +83,7 @@ function Service() {
 
                         <div className="col-sm-6 mb-4 col-lg-4">
                             <div className="feature-box-1">
-                                <div className="icon">
+                                <div className="service-icon">
                                     <i className="fa fa-cog"></i>
                                 </div>
                                 <div className="feature-content">
