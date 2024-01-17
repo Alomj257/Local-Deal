@@ -1,57 +1,121 @@
-import React from 'react'
+import React from 'react';
 import './About.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import image1 from '../../assets/about/about1.png';
+import image2 from '../../assets/about/about2.png';
+import image3 from '../../assets/about/about3.png';
 
 function About() {
   return (
-    <>
-      <section class="py-3 py-md-5">
-        <div class="container">
-          <div class="row gy-3 gy-md-4 gy-lg-0 align-items-lg-center">
-            <div class="col-12 col-lg-6 col-xl-5">
-              <img class="img-fluid rounded" loading="lazy" src="./assets/img/about-img-1.jpg" alt="About 1"/>
-            </div>
-            <div class="col-12 col-lg-6 col-xl-7">
-              <div class="row justify-content-xl-center">
-                <div class="col-12 col-xl-11">
-                  <h2 class="mb-3">Who Are We?</h2>
-                  <p class="lead fs-4 text-secondary mb-3">We are local deal help people to build incredible brands and superior products. Our perspective is to furnish outstanding captivating services.</p>
-                  <p class="mb-5">We are a fast-growing company, but we have never lost sight of our core values. We believe in collaboration, innovation, and customer satisfaction. We are always looking for new ways to improve our products and services.</p>
-                  <div class="row gy-4 gy-md-0 gx-xxl-5X">
-                    <div class="col-12 col-md-6">
-                      <div class="d-flex">
-                        <div class="me-4 text-primary">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-gear-fill" viewBox="0 0 16 16">
-                            <path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z" />
-                          </svg>
-                        </div>
-                        <div>
-                          <h2 class="h4 mb-3">Versatile Brand</h2>
-                          <p class="text-secondary mb-0">We are crafting a digital method that subsists life across all mediums.</p>
-                        </div>
-                      </div>
+    <div className='About'>
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"
+        integrity="sha256-2XFplPlrFClt0bIdPgpz8H7ojnk10H69xRqd9+uTShA="
+        crossOrigin="anonymous"
+      />
+      <div className="container">
+        <div className="row align-items-center col-sm-12">
+          <div className="col-lg-6 col-md-6 order-2 order-md-1 mt-4 pt-2 mt-sm-0 opt-sm-0">
+            <div className="row align-items-center">
+              <div className="col-lg-6 col-md-6 col-6">
+                <div className="row">
+                  <div className="col-lg-12 col-md-12 mt-4 pt-2">
+                    <div className="card work-desk rounded border-0 shadow-lg overflow-hidden">
+                      <img src={image1} className="img-fluid" alt="Gold Icon" />
+                      <div className="img-overlay bg-dark"></div>
                     </div>
-                    <div class="col-12 col-md-6">
-                      <div class="d-flex">
-                        <div class="me-4 text-primary">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-fire" viewBox="0 0 16 16">
-                            <path d="M8 16c3.314 0 6-2 6-5.5 0-1.5-.5-4-2.5-6 .25 1.5-1.25 2-1.25 2C11 4 9 .5 6 0c.357 2 .5 4-2 6-1.25 1-2 2.729-2 4.5C2 14 4.686 16 8 16Zm0-1c-1.657 0-3-1-3-2.75 0-.75.25-2 1.25-3C6.125 10 7 10.5 7 10.5c-.375-1.25.5-3.25 2-3.5-.179 1-.25 2 1 3 .625.5 1 1.364 1 2.25C11 14 9.657 15 8 15Z" />
-                          </svg>
-                        </div>
-                        <div>
-                          <h2 class="h4 mb-3">Digital Agency</h2>
-                          <p class="text-secondary mb-0">We believe in innovation by merging primary with elaborate ideas.</p>
-                        </div>
-                      </div>
+                  </div>
+
+                  <div className="col-12">
+                    <div className="mt-4 pt-2 text-right">
+                      <a href="/" className="btn btn-info">
+                        Read More <i className="mdi mdi-chevron-right"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="col-lg-6 col-md-6 col-6">
+                <div className="row">
+                  <div className="col-lg-12 col-md-12">
+                    <div className="card work-desk rounded border-0 shadow-lg overflow-hidden">
+                      <img src={image2} className="img-fluid" alt="Black Icon" />
+                      <div className="img-overlay bg-dark"></div>
+                    </div>
+                  </div>
+                  <div className="col-lg-12 col-md-12 mt-4 pt-2">
+                    <div className="card work-desk rounded border-0 shadow-lg overflow-hidden">
+                      <img src={image3} className="img-fluid" alt="White Icon" />
+                      <div className="img-overlay bg-dark"></div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+          <div className="col-lg-6 col-md-6 col-12 order-1 order-md-2">
+            <div className="section-title ml-lg-5">
+              <h5 className="text-custom font-weight-normal mb-3">About Us</h5>
+              <h4 className="title mb-4">
+                Our mission is to <br />
+                make your life easier.
+              </h4>
+              <p className="text-muted mb-0">
+                Welcome to LocalDeal – Your Gateway to Unmatched Savings and Local Delights!
+                <hr />
+                At LocalDeal, we pride ourselves on being your go-to destination for incredible deals right in your neighborhood. Born out of a passion for supporting local businesses and making your everyday experiences more affordable, we've curated a platform that brings the best of your community directly to your fingertips.
+                <hr />
+                Our mission is simple: to connect you with exclusive discounts, exciting offers, and hidden gems in your local area. We believe in the power of community, and through LocalDeal, we're fostering a sense of togetherness by encouraging you to explore and support the businesses that make your neighborhood unique.
+              </p>
+              <div className="row">
+                <div className="col-lg-6 mt-4 pt-2">
+                  <div className="media align-items-center rounded shadow p-3">
+                    <i className="fa fa-play h4 mb-0 text-custom"></i>
+                    <h6 className="ml-3 mb-0">
+                      <a href="/" className="text-decoration-none text-dark">
+                        Responsive
+                      </a>
+                    </h6>
+                  </div>
+                </div>
+                <div className="col-lg-6 mt-4 pt-2">
+                  <div className="media align-items-center rounded shadow p-3">
+                    <i className="fa fa-file-download h4 mb-0 text-custom"></i>
+                    <h6 className="ml-3 mb-0">
+                      <a href="/" className="text-decoration-none text-dark">
+                        Free Download
+                      </a>
+                    </h6>
+                  </div>
+                </div>
+                <div className="col-lg-6 mt-4 pt-2">
+                  <div className="media align-items-center rounded shadow p-3">
+                    <i className="fa fa-user h4 mb-0 text-custom"></i>
+                    <h6 className="ml-3 mb-0">
+                      <a href="/" className="text-decoration-none text-dark">
+                        Support
+                      </a>
+                    </h6>
+                  </div>
+                </div>
+                <div className="col-lg-6 mt-4 pt-2">
+                  <div className="media align-items-center rounded shadow p-3">
+                    <i className="fa fa-image h4 mb-0 text-custom"></i>
+                    <h6 className="ml-3 mb-0">
+                      <a href="/" className="text-decoration-none text-dark">
+                        Development
+                      </a>
+                    </h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </section>
-    </>
-  )
+      </div>
+    </div>
+  );
 }
 
-export default About
+export default About;

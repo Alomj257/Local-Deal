@@ -1,0 +1,89 @@
+/* ContactUs.css */
+
+.row.text-center {
+  margin-bottom: 30px;
+}
+
+.form-main {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 30px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.contact-detail-box
+{
+  background: linear-gradient(to right, #ffffff, #e0e0e0);
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 30px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s ease; /* Add transition for smooth effect */
+}
+
+.contact-detail-box:hover
+{
+  background: linear-gradient(to right, #e0e0e0, #ffffff);
+}
+
+.contact-detail-box h4
+{
+  margin-top: 10px;
+  color: #20247b;
+  font-weight: 600;
+}
+
+.contact-detail-box p
+{
+  margin: 15px 0;
+  color: black;
+}
+
+.contact-detail-box a {
+  color: #3498db;
+}
+
+.contact-detail-box a:hover {
+  text-decoration: underline;
+}
+
+.contact-map {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+label {
+  color: #2c3e50;
+}
+
+.form-control {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.btn-primary {
+  background-color: #3498db;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: #2980b9;
+}
+
+/* Customize the size and color of the icons */
+.bi-3x {
+  font-size: 3em;
+  color: #3498db;
+}

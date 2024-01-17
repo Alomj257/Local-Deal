@@ -16,7 +16,7 @@ function Categories() {
     return (
         <>
             <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-            <section className="container pt-3 mb-3 bg-white">
+            <section className="container pt-3 mb-3 bg-white col-sm-12">
                 <h2 className="h3 block-title text-center pb-5" style={{ color: '#20247b', fontWeight: 700 }}>
                     Categories<small> Explore different categories</small>
                 </h2>
@@ -30,7 +30,7 @@ function Categories() {
                                 <div className="card-body text-center">
                                     <h3 className="card-title pt-1">{category.name}</h3>
                                     <p className="card-text text-sm text-justify">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.
+                                    Discover unbeatable savings right in your neighborhood with LocalDeal – where every purchase is a step closer to a smarter, trendier you! Don't just shop, thrive locally!
                                     </p>
                                     <a href={category.link} className="text-decoration-none"><span className="text-lg text-uppercase font-weight-bold">Learn More&nbsp;</span></a>
                                 </div>
