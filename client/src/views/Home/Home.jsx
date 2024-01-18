@@ -6,6 +6,7 @@ import image2 from '../../assets/homeimages/4.png';
 import image3 from '../../assets/homeimages/5.png';
 import image4 from '../../assets/homeimages/Collections.png';
 import image5 from '../../assets/homeimages/Features.png';
+import Footer from '../../components/Footer/Footer';
 
 const images = [image1, image2, image3, image4, image5];
 
@@ -59,6 +60,7 @@ const Home = () => {
         </header>
       </div>
       <Service />
+      <Footer />
     </>
   );
 };

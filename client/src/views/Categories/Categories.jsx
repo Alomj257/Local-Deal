@@ -1,6 +1,7 @@
 import React from 'react';
 import './Categories.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Footer from '../../components/Footer/Footer';
 
 function Categories() {
     const categories = [
@@ -30,7 +31,7 @@ function Categories() {
                                 <div className="card-body text-center">
                                     <h3 className="card-title pt-1">{category.name}</h3>
                                     <p className="card-text text-sm text-justify">
-                                    Discover unbeatable savings right in your neighborhood with LocalDeal – where every purchase is a step closer to a smarter, trendier you! Don't just shop, thrive locally!
+                                        Discover unbeatable savings right in your neighborhood with LocalDeal – where every purchase is a step closer to a smarter, trendier you! Don't just shop, thrive locally!
                                     </p>
                                     <a href={category.link} className="text-decoration-none"><span className="text-lg text-uppercase font-weight-bold">Learn More&nbsp;</span></a>
                                 </div>
@@ -39,7 +40,8 @@ function Categories() {
                     ))}
                 </div>
             </section>
-            </>
+            <Footer />
+        </>
     );
 }
 
