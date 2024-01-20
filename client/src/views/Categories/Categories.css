@@ -1,7 +1,5 @@
 .card {
     position: relative;
-    border: 0;
-    border-radius: 0;
     background-color: #fff;
     display: flex;
     flex-direction: column;
@@ -11,24 +9,17 @@
     border: 1px solid rgba(0, 0, 0, 0.125);
     border-radius: .25rem;
     margin: 20px;
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Removed color transition */
+    color: black; /* Default text color */
 }
 
 .card:hover {
     transform: scale(1.05);
-    transition: transform 0.5s ease;
-    box-shadow: 0 12px 20px 1px rgba(17, 66, 201, 0.6);
+    background-color: #20247b;
 }
 
-.card::after {
-    display: block;
-    position: absolute;
-    bottom: -10px;
-    left: 20px;
-    width: calc(100% - 40px);
-    height: 35px;
-    background-color: #fff;
-    content: '';
-    z-index: -1;
+.card:hover * {
+    color: white; /* Text color on hover for all child elements */
 }
 
 a.card {

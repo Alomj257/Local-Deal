@@ -34,7 +34,7 @@ const Slideshow = ({ images }) => {
   };
 
   return (
-    <div className="slideshow-container">
+    <div className="slideshow-container col-md-12">
       <img src={images[currentIndex]} alt={`Slide ${currentIndex}`} />
       <div className="dots-container">
         {images.map((_, index) => (

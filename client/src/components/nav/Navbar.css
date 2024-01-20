@@ -1,13 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-body {
-  margin: 0;
-  padding: 0;
-  font-family: Montserrat, Sans-Serif;
-  background-color: #fcfcfc;
-}
-
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -24,6 +17,9 @@ body {
 }
 
 .navbar {
+  margin: 0;
+  padding: 0;
+  font-family: Montserrat, Sans-Serif;
   height: 120px;
   background-color: white;
   position: relative;
@@ -50,7 +46,7 @@ body {
 }
 
 .nav-elements ul a {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 600;
   color: black;
   text-decoration: none;

@@ -7,7 +7,7 @@ const Footer = () => {
     <footer className="footer-section col-md-12">
       <div className="container">
         <div className="footer-cta pt-5">
-          <div className="row">
+          <div className="row col-md-12">
             <div className="col-md-4 mb-30">
               <div className="single-cta">
                 <i className="fas fa-map-marker-alt"></i>
@@ -76,7 +76,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="copyright-area">
+      <div className="copyright-area col-md-12">
         <div className="container">
           <div className="row">
             <div className="col-xl-6 col-lg-6 text-center text-lg-left">

@@ -16,12 +16,11 @@ function Categories() {
 
     return (
         <>
-            <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
             <section className="container pt-3 mb-3 bg-white col-sm-12">
                 <h2 className="h3 block-title text-center pb-5" style={{ color: '#20247b', fontWeight: 700 }}>
                     Categories<small> Explore different categories</small>
                 </h2>
-                <div className="row pt-5 mt-30">
+                <div className="row col-md-12 pt-5 mt-30">
                     {categories.map((category, index) => (
                         <div key={index} className="col-lg-4 col-sm-6 mb-4 pb-5">
                             <div className="card">
