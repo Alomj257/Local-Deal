@@ -60,14 +60,13 @@ function About() {
               <div className="section-title ml-lg-5">
                 <h5 className="text-custom font-weight-normal mb-3">About Us</h5>
                 <h4 className="title mb-4">
-                  Our mission is to <br />
+                  Our mission is to
                   make your life easier.
                 </h4>
                 <p className="text-muted mb-0">
                   Welcome to LocalDeal – Your Gateway to Unmatched Savings and Local Delights!
                   <hr />
-                  At LocalDeal, we pride ourselves on being your go-to destination for incredible deals right in your neighborhood. Born out of a passion for supporting local businesses and making your everyday experiences more affordable, we've curated a platform that brings the best of your community directly to your fingertips.
-                  <hr />
+                  At LocalDeal, we pride ourselves on being your go-to destination for incredible deals right in your neighborhood. Born out of a passion for supporting local businesses and making your everyday experiences more affordable.
                   Our mission is simple: to connect you with exclusive discounts, exciting offers, and hidden gems in your local area. We believe in the power of community, and through LocalDeal, we're fostering a sense of togetherness by encouraging you to explore and support the businesses that make your neighborhood unique.
                 </p>
                 <div className="row">

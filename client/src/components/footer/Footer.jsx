@@ -39,10 +39,12 @@ const Footer = () => {
         </div>
         <div className="footer-content pt-5 pb-3">
           <div className="row col-md-12">
-            <div className="col-md-6 mb-50 ">
+            <div className="col-md-6 mb-40 ">
               <div className="footer-widget">
                 <div className="footer-social-icon">
-                  <span>Follow us</span>
+                <div className="footer-widget-heading">
+                  <h3>Follow Us</h3>
+                </div>
                   <ul className="social_icon">
                     <li><a href='/#'><i className="fa-brands fa-facebook-f"></i></a></li>
                     <li><a href='/#'><i className="fa-brands fa-twitter"></i></a></li>
