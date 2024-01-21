@@ -1,23 +1,25 @@
 import React from 'react';
 import './Footer.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import image from '../../assets/icons/final_black.png';
 
 const Footer = () => {
   return (
-    <footer className="footer-section col-md-12">
+    <footer className="footer-section">
       <div className="container">
         <div className="footer-cta pt-5">
-          <div className="row col-md-12">
-            <div className="col-md-4 mb-30">
+          <div className="row">
+            <div className="col-xl-4 col-md-4 mb-30">
               <div className="single-cta">
                 <i className="fas fa-map-marker-alt"></i>
                 <div className="cta-text">
                   <h4>Find us</h4>
-                  <span>A 18 Floriskraal Street, <br />Groenvallei, Cape Town, 7530</span>
+                  <span>Groenvallei, Cape Town</span>
                 </div>
               </div>
             </div>
-            <div className="col-md-4 mb-30">
+            <div className="col-xl-4 col-md-4 mb-30">
               <div className="single-cta">
                 <i className="fas fa-phone"></i>
                 <div className="cta-text">
@@ -26,7 +28,7 @@ const Footer = () => {
                 </div>
               </div>
             </div>
-            <div className="col-md-4 mb-30">
+            <div className="col-xl-4 col-md-4 mb-30">
               <div className="single-cta">
                 <i className="far fa-envelope-open"></i>
                 <div className="cta-text">
@@ -38,26 +40,39 @@ const Footer = () => {
           </div>
         </div>
         <div className="footer-content pt-5 pb-3">
-          <div className="row col-md-12">
-            <div className="col-md-6 mb-40 ">
+          <div className="row">
+            <div className="col-xl-4 col-lg-4 col-md-6 mb-40">
               <div className="footer-widget">
-                <div className="footer-social-icon">
-                <div className="footer-widget-heading">
-                  <h3>Follow Us</h3>
-                </div>
-                  <ul className="social_icon">
-                    <li><a href='/#'><i className="fa-brands fa-facebook-f"></i></a></li>
-                    <li><a href='/#'><i className="fa-brands fa-twitter"></i></a></li>
-                    <li><a href='/#'><i className="fa-brands fa-instagram"></i></a></li>
-                    <li><a href='/#'><i className="fa-brands fa-youtube"></i></a></li>
-                  </ul>
+                <div className="footer-logo">
+                  <a href='/'><img src={image} className="img-fluid" alt="logo" /></a>
                 </div>
                 <div className="footer-text">
                   <p>Discover More, Spend Less – Local Deals Await!</p>
                 </div>
+                <div className="footer-social-icon">
+                  <span>Follow us</span>
+                  <a href='/#'><i className="fab fa-facebook-f facebook-bg"></i></a>
+                  <a href='/#'><i className="fab fa-twitter twitter-bg"></i></a>
+                  <a href='/#'><i className="fab fa-google-plus-g google-bg"></i></a>
+                </div>
               </div>
             </div>
-            <div className="col-md-6 mb-50">
+            <div className="col-xl-4 col-lg-4 col-md-6 mb-50">
+              <div className="footer-widget">
+                <div className="footer-widget-heading">
+                  <h3>Useful Links</h3>
+                </div>
+                <ul>
+                  <li><a href="/">Home</a></li>
+                  <li><a href="/promotion">Promotion</a></li>
+                  <li><a href="/categories">Categories</a></li>
+                  <li><a href="/about">About</a></li>
+                  <li><a href="/contact">Contact</a></li>
+                  {/* Add other links as needed */}
+                </ul>
+              </div>
+            </div>
+            <div className="col-xl-4 col-lg-4 col-md-6 mb-50">
               <div className="footer-widget">
                 <div className="footer-widget-heading">
                   <h3>Subscribe</h3>
@@ -76,7 +91,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="copyright-area col-md-12">
+      <div className="copyright-area bg-light">
         <div className="container">
           <div className="row">
             <div className="col-xl-6 col-lg-6 text-center text-lg-left">

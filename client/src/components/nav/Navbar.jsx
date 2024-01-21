@@ -32,6 +32,7 @@ const Navbar = () => {
             <Hamburger />
           )}
         </div>
+
         <div className={`nav-elements ${showNavbar && 'active'}`} onClick={closeNavbar}>
           <ul>
             <li>
