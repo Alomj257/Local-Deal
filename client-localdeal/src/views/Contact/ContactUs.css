@@ -46,7 +46,6 @@
 .btn-contact-bg {
   border-radius: 30px;
   color: #fff;
-  outline: medium none !important;
   padding: 15px 27px;
   text-transform: capitalize;
   transition: all 0.3s ease 0s;
@@ -54,12 +53,10 @@
   font-family: Montserrat, Sans-Serif;
   cursor: pointer;
   width: 100%;
-  border: 1px solid #7564e5;
 }
 
-.btn-contact-bg:hover,
-.btn-contact-bg:focus {
-  background: #232434;
+.btn-contact-bg:hover {
+  background: #590ac0;
   color: #fff;
 }
 
@@ -110,7 +107,7 @@
   margin-top: 0;
   position: relative;
   text-transform: capitalize;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .section-title p {
@@ -120,7 +117,7 @@
 }
 
 .section-title {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .text-center {

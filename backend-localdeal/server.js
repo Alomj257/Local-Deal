@@ -1,9 +1,9 @@
 // server.js
 const app = require("./config/express");
-const apiRoutes = require("./routes/apiRoutes");
+const routes = require("./routes/index"); // Import the main router
 
 // Mount the API routes
-app.use("/api", apiRoutes);
+app.use("/api", routes);
 
 // Set up the port for your server
 const port = process.env.PORT || 5000;

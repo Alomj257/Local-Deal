@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Modal, Button } from 'react-bootstrap';
 import './ContactUs.css';
 import Footer from '../../components/Footer/Footer';
+import contactService from '../../services/contactService';
 
 function ContactUs() {
   const [formData, setFormData] = useState({
@@ -11,15 +13,28 @@ function ContactUs() {
     message: '',
   });
 
+  const [showModal, setShowModal] = useState(false);
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted!", formData);
-    setFormData({ name: '', email: '', subject: '', message: '' });
+
+    try {
+      await contactService.submitContactForm(formData);
+      console.log('Form submitted successfully!');
+      setFormData({ name: '', email: '', subject: '', message: '' });
+      setShowModal(true);
+    } catch (error) {
+      console.error('Failed to submit form:', error.message);
+    }
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
   };
 
   return (
@@ -120,6 +135,7 @@ function ContactUs() {
               </div>
             </div>
           </div>
+
           <div className="col-md-12 pt-5 pb-5">
             <iframe
               title="Google Map"
@@ -134,6 +150,22 @@ function ContactUs() {
           </div>
         </div>
       </div>
+
+      {/* Modal for showing success message */}
+      <Modal show={showModal} onHide={handleCloseModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>Success!</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          Your form has been submitted successfully.
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseModal}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
       <Footer />
     </>
   );

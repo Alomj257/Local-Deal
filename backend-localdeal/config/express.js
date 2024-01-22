@@ -1,11 +1,18 @@
 // config/express.js
 const express = require("express");
-const app = express();
 const mongoose = require("./mongoDBConnection");
+const bodyParser = require("body-parser");
+const cors = require("cors");
+
+const app = express();
+
+// Middleware
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
 
 // Define your API routes
-app.get("/", (req, res) => {
-  res.send("Local Deal welcomes you");
-});
+const routes = require("../routes"); // Adjust the path as needed
+app.use("/api", routes);
 
 module.exports = app;
