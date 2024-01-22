@@ -1,8 +1,7 @@
-ul {
-  margin: 0px;
-  padding: 0px;
+.footer-ul{
+  margin: 0;
+  padding: 0;
 }
-
 .footer-section {
   background: white;
 }
