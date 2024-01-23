@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Modal, Button } from 'react-bootstrap';
+import { Modal} from 'react-bootstrap';
 import './ContactUs.css';
 import Footer from '../../components/Footer/Footer';
 import contactService from '../../services/contactService';
@@ -48,7 +48,7 @@ function ContactUs() {
 
           <div className="row col-md-12">
             <h4>#Let's Talk</h4>
-            <div className="col-lg-7">
+            <div className="col-md-6">
               <div className="contact">
                 <form className="form" onSubmit={handleSubmit}>
                   <div className="row">
@@ -112,7 +112,7 @@ function ContactUs() {
               </div>
             </div>
 
-            <div className="col-lg-5">
+            <div className="col-md-6">
               <div className="single_address">
                 <i className="fa fa-map-marker"></i>
                 <h4>Our Address</h4>
@@ -154,16 +154,11 @@ function ContactUs() {
       {/* Modal for showing success message */}
       <Modal show={showModal} onHide={handleCloseModal}>
         <Modal.Header closeButton>
-          <Modal.Title>Success!</Modal.Title>
+          <Modal.Title>Contact Details</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          Your form has been submitted successfully.
+          Submitted successfully.
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleCloseModal}>
-            Close
-          </Button>
-        </Modal.Footer>
       </Modal>
 
       <Footer />
