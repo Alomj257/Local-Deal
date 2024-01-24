@@ -6,16 +6,25 @@ const cors = require("cors");
 const app = express();
 
 // Define the frontend URL as an allowed origin
-const allowedOrigins = ['http://localhost:3000', 'https://64c2-2409-40e0-52-435c-5c29-f26a-b880-8616.ngrok-free.app',];
+const allowedOrigins = [
+  'http://localhost:3000',
+  // Add your ngrok URL here
+  'http://192.168.54.138:3000',
+];
 
 // Middleware
-app.use(cors({
-  origin: allowedOrigins,
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  credentials: true,
-  optionsSuccessStatus: 204,
-}));
-
+app.use((req, res, next) => {
+  // Set Cache-Control header for all responses
+  res.setHeader('Cache-Control', 'public, max-age=3600'); // Adjust max-age as needed
+  
+  // CORS setup
+  cors({
+    origin: allowedOrigins,
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+    optionsSuccessStatus: 204,
+  })(req, res, next);
+});
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

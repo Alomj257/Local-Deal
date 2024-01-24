@@ -5,8 +5,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function Service() {
     return (
         <div>
-            <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
-
             <section className="section services-section col-md-12" id="services">
                 <div className="container">
                     <div className="row text-center align-items-center">
