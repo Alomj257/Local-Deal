@@ -1,4 +1,3 @@
-// server.js
 const app = require("./config/express");
 const routes = require("./routes/index"); // Import the main router
 

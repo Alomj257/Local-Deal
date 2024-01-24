@@ -1,6 +1,6 @@
 // src/services/contactService.js
 
-const apiUrl = 'http://localhost:5000/api/'; // Replace with your backend URL
+const apiUrl = 'http://localhost:5000/api'; // Replace with your backend URL
 
 const contactService = {
   submitContactForm: async (formData) => {
@@ -11,10 +11,12 @@ const contactService = {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(formData),
+        credentials: 'include', // Include credentials if needed
       });
 
       if (!response.ok) {
-        throw new Error('Failed to submit contact form');
+        const errorData = await response.json();
+        throw new Error(`Failed to submit contact form. Server response: ${JSON.stringify(errorData)}`);
       }
 
       return response.json();

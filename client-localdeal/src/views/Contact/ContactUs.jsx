@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Modal} from 'react-bootstrap';
 import './ContactUs.css';
 import Footer from '../../components/Footer/Footer';
 import contactService from '../../services/contactService';
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 
-function ContactUs() {
+
+const ContactUs = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -14,10 +16,16 @@ function ContactUs() {
   });
 
   const [showModal, setShowModal] = useState(false);
+  const [modalMessage, setModalMessage] = useState('');
+  const [modalTitle, setModalTitle] = useState('');
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
   };
 
   const handleSubmit = async (e) => {
@@ -25,16 +33,21 @@ function ContactUs() {
 
     try {
       await contactService.submitContactForm(formData);
-      console.log('Form submitted successfully!');
-      setFormData({ name: '', email: '', subject: '', message: '' });
+      setModalTitle('Success');
+      setModalMessage('Form submitted successfully!');
       setShowModal(true);
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: '',
+      });
     } catch (error) {
       console.error('Failed to submit form:', error.message);
+      setModalTitle('Error');
+      setModalMessage('Failed to submit form. Please try again.');
+      setShowModal(true);
     }
-  };
-
-  const handleCloseModal = () => {
-    setShowModal(false);
   };
 
   return (
@@ -129,7 +142,7 @@ function ContactUs() {
                 <p>(081) 450-5226</p>
               </div>
               <div className="single_address">
-                <i className="fa fa-clock-o"></i>
+                <i className="fa fa-clock"></i>
                 <h4>Work Time</h4>
                 <p>Mon - Fri: 08.00 - 18.00. <br />Sat: 10.00 - 14.00</p>
               </div>
@@ -151,14 +164,16 @@ function ContactUs() {
         </div>
       </div>
 
-      {/* Modal for showing success message */}
       <Modal show={showModal} onHide={handleCloseModal}>
         <Modal.Header closeButton>
-          <Modal.Title>Contact Details</Modal.Title>
+          <Modal.Title>{modalTitle}</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-          Submitted successfully.
-        </Modal.Body>
+        <Modal.Body>{modalMessage}</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseModal}>
+            Close
+          </Button>
+        </Modal.Footer>
       </Modal>
 
       <Footer />

@@ -108,14 +108,15 @@
   text-align: center!important;
 }
 
+
 @media only screen and (max-width: 768px) {
   .contact {
     margin-bottom: 60px;
   }
-}
-
-@media only screen and (max-width: 768px) {
   .single_address {
     padding-left: 0px;
+  }
+  .btn-contact-bg {
+    width: auto;
   }
 }

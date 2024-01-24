@@ -6,7 +6,9 @@ const AdminLogin = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = () => {
+  const handleLogin = (e) => {
+    e.preventDefault(); // Prevents the default form submission behavior
+
     // Implement your authentication logic here
     // For simplicity, just check if the username and password are not empty
     if (username && password) {
@@ -23,7 +25,7 @@ const AdminLogin = () => {
   return (
     <div className="admin-login-container">
       <h2>Admin Login</h2>
-      <form>
+      <form onSubmit={handleLogin}>
         <div className="input-container">
           <FaEnvelope className="icon" />
           <input
@@ -42,9 +44,7 @@ const AdminLogin = () => {
             placeholder="Password"
           />
         </div>
-        <button type="button" onClick={handleLogin}>
-          Login
-        </button>
+        <button type="submit">Login</button>
       </form>
     </div>
   );
