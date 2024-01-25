@@ -11,7 +11,7 @@
 }
 
 .form-group {
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
 .contact input,
@@ -19,7 +19,6 @@
   background: #fff;
   border: 1px solid #7564e5;
   border-radius: 5px;
-  color: #232434;
   font-size: 16px;
   padding: 10px;
   width: 100%;
@@ -32,7 +31,6 @@
 .contact textarea:focus {
   background: #fff;
   border: 1px solid #7564e5;
-  color: #232434;
   box-shadow: none;
   outline: 0 none;
 }
@@ -48,9 +46,13 @@
   cursor: pointer;
   width: 100%;
 }
+.btn-contact-bg :focus {
+  box-shadow: none;
+  outline: none;
+}
 
 .btn-contact-bg:hover {
-  background: #3181c2;
+  background: #230ab1;
   color: #fff;
 }
 
@@ -60,6 +62,7 @@
   padding-left: 50px;
 }
 .single_address h4 {
+  color: #20247b;
   font-size: 18px;
   font-weight: 600; /* or font-weight: 400; for normal weight */
   overflow: hidden;
@@ -87,7 +90,7 @@
 
 .section-title h1 {
   color: #20247b;
-  font-size: 36px;
+  font-size: 32px;
   font-weight: 700;
   margin-top: 0;
   position: relative;
@@ -99,9 +102,8 @@
 }
 
 .section-title p {
-  font-size: 16px;
+  font-size: 14px;
   margin: auto;
-  letter-spacing: 1px;
 }
 
 .text-center {

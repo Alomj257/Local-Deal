@@ -39,6 +39,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
+
         <div className="footer-content pt-5 pb-3">
           <div className="row">
             <div className="col-xl-4 col-lg-4 col-md-6 mb-40">
@@ -52,6 +53,7 @@ const Footer = () => {
                 <div className="footer-social-icon">
                   <span>Follow us</span>
                   <a href='/#'><i className="fab fa-facebook-f facebook-bg"></i></a>
+                  <a href='/#'><i className="fab fa-instagram instagram-bg"></i></a>
                   <a href='/#'><i className="fab fa-twitter twitter-bg"></i></a>
                   <a href='/#'><i className="fab fa-google-plus-g google-bg"></i></a>
                 </div>
@@ -68,7 +70,6 @@ const Footer = () => {
                   <li><a href="/categories">Categories</a></li>
                   <li><a href="/about">About</a></li>
                   <li><a href="/contact">Contact</a></li>
-                  {/* Add other links as needed */}
                 </ul>
               </div>
             </div>
@@ -91,28 +92,28 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="copyright-area bg-light">
-        <div className="container">
-          <div className="row">
-            <div className="col-xl-6 col-lg-6 text-center text-lg-left">
-              <div className="copyright-text">
-                <p>Copyright &copy; 2024, All Right Reserved <a href="/contact">Local Deal</a></p>
-              </div>
+
+      <div className="container">
+        <div className="row">
+          <div className="col-md-6 text-center text-lg-left">
+            <div className="copyright-text">
+              <p>Copyright &copy; 2024, All Right Reserved <a href="/contact">Local Deal</a></p>
             </div>
-            <div className="col-xl-6 col-lg-6 d-none d-lg-block text-right">
-              <div className="footer-menu">
-                <ul>
-                  <li><a href='/'>Home</a></li>
-                  <li><a href='/terms'>Terms</a></li>
-                  <li><a href='/privacy'>Privacy</a></li>
-                  <li><a href='/policy'>Policy</a></li>
-                  <li><a href='/contact'>Contact</a></li>
-                </ul>
-              </div>
+          </div>
+          <div className="col-md-6 d-none d-lg-block text-right">
+            <div className="footer-menu">
+              <ul>
+                <li><a href='/'>Home</a></li>
+                <li><a href='/terms'>Terms</a></li>
+                <li><a href='/privacy'>Privacy</a></li>
+                <li><a href='/policy'>Policy</a></li>
+                <li><a href='/contact'>Contact</a></li>
+              </ul>
             </div>
           </div>
         </div>
       </div>
+
     </footer>
   );
 };

@@ -70,12 +70,12 @@ const ContactUs = () => {
     <>
       <div className="contact-area section-padding">
         <div className="container">
-          <div className="section-title text-center">
+          <div className="row section-title text-center">
             <h1>Get in Touch</h1>
             <p>Discover More, Spend Less – Local Deals Await!</p>
           </div>
 
-          <div className="row col-md-12">
+          <div className="row">
             <h4>#Let's Talk</h4>
             <div className="col-md-6">
               <div className="contact">
@@ -145,7 +145,7 @@ const ContactUs = () => {
               <div className="single_address">
                 <i className="fa fa-map-marker"></i>
                 <h4>Our Address</h4>
-                <p>A 18 Floriskraal Street, Groenvallei,<br /> Cape Town, 7530</p>
+                <p>A 18 Floriskraal Street, Groenvallei, Cape Town, 7530</p>
               </div>
               <div className="single_address">
                 <i className="fa fa-envelope"></i>
@@ -160,12 +160,12 @@ const ContactUs = () => {
               <div className="single_address">
                 <i className="fa fa-clock"></i>
                 <h4>Work Time</h4>
-                <p>Mon - Fri: 08.00 - 18.00. <br />Sat: 10.00 - 14.00</p>
+                <p>Mon - Fri: 08.00 - 18.00. <br />Sat - Sun: 10.00 - 14.00</p>
               </div>
             </div>
           </div>
 
-          <div className="col-md-12 pt-5 pb-5">
+          <div className="row pt-5 pb-5">
             <iframe
               title="Google Map"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6623.73491381045!2d18.6598440506238!3d-33.89306725020992!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1dcc5103c4b68c7f%3A0xaba7cecacdb84bc2!2sGroenvallei%2C%20Cape%20Town%2C%207530%2C%20South%20Africa!5e0!3m2!1sen!2sin!4v1705517005957!5m2!1sen!2sin"

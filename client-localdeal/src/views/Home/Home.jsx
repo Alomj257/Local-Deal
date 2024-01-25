@@ -59,6 +59,7 @@ const Home = () => {
           <Slideshow images={images} />
         </header>
       </div>
+      
       <Service />
       <Footer />
     </>
