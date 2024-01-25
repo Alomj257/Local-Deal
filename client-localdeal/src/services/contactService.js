@@ -1,6 +1,7 @@
 // src/services/contactService.js
 
-const apiUrl = 'https://496b-2409-40e0-4f-f2d7-e966-74fe-7ecf-c586.ngrok-free.app/api'; // Replace with your backend URL
+// const apiUrl = 'https://496b-2409-40e0-4f-f2d7-e966-74fe-7ecf-c586.ngrok-free.app/api'; // Replace with your backend URL
+const apiUrl = 'http://localhost:5000/api';
 
 const contactService = {
   submitContactForm: async (formData) => {

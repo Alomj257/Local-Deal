@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './ContactUs.css';
+import { RingLoader } from 'react-spinners';
 import Footer from '../../components/Footer/Footer';
 import contactService from '../../services/contactService';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheckCircle, faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
+
 
 
 const ContactUs = () => {
@@ -15,6 +19,8 @@ const ContactUs = () => {
     message: '',
   });
 
+
+  const [submitting, setSubmitting] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [modalMessage, setModalMessage] = useState('');
   const [modalTitle, setModalTitle] = useState('');
@@ -32,6 +38,7 @@ const ContactUs = () => {
     e.preventDefault();
 
     try {
+      setSubmitting(true);
       await contactService.submitContactForm(formData);
       setModalTitle('Success');
       setModalMessage('Form submitted successfully!');
@@ -47,8 +54,17 @@ const ContactUs = () => {
       setModalTitle('Error');
       setModalMessage('Failed to submit form. Please try again.');
       setShowModal(true);
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: '',
+      });
+    } finally {
+      setSubmitting(false);
     }
   };
+
 
   return (
     <>
@@ -164,17 +180,48 @@ const ContactUs = () => {
         </div>
       </div>
 
-      <Modal show={showModal} onHide={handleCloseModal}>
-        <Modal.Header closeButton>
-          <Modal.Title>{modalTitle}</Modal.Title>
+      <Modal show={showModal} onHide={handleCloseModal} centered>
+        <Modal.Header>
+          <Modal.Title>
+            {modalTitle === 'Success' ? (
+              <FontAwesomeIcon icon={faCheckCircle} className="text-success" />
+            ) : (
+              <FontAwesomeIcon icon={faExclamationCircle} className="text-danger" />
+            )}{' '}
+            {modalTitle}
+          </Modal.Title>
         </Modal.Header>
-        <Modal.Body>{modalMessage}</Modal.Body>
+        <Modal.Body>
+          {submitting ? (
+            <div className="text-center">
+              <RingLoader color="#007bff" loading={true} size={100} />
+              <p>Submitting...</p>
+            </div>
+          ) : (
+            <>
+              {modalTitle === 'Success' ? (
+                <p>{modalMessage}</p>
+              ) : (
+                <p className="text-danger">{modalMessage}</p>
+              )}
+            </>
+          )}
+        </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleCloseModal}>
-            Close
-          </Button>
+          {submitting ? (
+            <Button variant="secondary" disabled>
+              Close
+            </Button>
+          ) : (
+            <Button variant="secondary" onClick={handleCloseModal}>
+              Close
+            </Button>
+          )}
         </Modal.Footer>
       </Modal>
+
+
+
 
       <Footer />
     </>
