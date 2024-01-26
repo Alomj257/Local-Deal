@@ -130,7 +130,7 @@ const ContactUs = () => {
                         type="submit"
                         value="Send message"
                         name="submit"
-                        className="btn btn-contact-bg"
+                        className="contact-btn"
                         title="Submit Your Message!"
                       >
                         Send Message
