@@ -8,6 +8,7 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle, faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
+import NewsletterForm from '../../components/Newsletter/NewsletterForm';
 
 
 
@@ -219,10 +220,7 @@ const ContactUs = () => {
           )}
         </Modal.Footer>
       </Modal>
-
-
-
-
+      <NewsletterForm />
       <Footer />
     </>
   );

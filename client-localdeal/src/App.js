@@ -10,13 +10,13 @@ import Categories from './views/Categories/Categories';
 import Promotion from './views/Promotions/Promotion';
 import ContactUs from './views/Contact/ContactUs';
 import AdminLogin from './components/AdminLogin/AdminLogin';
-import Food from './components/CategoryComponents/Food/Food';
-import Accommodation from './components/CategoryComponents/Accommodation/Accommodation';
-import Homestore from './components/CategoryComponents/Homestore/Homestore';
-import Beauty from './components/CategoryComponents/Beauty/Beauty';
-import Activities from './components/CategoryComponents/Activities/Activities';
-import Entertainment from './components/CategoryComponents/Entertainment/Entertainment';
-import Services from './components/CategoryComponents/Services/Services';
+import Food from './views/Categories/Food/Food';
+import Accommodation from './views/Categories/Accommodation/Accommodation';
+import Homestore from './views/Categories/Homestore/Homestore';
+import Beauty from './views/Categories/Beauty/Beauty';
+import Activities from './views/Categories/Activities/Activities';
+import Entertainment from './views/Categories/Entertainment/Entertainment';
+import Services from './views/Categories/Services/Services';
 
 const App = () => {
   return (
