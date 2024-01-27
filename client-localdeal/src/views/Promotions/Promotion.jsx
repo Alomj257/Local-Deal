@@ -76,9 +76,9 @@ const Promotion = () => {
   return (
     <>
       <Container>
-        <div className="row">
+        <Row>
           <h3 className='promotion-heading'>Promotions <small> Explore different promotions</small></h3>
-        </div>
+        </Row>
         {promotions.map((promotion, index) => (
           <Row key={index} className={`promotion-row ${scrollDirection === 'down' ? 'down-scroll' : 'up-scroll'}`} style={{ opacity: 0 }}>
             <Col lg={6} className={`order-lg-${index % 2 === 0 ? '1' : '2'}`}>

@@ -1,66 +1,133 @@
+/* Categories.css */
+
+.categories-heading {
+    text-align: center;
+    margin-bottom: 50px;
+    color: #20247b;
+    font-weight: 700;
+}
+
+.card-cascade {
+    margin-bottom: 20px;
+}
+
 .card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: transform 0.3s;
+}
+
+.card-img-top {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+}
+
+.view-cascade {
     position: relative;
-    background-color: #fff;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-clip: border-box;
-    border: 1px solid rgba(0, 0, 0, 0.125);
-    border-radius: .25rem;
-    margin: 20px;
-    transition: transform 0.3s ease, background-color 0.3s ease; /* Removed color transition */
-    color: black; /* Default text color */
 }
 
-.card:hover {
-    transform: scale(1.05);
-    background-color: #20247b;
+.card-body {
+    padding: 20px;
 }
 
-.card:hover * {
-    color: white; /* Text color on hover for all child elements */
-}
-
-a.card {
-    padding-top: 15px;
-    text-decoration: none;
-}
-
-.box-shadow {
-    box-shadow: 0 12px 20px 1px rgba(144, 170, 241, 0.09);
-}
-
-.rounded-circle {
-    border-radius: 50%;
-}
-
-.custom-bg-color {
-    background-color: #0999ec;
-}
-
-.text-sm {
-    font-size: 16px;
-}
-
-.card-text {
-    padding-top: 16px;
-    color: black;
-    margin: 0 0 16px;
+.pink-text {
+    color: #e91e63;
 }
 
 .card-title {
-    font-family: "Montserrat", sans-serif;
     color: #20247b;
-    font-size: 25px;
-    font-weight: 600;
+    margin-bottom: 10px;
+    font-size: 18px;
 }
 
-.pt-1, .py-1 {
-    padding-top: .25rem;
+.card-text {
+    color: #333;
 }
 
-.head-icon {
-    margin-top: 20px;
-    color: white;
+.btn-unique {
+    background-color: #e91e63;
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.card-footer {
+    background-color: #f8f9fa;
+    padding: 10px;
+    text-align: center;
+}
+@media (min-width: 764px) and (max-width: 1024px) {
+    .card-cascade {
+        margin-bottom: 20px;
+    }
+
+    .card {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        transition: transform 0.3s;
+    }
+
+    .card-img-top {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+    }
+
+    .view-cascade {
+        position: relative;
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+
+    .pink-text {
+        color: #e91e63;
+    }
+
+    .card-title {
+        margin-bottom: 10px;
+        font-size: 18px;
+    }
+
+    .card-text {
+        color: #333;
+    }
+
+    .btn-unique {
+        background-color: #e91e63;
+        color: #fff;
+        padding: 8px 16px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .card-footer {
+        background-color: #f8f9fa;
+        padding: 10px;
+        text-align: center;
+    }
+
+    /* Adjust the number of columns when the screen size is between 764px and 1024px */
+    .col-md-3 {
+        flex: 0 0 33.33333%;
+        max-width: 33.33333%;
+    }
+
+    /* Centering the cards when the number is odd */
+    .row {
+        justify-content: center;
+    }
+
+    /* Add some spacing between the centered cards */
+    .row::after {
+        content: "";
+        flex: auto;
+    }
 }

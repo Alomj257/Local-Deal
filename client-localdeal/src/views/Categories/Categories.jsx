@@ -1,47 +1,100 @@
+// Categories.js
 import React from 'react';
 import './Categories.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Footer from '../../components/Footer/Footer';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import { Container, Row, Col, Card } from 'react-bootstrap';
 
 function Categories() {
-    const categories = [
-        { name: 'Food', icon: 'fa-cutlery', link: '/categories/food' },
-        { name: 'Accommodation', icon: 'fa-bed', link: '/categories/accommodation' },
-        { name: 'Home', icon: 'fa-home', link: '/categories/homestore' },
-        { name: 'Beauty', icon: 'fa-scissors', link: '/categories/beauty' },
-        { name: 'Activities', icon: 'fa-gamepad', link: '/categories/activities' },
-        { name: 'Entertainment', icon: 'fa-film', link: '/categories/entertainment' },
-        { name: 'Services', icon: 'fa-cogs', link: '/categories/services' },
+    // Static data for demonstration purposes
+    const categoryData = [
+        {
+            image: 'https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(147).webp',
+            category: 'Food',
+            icon: 'fas fa-utensils',
+            title: 'Cheat day inspirations',
+            description: 'LocalDeal Categories: Uncover Your Communitys Treasures, Where Savings Meet Discovery!',
+            date: '2 days ago'
+        },
+        {
+            image: 'https://mdbootstrap.com/img/Photos/Others/photo6.webp',
+            category: 'Accommodation',
+            icon: 'fas fa-bed',
+            title: 'Cheat day inspirations',
+            description: 'LocalDeal Categories: Uncover Your Communitys Treasures, Where Savings Meet Discovery!',
+            date: '2 days ago'
+        },
+        {
+            image: 'https://mdbootstrap.com/img/Photos/Others/men.webp',
+            category: 'Home',
+            icon: 'fas fa-home',
+            title: 'Cheat day inspirations',
+            description: 'LocalDeal Categories: Uncover Your Communitys Treasures, Where Savings Meet Discovery!',
+            date: '2 days ago'
+        },
+        {
+            image: 'https://mdbootstrap.com/img/Photos/Others/images/43.webp',
+            category: 'Beauty',
+            icon: 'fas fa-scissors',
+            title: 'Cheat day inspirations',
+            description: 'LocalDeal Categories: Uncover Your Communitys Treasures, Where Savings Meet Discovery!',
+            date: '2 days ago'
+        },
+        {
+            image: 'https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).webp',
+            category: 'Activities',
+            icon: 'fas fa-gamepad',
+            title: 'Cheat day inspirations',
+            description: 'LocalDeal Categories: Uncover Your Communitys Treasures, Where Savings Meet Discovery!',
+            date: '2 days ago'
+        },
+        {
+            image: 'https://mdbootstrap.com/img/Photos/Others/men.webp',
+            category: 'Entertainment',
+            icon: 'fas fa-film',
+            title: 'Cheat day inspirations',
+            description: 'LocalDeal Categories: Uncover Your Communitys Treasures, Where Savings Meet Discovery!',
+            date: '2 days ago'
+        },
+        {
+            image: 'https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(147).webp',
+            category: 'Services',
+            icon: 'fas fa-cogs',
+            title: 'Cheat day inspirations',
+            description: 'LocalDeal Categories: Uncover Your Communitys Treasures, Where Savings Meet Discovery!',
+            date: '2 days ago'
+        },
+        // ... (other category data)
     ];
 
     return (
         <>
-            <section className="container pt-3 mb-3 bg-white col-sm-12">
-                <h2 className="h3 block-title text-center pb-5" style={{ color: '#20247b', fontWeight: 700 }}>
-                    Categories<small> Explore different categories</small>
-                </h2>
-                <div className="row col-md-12 pt-5 mt-30">
-                    {categories.map((category, index) => (
-                        <div key={index} className="col-lg-4 col-sm-6 mb-4 pb-5">
-                            <div className="card">
-                                <div className="box-shadow custom-bg-color rounded-circle mx-auto text-center" style={{ width: '75px', height: '75px', marginTop: '-40px' }}>
-                                    <i className={`fa ${category.icon} fa-2x head-icon`}></i>
-                                </div>
-                                <div className="card-body text-center">
-                                    <h3 className="card-title pt-1">{category.name}</h3>
-                                    <p className="card-text text-sm text-justify">
-                                        Discover unbeatable savings right in your neighborhood with LocalDeal – where every purchase is a step closer to a smarter, trendier you! Don't just shop, thrive locally!
-                                    </p>
-                                    <a href={category.link} className="text-decoration-none"><span className="text-lg text-uppercase font-weight-bold">Learn More&nbsp;</span></a>
-                                </div>
-                            </div>
-                        </div>
+            <Container>
+                <Row>
+                    <h3 className='categories-heading'>Categories <small> Explore different categories</small></h3>
+                </Row>
+                <Row md={12}>
+                    {categoryData.map((category, index) => (
+                        <Col md={3} key={index}>
+                            <Card className="card-cascade narrower">
+                                <Card.Img variant="rounded" src={category.image} alt="Card image cap" className="rounded-top" />
+                                <Card.Body className="card-body-cascade">
+                                    <h5 className="pink-text pb-2 pt-1">
+                                        <i className={[category.icon]}></i> {category.category}
+                                    </h5>
+                                    <h4 className="font-weight-bold card-title">{category.title}</h4>
+                                    <p className="card-text">{category.description}</p>
+                                    <a className="btn btn-unique">Read More</a>
+                                </Card.Body>
+                                <Card.Footer className="text-muted text-center">
+                                    {category.date}
+                                </Card.Footer>
+                            </Card>
+                        </Col>
                     ))}
-                </div>
-            </section>
-            <Footer />
+                </Row>
+            </Container>
         </>
-    );
+    )
 }
 
 export default Categories;
