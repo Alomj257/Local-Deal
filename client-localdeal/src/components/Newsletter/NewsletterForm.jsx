@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Container, Row, Col, Card, Image, InputGroup, FormControl, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './NewsletterForm.css';
 import newsletterService from '../../services/newsletterService';
 
 const NewsletterForm = () => {
