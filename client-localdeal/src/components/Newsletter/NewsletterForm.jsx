@@ -1,9 +1,28 @@
-import React from 'react';
-import './NewsletterForm.css';
+import React, { useState } from 'react';
 import { Container, Row, Col, Card, Image, InputGroup, FormControl, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import newsletterService from '../../services/newsletterService';
 
 const NewsletterForm = () => {
+  const [email, setEmail] = useState('');
+
+  const handleSubscribe = async () => {
+    try {
+      // Add validation for email if needed
+      if (!email) {
+        alert('Please enter your email address.');
+        return;
+      }
+
+      await newsletterService.subscribeToNewsletter(email);
+      alert('Successfully subscribed to the newsletter!');
+      setEmail('');
+    } catch (error) {
+      console.error('Error subscribing to newsletter:', error.message);
+      alert('Failed to subscribe to the newsletter. Please try again later.');
+    }
+  };
+
   return (
     <Container fluid className="body">
       <Row className="d-flex justify-content-center align-items-center rows">
@@ -23,8 +42,10 @@ const NewsletterForm = () => {
                     aria-label="Recipient's username"
                     aria-describedby="button-addon2"
                     className="form-control"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                   />
-                  <Button className="border-rad">
+                  <Button className="border-rad" onClick={handleSubscribe}>
                     Subscribe
                   </Button>
                 </InputGroup>
