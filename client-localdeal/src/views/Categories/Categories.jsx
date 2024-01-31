@@ -3,6 +3,7 @@ import React from 'react';
 import './Categories.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import { Container, Row, Col, Card } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 function Categories() {
     // Static data for demonstration purposes
@@ -13,7 +14,8 @@ function Categories() {
             icon: 'fas fa-utensils',
             title: 'Cheat day inspirations',
             description: 'LocalDeal Categories: Uncover Your Communitys Treasures, Where Savings Meet Discovery!',
-            date: '2 days ago'
+            date: '2 days ago',
+            link: 'Food'
         },
         {
             image: 'https://mdbootstrap.com/img/Photos/Others/photo6.webp',
@@ -83,7 +85,9 @@ function Categories() {
                                     </h5>
                                     <h4 className="font-weight-bold card-title">{category.title}</h4>
                                     <p className="card-text">{category.description}</p>
-                                    <a className="btn btn-unique">Read More</a>
+                                    <Link to={`/categories/${category.category}`} className="btn btn-unique">
+                                        Read More
+                                    </Link>
                                 </Card.Body>
                                 <Card.Footer className="text-muted text-center">
                                     {category.date}
