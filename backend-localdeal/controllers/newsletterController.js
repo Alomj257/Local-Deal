@@ -1,4 +1,4 @@
-const NewsletterSubscription = require('../models/NewsletterSubscription');
+const NewsletterSubscription = require('../models/Newsletter');
 
 const subscribeToNewsletter = async (req, res) => {
   const { email } = req.body;
