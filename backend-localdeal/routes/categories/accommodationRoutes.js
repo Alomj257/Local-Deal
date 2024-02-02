@@ -1,6 +1,6 @@
 // routes/categories/accommodationRoutes.js
 const express = require('express');
-const accommodationController = require('../../controllers/categories/AccommodationController');
+const accommodationController = require('../../controllers/categories/accommodationController');
 
 const router = express.Router();
 

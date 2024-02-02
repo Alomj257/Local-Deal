@@ -1,6 +1,6 @@
 // routes/categories/entertainmentRoutes.js
 const express = require('express');
-const entertainmentController = require('../../controllers/categories/EntertainmentController');
+const entertainmentController = require('../../controllers/categories/entertainmentController');
 
 const router = express.Router();
 

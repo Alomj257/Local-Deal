@@ -1,6 +1,6 @@
 // routes/categories/beautyRoutes.js
 const express = require('express');
-const beautyController = require('../../controllers/categories/BeautyController');
+const beautyController = require('../../controllers/categories/beautyController');
 
 const router = express.Router();
 
