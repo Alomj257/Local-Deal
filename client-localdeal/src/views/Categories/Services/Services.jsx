@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import Layout from "../../../utils/Layout";
 
 function Services() {
   return (
-    <div>Services</div>
-  )
+    <Layout>
+      <div>Services</div>
+    </Layout>
+  );
 }
 
-export default Services
+export default Services;

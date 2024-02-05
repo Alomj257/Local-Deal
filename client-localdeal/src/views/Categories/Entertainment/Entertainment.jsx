@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import Layout from "../../../utils/Layout";
 
 function Entertainment() {
   return (
-    <div>Entertainment</div>
-  )
+    <Layout>
+      <div>Entertainment</div>
+    </Layout>
+  );
 }
 
-export default Entertainment
+export default Entertainment;
