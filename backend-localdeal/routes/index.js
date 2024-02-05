@@ -10,6 +10,7 @@ const entertainmentRoutes = require('./categories/entertainmentRoutes');
 const activitiesRoutes = require('./categories/activityRoutes');
 const homestoreRoutes = require('./categories/homestoreRoutes');
 const serviceRoutes = require('./categories/serviceRoutes');
+const promotionRoutes = require('./promotionRoutes');
 const router = express.Router();
 
 // Use the contactRoutes for paths starting with '/contact'
@@ -18,5 +19,5 @@ router.use('/newsletter', newsletterRoutes);
 router.use('/category', categoriesRoutes);
 router.use('/admin', adminRoutes);
 router.use('/categories', foodRoutes, accommodationRoutes, beautyRoutes, entertainmentRoutes, activitiesRoutes, homestoreRoutes, serviceRoutes);
-
+router.use('/promotions', promotionRoutes); 
 module.exports = router;

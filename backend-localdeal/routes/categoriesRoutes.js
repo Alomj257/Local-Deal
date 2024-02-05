@@ -1,7 +1,7 @@
 // routes/categorieRoutes.js
 const express = require('express');
 const router = express.Router();
-const categoryController = require('../controllers/categoryController');
+const categoryController = require('../controllers/CategoryController');
 
 router.get('/', categoryController.getAllCategories);
 router.get('/:id', categoryController.getCategoryById);

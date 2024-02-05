@@ -1,5 +1,5 @@
 // controllers/adminController.js
-const Admin = require('../models/Admin');
+const Admin = require('../models/AdminModel');
 const jwt = require('jsonwebtoken');
 
 const registerAdmin = async (req, res) => {
