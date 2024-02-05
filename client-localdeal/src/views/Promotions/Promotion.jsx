@@ -105,7 +105,6 @@ const Promotion = () => {
         ))}
       </Container>
       <Footer />
-      <Footer />
     </>
   );
 };
