@@ -4,7 +4,7 @@ import Sidebar from "../components/Sidebar";
 const DashBoard = () => {
   return (
     <>
-      <div className="d-flex" style={{ maxWidth: "fit-content" }}>
+      <div className="d-flex" style={{ minWidth: "fit-content" }}>
         <Sidebar />
         <main>right</main>
       </div>
