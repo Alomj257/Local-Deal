@@ -1,6 +1,6 @@
 /* Header.css */
 #header {
-    position: absolute;
+    position: relative;
     width: 220px;
     height: 100vh;
     background-color: white;
@@ -41,6 +41,7 @@
     font-weight: bold;
     padding: 12px 20px;
     transition: background-color 0.3s ease;
+    cursor: pointer;
 }
 #header ul li.active {
     color: white;
