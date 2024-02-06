@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FaList, FaRegHeart, FaChevronDown, FaChevronRight } from "react-icons/fa";
-import { FiLogOut, FiArrowLeftCircle, FiArrowRightCircle } from "react-icons/fi";
+import { FiLogOut, FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import { FaThLarge, FaUser } from 'react-icons/fa';
 import { BiCog } from "react-icons/bi";
 import logo from '../../../assets/icons/logo.png';
@@ -26,9 +26,9 @@ const Header = () => {
 
     return (
         <div id="header" className={menuCollapse ? 'collapsed' : ''}>
-            <img src={menuCollapse ? icon : logo} alt="Logo" style={{ width: menuCollapse ? '55px' : '220px', height: '50px' }} />
+            <img src={menuCollapse ? icon : logo} alt="Logo" style={{ width: menuCollapse ? '45px' : '130px', height: '45px' }} />
             <div className="closemenu" onClick={menuIconClick}>
-                {menuCollapse ? <FiArrowRightCircle /> : <FiArrowLeftCircle />}
+                {menuCollapse ? <FiArrowRight /> : <FiArrowLeft />}
             </div>
             <div className="sidebar-content">
                 <ul>
