@@ -17,6 +17,10 @@ import Activities from "./views/Categories/Activities/Activities";
 import Entertainment from "./views/Categories/Entertainment/Entertainment";
 import Services from "./views/Categories/Services/Services";
 import DashBoard from "../src/admin/Pages/DashBoard";
+import User from "./admin/Pages/User";
+import PromotionAdmin from "./admin/Pages/Promotion";
+import Settings from "./admin/Pages/Settings";
+import Logout from "./admin/Pages/Logout";
 
 const App = () => {
   return (
@@ -39,7 +43,12 @@ const App = () => {
           <Route path="/categories/entertainment" element={<Entertainment />} />
           <Route path="/categories/services" element={<Services />} />
           {/* Admin panel */}
-          <Route path="/admin" element={<DashBoard />} />
+          <Route path="/admin" element={<DashBoard />}>
+            <Route path="users" element={<User />} />
+            <Route path="promotion" element={<PromotionAdmin />} />
+            <Route path="settings" element={<Settings />} />
+            <Route path="logout" element={<Logout />} />
+          </Route>
         </Routes>
       </>
     </BrowserRouter>
