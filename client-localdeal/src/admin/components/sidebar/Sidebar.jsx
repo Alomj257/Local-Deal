@@ -3,8 +3,8 @@ import { FaUserCircle } from "react-icons/fa";
 import { FaChevronDown } from "react-icons/fa6";
 import { MdCategory, MdGridView } from "react-icons/md";
 import { GrAnnounce } from "react-icons/gr";
-import logo from "../../icons/logo.png";
-import "./conponents.css";
+import logo from "../../../assets/icons/logo.png";
+import "./Sidebar.css";
 const Sidebar = () => {
   return (
     <nav className=" text-white admin-sidebar">

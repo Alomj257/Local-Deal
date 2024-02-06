@@ -16,7 +16,7 @@ import Beauty from "./views/Categories/Beauty/Beauty";
 import Activities from "./views/Categories/Activities/Activities";
 import Entertainment from "./views/Categories/Entertainment/Entertainment";
 import Services from "./views/Categories/Services/Services";
-import DashBoard from "./assets/Admin/Pages/DashBoard";
+import DashBoard from "../src/admin/Pages/DashBoard";
 
 const App = () => {
   return (
