@@ -1,52 +1,66 @@
-import React, { useState } from 'react';
-import { FaEnvelope, FaLock } from 'react-icons/fa';
-import './AdminLogin.css';
+import React, { useState, useEffect } from "react";
+import { FaEnvelope, FaLock } from "react-icons/fa";
+import { useNavigate } from "react-router-dom"; // Import useNavigate instead of useHistory
+import "./AdminLogin.css";
+import Layout from "../../utils/Layout";
+import adminLogin from "../../services/adminService";
 
 const AdminLogin = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate(); // Use useNavigate hook for navigation
 
-  const handleLogin = (e) => {
-    e.preventDefault(); // Prevents the default form submission behavior
+  // useEffect to clear error after 5 seconds
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setError("");
+    }, 5000); // 5000 milliseconds = 5 seconds
 
-    // Implement your authentication logic here
-    // For simplicity, just check if the username and password are not empty
-    if (username && password) {
-      alert('Login successful');
+    return () => clearTimeout(timer); // Cleanup function to clear timer
+  }, [error]);
 
-      // Reset the username and password after successful login
-      setUsername('');
-      setPassword('');
-    } else {
-      alert('Invalid credentials');
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+    try {
+      const token = await adminLogin(username, password);
+      console.log("Login successful, token:", token);
+      // Redirect user to admin panel
+      navigate("/admin"); // Use navigate function to navigate to the admin panel route
+    } catch (error) {
+      setError(error);
     }
   };
 
   return (
-    <div className="admin-login-container">
-      <h2>Admin Login</h2>
-      <form onSubmit={handleLogin}>
-        <div className="input-container">
-          <FaEnvelope className="icon" />
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            placeholder="Email"
-          />
-        </div>
-        <div className="input-container">
-          <FaLock className="icon" />
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Password"
-          />
-        </div>
-        <button type="submit">Login</button>
-      </form>
-    </div>
+    <Layout>
+      <div className="admin-login-container">
+        <h2>Admin Login</h2>
+        {error && <p className="error-message">{error}</p>}
+        <form onSubmit={handleLogin}>
+          <div className="input-container">
+            <FaEnvelope className="icon" />
+            <input
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              placeholder="Email"
+            />
+          </div>
+          <div className="input-container">
+            <FaLock className="icon" />
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Password"
+            />
+          </div>
+          <button type="submit">Login</button>
+        </form>
+      </div>
+    </Layout>
   );
 };
 

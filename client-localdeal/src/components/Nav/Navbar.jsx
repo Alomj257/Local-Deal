@@ -55,7 +55,7 @@ const Navbar = () => {
             </li>
             <li>
               <NavLink to="/adminlogin" onClick={closeNavbar}>
-                <FontAwesomeIcon icon={faUser} />
+                {showNavbar ? 'Login' : <FontAwesomeIcon icon={faUser} />}
               </NavLink>
             </li>
           </ul>

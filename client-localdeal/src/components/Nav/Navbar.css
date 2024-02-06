@@ -1,11 +1,12 @@
-.container {
+.navbar .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 10px;
-  display: flex;
+  display: flex !important;
   justify-content: space-between;
   align-items: center;
   height: 100%;
+  
 }
 
 .logo img {

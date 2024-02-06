@@ -1,7 +1,7 @@
 body {
   margin: 0;
-  padding-left: 1%;
-  padding-right: 1%;
+  /* padding-left: 1%;
+  padding-right: 1%; */
   overflow-x: hidden !important;
   background: white !important;
   background-color: white !important;
@@ -13,4 +13,7 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+.container{
+  display: block !important;
 }

@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import Layout from "../../../utils/Layout";
 
 function Accommodation() {
   return (
-    <div>Accommodation</div>
-  )
+    <Layout>
+      <div>Accommodation</div>
+    </Layout>
+  );
 }
 
-export default Accommodation
+export default Accommodation;

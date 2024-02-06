@@ -33,6 +33,11 @@ const adminSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  role: {
+    type: String,
+    required: true,
+    default:"USER"
+  },
 });
 
 // Hash the password before saving to the database

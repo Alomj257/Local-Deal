@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import Layout from "../../../utils/Layout";
 
 function Activities() {
   return (
-    <div>Activities</div>
-  )
+    <Layout>
+      <div>Activities</div>
+    </Layout>
+  );
 }
 
-export default Activities
+export default Activities;

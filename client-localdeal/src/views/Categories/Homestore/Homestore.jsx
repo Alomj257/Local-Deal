@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import Layout from "../../../utils/Layout";
 
 function Homestore() {
   return (
-    <div>Homestore</div>
-  )
+    <Layout>
+      <div>Homestore</div>
+    </Layout>
+  );
 }
 
-export default Homestore
+export default Homestore;
