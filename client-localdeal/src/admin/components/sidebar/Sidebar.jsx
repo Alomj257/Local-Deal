@@ -4,7 +4,7 @@ import { FaChevronDown } from "react-icons/fa6";
 import { MdCategory, MdGridView } from "react-icons/md";
 import { GrAnnounce } from "react-icons/gr";
 import logo from "../../../assets/icons/logo.png";
-import "./Sidebar.css";
+import "./sidebar.css";
 const Sidebar = () => {
   return (
     <nav className=" text-white admin-sidebar">
