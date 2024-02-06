@@ -1,0 +1,53 @@
+/* Header.css */
+#header {
+    position: absolute;
+    width: 220px;
+    height: 100vh;
+    background-color: white;
+    box-shadow: 0.5px 0.866px 2px 0px rgba(0, 0, 0, 0.15);
+    transition: width 0.3s ease;
+}
+
+#header.collapsed {
+    width: 60px;
+}
+
+#header .closemenu {
+    color: white;
+    position: absolute;
+    right: 0;
+    z-index: 9999;
+    line-height: 20px;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 30px;
+    top: 10px;
+    right: -15px;
+    cursor: pointer;
+    background-image: linear-gradient(0deg, #2225d8 0%, #5f9efd 100%);;
+}
+#header ul {
+    padding: 0;
+    list-style: none;
+}
+
+#header ul li {
+    position: relative;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    color: #000;
+    margin: 10px 0;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 12px 20px;
+    transition: background-color 0.3s ease;
+}
+#header ul li.active {
+    color: white;
+    background-image: linear-gradient(0deg, #2225d8 0%, #5f9efd 100%);
+}
+@media only screen and (max-width: 720px) {
+    #header ul li {
+        padding: 10px;
+    }
+}
