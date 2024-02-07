@@ -5,17 +5,17 @@ import AddUser from "../components/AddUser/AddUser";
 
 const User = () => {
   return (
-    <div>
-      <h5 className="ps-2 text-primary fw-bold ms-sm-3"> User List</h5>
-      <div className="d-flex flex-column">
+    <div className="px-3">
+      <h3 className="mb-3"> User List</h3>
+      <div className="d-flex align-items-center mb-3">
         <Modal
-          btnClasss="btn btn-primary ms-auto fw-bold"
-          bodyClass="bg-white col-sm-8 col-md-6 "
-          btnText="Add"
+          btnClasss="btn btn-primary me-2 fw-bold"
+          bodyClass="bg-white col-sm-8 col-md-6"
+          btnText="Add User"
         >
           <AddUser />
         </Modal>
-        <div className="d-flex ms-auto my-3">
+        <div className="ms-auto">
           <input type="text" placeholder="Search..." className="form-control" />
         </div>
       </div>

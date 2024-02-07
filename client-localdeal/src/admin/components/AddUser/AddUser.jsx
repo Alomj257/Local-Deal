@@ -1,86 +1,84 @@
 import React from "react";
 import "./AddUser.css";
+
 const AddUser = () => {
   return (
-    <div className="p-3 ">
-      <h3 className="text-center fw-bold text-primary">Add User/ Register</h3>
-      <form action="">
-        <div className="row row-cols-md-2">
-          <div className="my-3">
-            <label htmlFor="">Name</label>
-            <input type="text" name="name" className="form-control" />
-          </div>
-          <div className="my-3">
-            <label htmlFor="">Email</label>
-            <input type="email" name="email" className="form-control" />
-          </div>
-          <div className="my-3">
-            <label htmlFor="">Password</label>
-            <input type="password" name="password" className="form-control" />
-          </div>
-          <div className="my-3">
-            <label htmlFor="">Confirm Password</label>
-            <input
-              type="password"
-              name="cnf-password"
-              className="form-control"
-            />
-          </div>
-          <div className="my-3">
-            <label htmlFor="">Phone</label>
-            <input type="tel" name="phone" className="form-control" />
-          </div>
-          <div className="my-3">
-            <label htmlFor="">DOB</label>
-            <input type="date" name="dob" className="form-control" />
-          </div>
-          <div className="my-3" id="user-gender">
-            <label htmlFor="">Gender</label>
-            <div className="d-flex justify-content-between mx-3">
-              <div>
-                <span className="me-2">Male</span>
-                <input value="Male" type="radio" name="gender" />
-              </div>
-              <div>
-                <span className="me-2">Female</span>
-                <input type="radio" value="Female" name="gender" />
-              </div>
-              <div>
-                <span className="me-2">Other</span>
-                <input type="radio" value="other" name="gender" />
+    <div className="container">
+      <div className="add-user">
+        <h3 className="text-center fw-bold">Add Admin</h3>
+        <form className="add-user-form">
+          <div className="row row-cols-md-2">
+            <div className="form-group">
+              <label htmlFor="name">Name</label>
+              <input type="text" id="name" name="name" className="form-control" />
+            </div>
+            <div className="form-group">
+              <label htmlFor="email">Email</label>
+              <input type="email" id="email" name="email" className="form-control" />
+            </div>
+            <div className="form-group">
+              <label htmlFor="password">Password</label>
+              <input type="password" id="password" name="password" className="form-control" />
+            </div>
+            <div className="form-group">
+              <label htmlFor="cnf-password">Confirm Password</label>
+              <input type="password" id="cnf-password" name="cnf-password" className="form-control" />
+            </div>
+            <div className="form-group">
+              <label htmlFor="phone">Phone</label>
+              <input type="tel" id="phone" name="phone" className="form-control" />
+            </div>
+            <div className="form-group">
+              <label htmlFor="dob">DOB</label>
+              <input type="date" id="dob" name="dob" className="form-control" />
+            </div>
+            <div className="form-group" id="user-gender">
+              <label>Gender</label>
+              <div className="radio-group">
+                <div className="radio-item">
+                  <input type="radio" id="male" name="gender" value="Male" />
+                  <label htmlFor="male">Male</label>
+                </div>
+                <div className="radio-item">
+                  <input type="radio" id="female" name="gender" value="Female" />
+                  <label htmlFor="female">Female</label>
+                </div>
+                <div className="radio-item">
+                  <input type="radio" id="other" name="gender" value="Other" />
+                  <label htmlFor="other">Other</label>
+                </div>
               </div>
             </div>
+            <div className="form-group">
+              <label htmlFor="role">Role</label>
+              <input type="text" id="role" name="role" className="form-control" />
+            </div>
+            <div className="form-group">
+              <label htmlFor="qualifications">Qualifications</label>
+              <input type="text" id="qualifications" name="qualifications" className="form-control" />
+            </div>
+            <div className="form-group">
+              <label htmlFor="address">Address</label>
+              <input type="text" id="address" name="address" className="form-control" />
+            </div>
+            <div className="form-group">
+              <label htmlFor="nationality">Nationality</label>
+              <input type="text" id="nationality" name="nationality" className="form-control" />
+            </div>
+            <div className="form-group">
+              <label htmlFor="passport-no">Passport No</label>
+              <input type="text" id="passport-no" name="passport-no" className="form-control" />
+            </div>
+            <div className="form-group">
+              <label htmlFor="profile">Profile Picture</label>
+              <input type="file" id="profile" name="profile" className="form-control-file" />
+            </div>
           </div>
-
-          <div className="my-3">
-            <label htmlFor="">Role</label>
-            <input type="text" className="form-control" />
+          <div className="text-center">
+            <button type="submit" className="btn btn-primary">Add User</button>
           </div>
-          <div className="my-3">
-            <label htmlFor="">Qualifications</label>
-            <input type="text" className="form-control" />
-          </div>
-          <div className="my-3">
-            <label htmlFor="">Address</label>
-            <input type="text" className="form-control" />
-          </div>
-          <div className="my-3">
-            <label htmlFor="">Nationality</label>
-            <input type="text" className="form-control" />
-          </div>
-          <div className="my-3">
-            <label htmlFor="">PassportNo</label>
-            <input type="text" className="form-control" />
-          </div>
-          <div className="my-3">
-            <img src="user" alt="" />
-            <input type="file" name="profile" id="" />
-          </div>
-        </div>
-        <div className="text-center my-3">
-          <button className="btn btn-primary">Add User</button>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   );
 };
