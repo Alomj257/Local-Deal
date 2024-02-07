@@ -19,7 +19,7 @@ const loginAdmin = async (req, res) => {
     const admin = await Admin.findOne({ email });
 
     if (!admin) {
-      return res.status(404).json({ message: 'Admin not found' });
+      return res.status(404).json({ message: 'Admin not found, Please contact support.' });
     }
 
     const isPasswordMatch = await admin.comparePassword(password);
