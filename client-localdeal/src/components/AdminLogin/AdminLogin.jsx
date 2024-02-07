@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { FaEnvelope, FaLock } from "react-icons/fa";
 import { useNavigate } from "react-router-dom"; // Import useNavigate instead of useHistory
 import "./AdminLogin.css";
-import Layout from "../../utils/Layout";
+// import Layout from "../../utils/Layout";
 import adminLogin from "../../services/adminService";
 
 const AdminLogin = () => {
@@ -34,7 +34,7 @@ const AdminLogin = () => {
   };
 
   return (
-    <Layout>
+    <>
       <div className="admin-login-container">
         <h2>Admin Login</h2>
         {error && <p className="error-message">{error}</p>}
@@ -60,7 +60,7 @@ const AdminLogin = () => {
           <button type="submit">Login</button>
         </form>
       </div>
-    </Layout>
+    </>
   );
 };
 

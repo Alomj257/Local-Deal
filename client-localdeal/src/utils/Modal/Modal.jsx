@@ -20,12 +20,12 @@ const Modal = ({ children, btnText, bodyClass, btnClasss, closeIcon }) => {
             />
           </div>
           {children}
-          <button
+          {/* <button
             className="btn btn-secondary "
             onClick={() => setIsModal(false)}
           >
             close
-          </button>
+          </button> */}
         </div>
       </div>
     </>
