@@ -21,10 +21,12 @@ import User from "./admin/Pages/User";
 import PromotionAdmin from "./admin/Pages/Promotion";
 import Settings from "./admin/Pages/Settings";
 import Logout from "./admin/Pages/Logout";
+import { ToastContainer } from "react-toastify";
 
 const App = () => {
   return (
     <BrowserRouter>
+      <ToastContainer />
       <>
         {/* <Navbar /> */}
         <Routes>

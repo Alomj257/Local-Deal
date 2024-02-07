@@ -1,6 +1,6 @@
 // models/Admin.js
-const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
+const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
 
 const adminSchema = new mongoose.Schema({
   name: {
@@ -18,11 +18,11 @@ const adminSchema = new mongoose.Schema({
   },
   dob: {
     type: Date,
-    required: true,
+    // required: true,
   },
   gender: {
     type: String,
-    enum: ['Male', 'Female', 'Other'],
+    enum: ["Male", "Female", "Other"],
     required: true,
   },
   qualification: String,
@@ -36,14 +36,17 @@ const adminSchema = new mongoose.Schema({
   role: {
     type: String,
     required: true,
-    default:"USER"
+    default: "USER",
+  },
+  profile: {
+    type: String,
   },
 });
 
 // Hash the password before saving to the database
-adminSchema.pre('save', async function (next) {
+adminSchema.pre("save", async function (next) {
   const admin = this;
-  if (admin.isModified('password') || admin.isNew) {
+  if (admin.isModified("password") || admin.isNew) {
     const hashedPassword = await bcrypt.hash(admin.password, 10);
     admin.password = hashedPassword;
   }
@@ -55,6 +58,6 @@ adminSchema.methods.comparePassword = async function (password) {
   return await bcrypt.compare(password, this.password);
 };
 
-const Admin = mongoose.model('Admin', adminSchema);
+const Admin = mongoose.model("Admin", adminSchema);
 
 module.exports = Admin;

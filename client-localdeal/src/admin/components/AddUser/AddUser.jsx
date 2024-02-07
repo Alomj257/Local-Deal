@@ -1,81 +1,226 @@
-import React from "react";
+import React, { useState } from "react";
 import "./AddUser.css";
+import { register } from "../../../services/adminService";
+import { toast } from "react-toastify";
 
 const AddUser = () => {
+  const [user, setUser] = useState({});
+
+  const handleInputChange = (event) => {
+    const { name, value, files } = event.target;
+    setUser({ ...user, [name]: files ? files[0] : value });
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const formData = new FormData();
+      for (let key in user) {
+        formData.append(key, user[key]);
+      }
+      const res = await register(user);
+      if (res.success) {
+        toast.success(res?.message);
+      } else {
+        toast.success(res?.message);
+      }
+    } catch (error) {
+      console.error("Error adding user:", error);
+      toast.error(error);
+    }
+  };
+
   return (
     <div className="container">
       <div className="add-user">
         <h3 className="text-center fw-bold">Add Admin</h3>
-        <form className="add-user-form">
+        <form className="add-user-form" onSubmit={handleSubmit}>
           <div className="row row-cols-md-2">
             <div className="form-group">
               <label htmlFor="name">Name</label>
-              <input type="text" id="name" name="name" className="form-control" />
+              <input
+                type="text"
+                id="name"
+                name="name"
+                className="form-control"
+                value={user?.name}
+                onChange={handleInputChange}
+              />
             </div>
             <div className="form-group">
               <label htmlFor="email">Email</label>
-              <input type="email" id="email" name="email" className="form-control" />
+              <input
+                type="text"
+                id="email"
+                name="email"
+                className="form-control"
+                value={user?.email}
+                onChange={handleInputChange}
+              />
             </div>
             <div className="form-group">
               <label htmlFor="password">Password</label>
-              <input type="password" id="password" name="password" className="form-control" />
+              <input
+                type="text"
+                id="password"
+                name="password"
+                className="form-control"
+                value={user?.password}
+                onChange={handleInputChange}
+              />
             </div>
             <div className="form-group">
-              <label htmlFor="cnf-password">Confirm Password</label>
-              <input type="password" id="cnf-password" name="cnf-password" className="form-control" />
+              <label htmlFor="cnfpassword">Confirm Password</label>
+              <input
+                type="text"
+                id="cnfpassword"
+                name="cnfpassword"
+                className="form-control"
+                value={user?.cnfpassword}
+                onChange={handleInputChange}
+              />
             </div>
             <div className="form-group">
-              <label htmlFor="phone">Phone</label>
-              <input type="tel" id="phone" name="phone" className="form-control" />
+              <label htmlFor="phoneNo">Phone No.</label>
+              <input
+                type="text"
+                id="phoneNo"
+                name="phoneNo"
+                className="form-control"
+                value={user?.phoneNo}
+                onChange={handleInputChange}
+              />
             </div>
             <div className="form-group">
-              <label htmlFor="dob">DOB</label>
-              <input type="date" id="dob" name="dob" className="form-control" />
+              <label htmlFor="dob">Date Of Birth</label>
+              <input
+                type="date"
+                id="dob"
+                name="dob"
+                defaultChecked
+                className="form-control"
+                value={user?.dob}
+                onChange={handleInputChange}
+              />
             </div>
-            <div className="form-group" id="user-gender">
+            <div className="form-group">
               <label>Gender</label>
               <div className="radio-group">
                 <div className="radio-item">
-                  <input type="radio" id="male" name="gender" value="Male" />
-                  <label htmlFor="male">Male</label>
+                  <input
+                    type="radio"
+                    id="male"
+                    name="gender"
+                    value="Male"
+                    onChange={handleInputChange}
+                  />
+                  <label htmlFor="Male">Male</label>
                 </div>
                 <div className="radio-item">
-                  <input type="radio" id="female" name="gender" value="Female" />
+                  <input
+                    type="radio"
+                    id="female"
+                    name="gender"
+                    value="Female"
+                    onChange={handleInputChange}
+                  />
                   <label htmlFor="female">Female</label>
                 </div>
                 <div className="radio-item">
-                  <input type="radio" id="other" name="gender" value="Other" />
+                  <input
+                    type="radio"
+                    id="other"
+                    name="gender"
+                    onChange={handleInputChange}
+                    value="Other"
+                  />
                   <label htmlFor="other">Other</label>
                 </div>
               </div>
             </div>
             <div className="form-group">
               <label htmlFor="role">Role</label>
-              <input type="text" id="role" name="role" className="form-control" />
+              <input
+                type="text"
+                id="role"
+                name="role"
+                className="form-control"
+                value={user?.role}
+                onChange={handleInputChange}
+              />
             </div>
             <div className="form-group">
-              <label htmlFor="qualifications">Qualifications</label>
-              <input type="text" id="qualifications" name="qualifications" className="form-control" />
+              <label htmlFor="qualification">Qualifications</label>
+              <input
+                type="text"
+                id="qualification"
+                name="qualification"
+                className="form-control"
+                value={user?.qualification}
+                onChange={handleInputChange}
+              />
             </div>
             <div className="form-group">
               <label htmlFor="address">Address</label>
-              <input type="text" id="address" name="address" className="form-control" />
+              <input
+                type="text"
+                id="address"
+                name="address"
+                className="form-control"
+                value={user?.address}
+                onChange={handleInputChange}
+              />
             </div>
             <div className="form-group">
               <label htmlFor="nationality">Nationality</label>
-              <input type="text" id="nationality" name="nationality" className="form-control" />
+              <input
+                type="text"
+                id="nationality"
+                name="nationality"
+                className="form-control"
+                value={user?.nationality}
+                onChange={handleInputChange}
+              />
             </div>
             <div className="form-group">
-              <label htmlFor="passport-no">Passport No</label>
-              <input type="text" id="passport-no" name="passport-no" className="form-control" />
+              <label htmlFor="passport">Passport No.</label>
+              <input
+                type="text"
+                id="passport"
+                name="passport"
+                className="form-control"
+                value={user?.passport}
+                onChange={handleInputChange}
+              />
             </div>
             <div className="form-group">
-              <label htmlFor="profile">Profile Picture</label>
-              <input type="file" id="profile" name="profile" className="form-control-file" />
+              <label htmlFor="file">Profile Image</label>
+              <small style={{ fontSize: "9px" }}>
+                image must be less than 5MB and jpeg, png, webp, gif formate
+              </small>
+              {user?.file && ( // Render image preview if file picture is selected
+                <div className="form-group">
+                  <img
+                    src={URL.createObjectURL(user?.file)}
+                    alt="Profile"
+                    style={{ width: "100px", height: "auto" }}
+                  />
+                </div>
+              )}
+
+              <input
+                type="file"
+                id="file"
+                name="file"
+                className="form-control"
+                onChange={handleInputChange}
+              />
             </div>
           </div>
           <div className="text-center">
-            <button type="submit" className="btn btn-primary">Add User</button>
+            <button type="submit" className="btn btn-primary">
+              Add User
+            </button>
           </div>
         </form>
       </div>
