@@ -11,7 +11,12 @@ import DeleteAdmin from "./DeleteAdminn";
 
 const UserTable = () => {
   const [users, setUsers] = useState([]);
-
+  const [page, setPage] = useState(10);
+  const [curPage, setCurPage] = useState(1);
+  const { data, loading } = useFetch(`/admin/users?limit=${page * curPage}`);
+  useEffect(() => {
+    setUsers(data);
+  }, [data]);
   const toggleStatus = (id) => {
     setUsers((prevUsers) =>
       prevUsers.map((user) =>
@@ -24,11 +29,7 @@ const UserTable = () => {
       )
     );
   };
-  const { data, loading } = useFetch("/admin/users");
-  console.log(data);
-  useEffect(() => {
-    setUsers(data.allusers);
-  }, [data]);
+
   return (
     <div>
       <table className="table table-bordered">
@@ -48,10 +49,12 @@ const UserTable = () => {
             <th scope="col">Actions</th>
           </tr>
         </thead>
-        <tbody className="text-center">
+        <tbody>
           {loading ? (
-            <div class="spinner-border text-primary" role="status">
-              <span class="sr-only">Loading...</span>
+            <div className="text-center">
+              <div class="spinner-border text-primary" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
             </div>
           ) : Array.isArray(users) ? (
             users?.map((user, key) => (
@@ -86,7 +89,7 @@ const UserTable = () => {
                   <Modal
                     btnText={<FaEye size={16} />}
                     btnClasss="btn btn-primary mr-2"
-                    bodyClass="bg-white  col-sm-8 col-md-6"
+                    bodyClass="bg-light  col-sm-8 col-md-6"
                   >
                     <ViewUser user={user} />
                   </Modal>
@@ -105,6 +108,39 @@ const UserTable = () => {
           )}
         </tbody>
       </table>
+      <div className="d-flex justify-content-between">
+        <div>
+          Showing {curPage} to {page > users.length ? users.length : page} of{" "}
+          {users?.length}
+        </div>
+        <nav aria-label="Page navigation">
+          <ul class="pagination">
+            <li
+              class="page-item border p-2 px-3 bg-light"
+              style={{ cursor: "pointer" }}
+              onClick={() => setCurPage(curPage > 1 ? curPage - 1 : curPage)}
+            >
+              Previous
+            </li>
+            <li class="page-item border p-2 text-white px-4 fw-bold bg-primary tex-white">
+              {curPage}
+            </li>
+            <li
+              class="page-item border p-2 px-3 bg-light"
+              style={{ cursor: "pointer" }}
+              onClick={() =>
+                setCurPage(
+                  curPage < Math.ceil(users.length / page)
+                    ? curPage + 1
+                    : curPage
+                )
+              }
+            >
+              Next
+            </li>
+          </ul>
+        </nav>
+      </div>
     </div>
   );
 };

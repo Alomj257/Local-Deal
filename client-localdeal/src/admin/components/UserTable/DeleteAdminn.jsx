@@ -2,12 +2,15 @@ import React from "react";
 import { MdDelete } from "react-icons/md";
 import { deleteAdmin } from "../../../services/adminService";
 import { toast } from "react-toastify";
+import useFetch from "../../../Hooks/useFetch";
 
 const DeleteAdmin = ({ user }) => {
+  const { reFetch } = useFetch("/admin/users");
   const handledelete = async (id) => {
     try {
       const res = await deleteAdmin(id);
       toast.success(res.message);
+      reFetch();
     } catch (error) {
       toast.success(error);
     }

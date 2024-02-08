@@ -17,7 +17,8 @@ const UpdateAdmin = ({ oldUser }) => {
       for (let key in user) {
         formData.append(key, user[key]);
       }
-      const res = await updateadmin(user, oldUser?._id);
+      console.log(user);
+      const res = await updateadmin(formData, oldUser?._id);
       console.log(res);
       if (res.success) {
         toast.success(res?.message);

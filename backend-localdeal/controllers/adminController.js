@@ -29,7 +29,8 @@ const registerAdmin = async (req, res) => {
         message: "User already exist please try to login",
       });
     }
-    req.body.profile = req?.file?.path;
+    req.body.profile = "/profile/image" + req?.file?.originalname;
+    req.body.path = req?.file?.path;
     const newUser = await new Admin(req.body).save();
     res.status(201).json({
       success: true,
@@ -93,7 +94,7 @@ const getUserById = async (req, res) => {
 };
 const updateAdmin = async (req, res) => {
   try {
-    if (req.file) {
+    if (req?.file) {
       await new Promise((resolve, reject) => {
         upload.single("file")(req, res, function (err) {
           if (err) {
@@ -104,8 +105,10 @@ const updateAdmin = async (req, res) => {
           } else resolve();
         });
       });
-      req.body.profile = req?.file?.path;
+      req.body.profile = "/profile/image" + req?.file?.originalname;
+      req.body.path = req?.file?.path;
     }
+    console.log(req.body);
     const user = await Admin.findByIdAndUpdate(
       req.params.id,
       { $set: req.body },

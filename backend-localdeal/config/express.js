@@ -34,7 +34,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Serve static images
 app.use(
-  "/profile/images",
+  "/profile/image",
   express.static(path.join(__dirname, "../public/UserImage"))
 );
 

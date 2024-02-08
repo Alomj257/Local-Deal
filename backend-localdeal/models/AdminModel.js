@@ -38,6 +38,9 @@ const adminSchema = new mongoose.Schema({
     required: true,
     default: "USER",
   },
+  path: {
+    type: String,
+  },
   profile: {
     type: String,
   },
