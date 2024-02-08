@@ -9,7 +9,7 @@ import Layout from "../../utils/Layout";
 function About() {
   return (
     <>
-      <Layout>
+      <Layout showNavbar={true} showFooter={true}>
         <div className="About">
           <link
             rel="stylesheet"

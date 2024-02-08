@@ -1,9 +1,11 @@
 // Food.js
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Food.css";
 import "@fortawesome/fontawesome-free/css/all.css";
 import { Container, Row, Col, Pagination } from "react-bootstrap";
 import Layout from "../../../utils/Layout";
+import SearchBar from "../../../components/SearchBar/SearchBar";
+import image from '../../../assets/categories/Foods.png';
 
 const menuItems = [
   {
@@ -155,145 +157,85 @@ const menuItems = [
   },
   // Add more menu items here...
 ];
-
-const itemsPerPage = 6;
+const itemsPerPage = 10;
 
 const Food = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
-  const [priceRange, setPriceRange] = useState([0, 5000]);
+  const [filteredItems, setFilteredItems] = useState([]);
+
+  useEffect(() => {
+    // Filter items based on the selected category and search query
+    const filtered = menuItems.filter(
+      (item) =>
+        (!selectedCategory || item.category === selectedCategory) &&
+        (!searchQuery ||
+          item.location.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          item.category.toLowerCase().includes(searchQuery.toLowerCase()))
+    );
+    setFilteredItems(filtered);
+    setCurrentPage(1); // Reset page to 1 when category or search query changes
+  }, [selectedCategory, searchQuery]);
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-
-  const handlePriceRangeChange = (values) => {
-    setPriceRange(values);
-    setCurrentPage(1);
-  };
-
-  const filteredItems = menuItems
-    .filter(
-      (item) => selectedCategory === null || item.category === selectedCategory
-    )
-    .filter(
-      (item) =>
-        searchQuery === "" ||
-        item.location.toLowerCase().includes(searchQuery.toLowerCase())
-    )
-    .filter(
-      (item) =>
-        parseFloat(item.price.slice(2)) >= priceRange[0] &&
-        parseFloat(item.price.slice(2)) <= priceRange[1]
-    );
-
   const currentItems = filteredItems.slice(indexOfFirstItem, indexOfLastItem);
-
   const totalPages = Math.ceil(filteredItems.length / itemsPerPage);
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
-  const getCategoryCounts = () => {
-    const categoryCounts = {};
-    menuItems.forEach((item) => {
-      if (categoryCounts[item.category]) {
-        categoryCounts[item.category]++;
-      } else {
-        categoryCounts[item.category] = 1;
-      }
-    });
-    return categoryCounts;
-  };
-
-  const categoryCounts = getCategoryCounts();
+  // Extracting unique categories
+  const categories = Array.from(new Set(menuItems.map((item) => item.category)));
 
   const handleCategoryClick = (category) => {
-    setSelectedCategory(category === selectedCategory ? null : category);
-    setCurrentPage(1);
+    setSelectedCategory(category === "All" ? null : category);
   };
 
-  const handleSearchChange = (e) => {
-    setSearchQuery(e.target.value);
-    setCurrentPage(1);
+  const handleSearchChange = (query) => {
+    setSearchQuery(query);
   };
 
   return (
     <>
-      <Layout>
+      <Layout showLayout={true}>
         <Container>
           <Row>
-            <Col md={3}>
-              <h2>Food</h2>
-              <div className="card">
-                <div className="card-header">Food category</div>
-                <ul className="list-group list-group-flush">
-                  <li
-                    key="all"
-                    className={`list-group-item ${
-                      selectedCategory === null ? "active" : ""
-                    }`}
-                    onClick={() => handleCategoryClick(null)}
-                  >
-                    All ({menuItems.length})
-                  </li>
-                  {Object.entries(categoryCounts).map(([category, count]) => (
-                    <li
-                      key={category}
-                      className={`list-group-item ${
-                        selectedCategory === category ? "active" : ""
-                      }`}
-                      onClick={() => handleCategoryClick(category)}
-                    >
-                      {category} ({count})
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <label>Price filter</label>
-              <input
-                type="range"
-                className="form-range"
-                value={priceRange[0]}
-                onChange={(e) =>
-                  handlePriceRangeChange([
-                    parseFloat(e.target.value),
-                    priceRange[1],
-                  ])
-                }
-                min="0"
-                max="5000"
-                data-min={`$${priceRange[0]}`}
-                data-max={`$${priceRange[1]}`}
-              />
-              <div className="range-tooltip">${priceRange[0]}</div>
-            </Col>
-            <Col md={9}>
-              <div className="p-1 bg-light rounded rounded-pill shadow-sm mb-4">
-                <div className="input-group">
-                  <input
-                    type="search"
-                    placeholder="Search food by location"
-                    aria-describedby="button-addon1"
-                    className="form-control border-0 bg-light"
-                    value={searchQuery}
-                    onChange={handleSearchChange}
-                  />
-                  <div className="input-group-append">
-                    <button
-                      id="button-addon1"
-                      type="submit"
-                      className="btn btn-link text-primary"
-                    >
-                      <i className="fa fa-search"></i>
-                    </button>
-                  </div>
+            <Col md={4} className="mb-4">
+              <div className="row justify-content-center">
+                <div className="col-auto">
+                  <img src={image} alt="food" style={{ width: '220px', height: '40px' }} />
                 </div>
               </div>
+            </Col>
+            <Col md={8}><SearchBar value={searchQuery} onChange={handleSearchChange} /></Col>
+          </Row>
+          {/* Category tags */}
+          <div className="category-tags mb-5">
+            <span className="category-tag" onClick={() => handleCategoryClick("All")}>
+              All
+            </span>
+            {categories.map((category, index) => (
+              <span key={index} className="category-tag" onClick={() => handleCategoryClick(category)}>
+                {category}
+              </span>
+            ))}
+          </div>
+          <Row>
+            <Col md={12}>
+              {currentItems.length === 0 && (
+                <p className="text-center">Nothing found {searchQuery ? `for "${searchQuery}"` : ''} {selectedCategory ? `in category "${selectedCategory}"` : ''}</p>
+              )}
               <Row>
                 {currentItems.map((item) => (
-                  <Col key={item.id} md={4} className="mb-5">
+                  <Col 
+                  key={item.id} 
+                  xs={window.innerWidth < 430 ? 12 : 6} 
+                  md={3} 
+                  className="mb-5"
+                >
                     <div className="__area text-center">
                       <a href=" " className="__card">
                         <button className="__favorit">
@@ -322,17 +264,19 @@ const Food = () => {
                   </Col>
                 ))}
               </Row>
-              <Pagination>
-                {Array.from({ length: totalPages }, (_, index) => (
-                  <Pagination.Item
-                    key={index + 1}
-                    active={index + 1 === currentPage}
-                    onClick={() => handlePageChange(index + 1)}
-                  >
-                    {index + 1}
-                  </Pagination.Item>
-                ))}
-              </Pagination>
+              {totalPages > 1 && (
+                <Pagination className="justify-content-center">
+                  {Array.from({ length: totalPages }, (_, index) => (
+                    <Pagination.Item
+                      key={index + 1}
+                      active={index + 1 === currentPage}
+                      onClick={() => handlePageChange(index + 1)}
+                    >
+                      {index + 1}
+                    </Pagination.Item>
+                  ))}
+                </Pagination>
+              )}
             </Col>
           </Row>
         </Container>

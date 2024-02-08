@@ -68,7 +68,7 @@ const ContactUs = () => {
 
   return (
     <>
-      <Layout>
+      <Layout showLayout={true}>
         <div className="contact-area section-padding">
           <div className="container">
             <div className="row section-title text-center">
