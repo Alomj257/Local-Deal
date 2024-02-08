@@ -1,6 +1,5 @@
 const app = require("./config/express");
 const routes = require("./routes/index"); // Import the main router
-
 // Mount the API routes
 app.use("/api", routes);
 
