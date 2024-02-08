@@ -73,7 +73,7 @@ const loginAdmin = async (req, res) => {
 const getAllUsers = async (req, res) => {
   try {
     const allusers = await Admin.find().limit(req.query.limit);
-    res.status(200).json({ success: true, allusers });
+    res.status(200).json(allusers);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -111,9 +111,11 @@ const updateAdmin = async (req, res) => {
       { $set: req.body },
       { new: true }
     );
-    res.status(200).json({ success: true, user });
+    res
+      .status(200)
+      .json({ success: true, user, message: "Admin updated successfully...." });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(500).json({ success: false, message: error.message });
   }
 };
 const deleteAdmin = async (req, res) => {

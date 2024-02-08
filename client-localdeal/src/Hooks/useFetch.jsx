@@ -18,6 +18,7 @@ const useFetch = (url) => {
   };
   useEffect(() => {
     fetchdata();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const reFetch = async () => {
     setloading(true);

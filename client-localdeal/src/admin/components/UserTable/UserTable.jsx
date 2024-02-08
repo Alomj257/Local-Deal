@@ -27,7 +27,7 @@ const UserTable = () => {
   const { data, loading } = useFetch("/admin/users");
   console.log(data);
   useEffect(() => {
-    setUsers(data?.allusers);
+    setUsers(data.allusers);
   }, [data]);
   return (
     <div>

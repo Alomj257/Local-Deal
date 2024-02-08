@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { updateadmin } from "../../../services/adminService";
+import useFetch from "../../../Hooks/useFetch";
 
 const UpdateAdmin = ({ oldUser }) => {
+  const { reFetch } = useFetch("/admin/users");
   const [user, setUser] = useState(oldUser);
   const handleInputChange = (event) => {
     const { name, value, files } = event.target;
@@ -16,8 +18,10 @@ const UpdateAdmin = ({ oldUser }) => {
         formData.append(key, user[key]);
       }
       const res = await updateadmin(user, oldUser?._id);
+      console.log(res);
       if (res.success) {
         toast.success(res?.message);
+        reFetch();
       } else {
         toast.success(res?.message);
       }
@@ -173,7 +177,7 @@ const UpdateAdmin = ({ oldUser }) => {
               <small style={{ fontSize: "9px" }}>
                 image must be less than 5MB and jpeg, png, webp, gif formate
               </small>
-              {user?.profile && ( // Render image preview if file picture is selected
+              {user?.profile && (
                 <div className="form-group">
                   <img
                     src={user?.profile}
