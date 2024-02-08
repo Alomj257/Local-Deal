@@ -27,9 +27,17 @@ export const register = async (user) => {
 
 export const updateadmin = async (user, id) => {
   try {
-    const res = await axios.put(`${API_URL}/admin/user/:${id}`, user, {
+    const res = await axios.put(`${API_URL}/admin/users/${id}`, user, {
       headers: { "Content-Type": "multipart/form-data" },
     });
+    return res.data;
+  } catch (error) {
+    throw error.response.data.message;
+  }
+};
+export const deleteAdmin = async (id) => {
+  try {
+    const res = await axios.delete(`${API_URL}/admin/users/${id}`);
     return res.data;
   } catch (error) {
     throw error.response.data.message;

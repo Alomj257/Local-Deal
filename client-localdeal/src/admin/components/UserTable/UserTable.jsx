@@ -7,59 +7,10 @@ import useFetch from "../../../Hooks/useFetch";
 import Modal from "../../../utils/Modal/Modal";
 import ViewUser from "./ViewUser";
 import UpdateAdmin from "./UpdateAdmin";
+import DeleteAdmin from "./DeleteAdminn";
 
 const UserTable = () => {
-  const [users, setUsers] = useState([
-    {
-      id: 1,
-      name: "awbcd",
-      gender: "Male",
-      email: "awbcd@gmail.com",
-      contact: "1234567890",
-      status: "Active",
-    },
-    {
-      id: 2,
-      name: "Jahangir",
-      gender: "Male",
-      email: "alomj257@gmail.com",
-      contact: "7086955187",
-      status: "Active",
-    },
-    {
-      id: 3,
-      name: "awbcd",
-      gender: "Male",
-      email: "awbcd@gmail.com",
-      contact: "1234567890",
-      status: "Active",
-    },
-    {
-      id: 4,
-      name: "Jahangir",
-      gender: "Male",
-      email: "alomj257@gmail.com",
-      contact: "7086955187",
-      status: "Active",
-    },
-    {
-      id: 5,
-      name: "awbcd",
-      gender: "Male",
-      email: "awbcd@gmail.com",
-      contact: "1234567890",
-      status: "Active",
-    },
-    {
-      id: 6,
-      name: "Jahangir",
-      gender: "Male",
-      email: "alomj257@gmail.com",
-      contact: "7086955187",
-      status: "Active",
-    },
-    // Add more user objects as needed
-  ]);
+  const [users, setUsers] = useState([]);
 
   const toggleStatus = (id) => {
     setUsers((prevUsers) =>
@@ -139,9 +90,13 @@ const UserTable = () => {
                   >
                     <ViewUser user={user} />
                   </Modal>
-                  <button className="btn btn-danger">
-                    <MdDelete size={16} />
-                  </button>
+                  <Modal
+                    btnText={<MdDelete size={16} />}
+                    btnClasss="btn btn-danger"
+                    bodyClass="bg-danger border card col-7  col-sm-5 col-md-3"
+                  >
+                    <DeleteAdmin user={user} />
+                  </Modal>
                 </td>
               </tr>
             ))

@@ -72,7 +72,7 @@ const loginAdmin = async (req, res) => {
 
 const getAllUsers = async (req, res) => {
   try {
-    const allusers = await Admin.find();
+    const allusers = await Admin.find().limit(req.query.limit);
     res.status(200).json({ success: true, allusers });
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -80,7 +80,12 @@ const getAllUsers = async (req, res) => {
 };
 const getUserById = async (req, res) => {
   try {
-    const user = await Admin.findById(req.params.id);
+    const user = await Admin.findById({ _id: req.params.id });
+    if (!user) {
+      return res
+        .status(404)
+        .json({ success: false, message: "admin not found" });
+    }
     res.status(200).json({ success: true, user });
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -88,7 +93,24 @@ const getUserById = async (req, res) => {
 };
 const updateAdmin = async (req, res) => {
   try {
-    const user = await Admin.findByIdAndUpdate(req.params.id, req.body);
+    if (req.file) {
+      await new Promise((resolve, reject) => {
+        upload.single("file")(req, res, function (err) {
+          if (err) {
+            res.status(400).json({
+              success: false,
+              message: "image uploading issue please try again...",
+            });
+          } else resolve();
+        });
+      });
+      req.body.profile = req?.file?.path;
+    }
+    const user = await Admin.findByIdAndUpdate(
+      req.params.id,
+      { $set: req.body },
+      { new: true }
+    );
     res.status(200).json({ success: true, user });
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -96,7 +118,14 @@ const updateAdmin = async (req, res) => {
 };
 const deleteAdmin = async (req, res) => {
   try {
+    const checkuser = await Admin.findById(req.params.id);
     const user = await Admin.findByIdAndDelete(req.params.id);
+    console.log(checkuser);
+    if (!user) {
+      return res
+        .status(404)
+        .json({ success: true, message: "admin not found" });
+    }
     res
       .status(200)
       .json({ success: true, user, message: "delete successfully...!" });

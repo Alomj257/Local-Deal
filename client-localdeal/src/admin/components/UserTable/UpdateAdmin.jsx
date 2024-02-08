@@ -2,14 +2,12 @@ import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { updateadmin } from "../../../services/adminService";
 
-const UpdateAdmin = (oldUser) => {
-  const [user, setUser] = useState({});
-
+const UpdateAdmin = ({ oldUser }) => {
+  const [user, setUser] = useState(oldUser);
   const handleInputChange = (event) => {
     const { name, value, files } = event.target;
     setUser({ ...user, [name]: files ? files[0] : value });
   };
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -54,28 +52,6 @@ const UpdateAdmin = (oldUser) => {
                 name="email"
                 className="form-control"
                 value={user?.email}
-                onChange={handleInputChange}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="password">Password</label>
-              <input
-                type="text"
-                id="password"
-                name="password"
-                className="form-control"
-                value={user?.password}
-                onChange={handleInputChange}
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="cnfpassword">Confirm Password</label>
-              <input
-                type="text"
-                id="cnfpassword"
-                name="cnfpassword"
-                className="form-control"
-                value={user?.cnfpassword}
                 onChange={handleInputChange}
               />
             </div>
@@ -197,16 +173,15 @@ const UpdateAdmin = (oldUser) => {
               <small style={{ fontSize: "9px" }}>
                 image must be less than 5MB and jpeg, png, webp, gif formate
               </small>
-              {user?.file && ( // Render image preview if file picture is selected
+              {user?.profile && ( // Render image preview if file picture is selected
                 <div className="form-group">
                   <img
-                    src={URL.createObjectURL(user?.file)}
+                    src={user?.profile}
                     alt="Profile"
                     style={{ width: "100px", height: "auto" }}
                   />
                 </div>
               )}
-
               <input
                 type="file"
                 id="file"
@@ -218,7 +193,7 @@ const UpdateAdmin = (oldUser) => {
           </div>
           <div className="text-center">
             <button type="submit" className="btn btn-primary">
-              Add User
+              Update User
             </button>
           </div>
         </form>
