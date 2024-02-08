@@ -81,7 +81,7 @@ function Categories() {
 
   return (
     <>
-      <Layout showLayout={true}>
+      <Layout showNavbar={true} showFooter={true}>
         <Container>
           <Row>
             <h3 className="categories-heading">

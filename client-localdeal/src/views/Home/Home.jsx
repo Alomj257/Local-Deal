@@ -60,7 +60,7 @@ const Slideshow = ({ images }) => {
 const Home = () => {
   return (
     <>
-      <Layout showLayout={true}>
+      <Layout showNavbar={true} showFooter={true}>
         <div className="Home">
           <header className="Home-header">
             <Slideshow images={images} />

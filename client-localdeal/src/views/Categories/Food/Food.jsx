@@ -200,7 +200,7 @@ const Food = () => {
 
   return (
     <>
-      <Layout showLayout={true}>
+      <Layout showNavbar={true}>
         <Container>
           <Row>
             <Col md={4} className="mb-4">

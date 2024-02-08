@@ -3,7 +3,7 @@ import Layout from "../../../utils/Layout";
 
 function Services() {
   return (
-    <Layout>
+    <Layout showNavbar={true}>
       <div>Services</div>
     </Layout>
   );

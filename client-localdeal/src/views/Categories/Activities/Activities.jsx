@@ -3,7 +3,7 @@ import Layout from "../../../utils/Layout";
 
 function Activities() {
   return (
-    <Layout>
+    <Layout showNavbar={true}>
       <div>Activities</div>
     </Layout>
   );

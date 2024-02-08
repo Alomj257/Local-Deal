@@ -68,7 +68,7 @@ const ContactUs = () => {
 
   return (
     <>
-      <Layout showLayout={true}>
+      <Layout showNavbar={true} showFooter={true}>
         <div className="contact-area section-padding">
           <div className="container">
             <div className="row section-title text-center">
