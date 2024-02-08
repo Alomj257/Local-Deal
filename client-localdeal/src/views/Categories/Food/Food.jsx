@@ -2,9 +2,10 @@
 import React, { useState, useEffect } from "react";
 import "./Food.css";
 import "@fortawesome/fontawesome-free/css/all.css";
-import { Container, Row, Col, Pagination } from "react-bootstrap";
+import { Container, Row, Col} from "react-bootstrap";
 import Layout from "../../../utils/Layout";
 import SearchBar from "../../../components/SearchBar/SearchBar";
+import CustomPagination from "../../../components/CustomPagination/CustomPagination";
 import image from '../../../assets/categories/Foods.png';
 
 const menuItems = [
@@ -226,13 +227,13 @@ const Food = () => {
           <Row>
             <Col md={12}>
               {currentItems.length === 0 && (
-                <p className="text-center">Nothing found {searchQuery ? `for "${searchQuery}"` : ''} {selectedCategory ? `in category "${selectedCategory}"` : ''}</p>
+                <p className="text-center not-found-message">Nothing found {searchQuery ? `for "${searchQuery}"` : ''} {selectedCategory ? `in category "${selectedCategory}"` : ''}</p>
               )}
               <Row>
                 {currentItems.map((item) => (
                   <Col 
                   key={item.id} 
-                  xs={window.innerWidth < 430 ? 12 : 6} 
+                  xs={12}
                   md={3} 
                   className="mb-5"
                 >
@@ -265,17 +266,13 @@ const Food = () => {
                 ))}
               </Row>
               {totalPages > 1 && (
-                <Pagination className="justify-content-center">
-                  {Array.from({ length: totalPages }, (_, index) => (
-                    <Pagination.Item
-                      key={index + 1}
-                      active={index + 1 === currentPage}
-                      onClick={() => handlePageChange(index + 1)}
-                    >
-                      {index + 1}
-                    </Pagination.Item>
-                  ))}
-                </Pagination>
+                <CustomPagination
+                totalPages={totalPages}
+                  currentPage={currentPage}
+                  onPageChange={handlePageChange}
+                  total={filteredItems.length} // Pass the total number of items
+                  itemsPerPage={itemsPerPage}
+              />
               )}
             </Col>
           </Row>

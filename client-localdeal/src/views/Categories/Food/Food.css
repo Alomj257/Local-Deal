@@ -94,13 +94,11 @@
   vertical-align: middle;
   margin-left: 2px;
 }
-@media screen and (max-width: 429px) {
-  .__area .col-md-3 {
-    flex: 0 0 100%;
-    max-width: 100%;
-  }
+.not-found-message {
+  color: #ff8e37;
+  font-size: 18px;
+  font-weight: 600;
 }
-
 
 
 /* Category tags */
