@@ -37,53 +37,55 @@ const AdminLogin = () => {
   };
 
   return (
-    <div id="main-wrapper" className="container">
-      <div className="row justify-content-center">
-        <div className="col-xl-6">
-          <div className="card border-1">
-            <div className="card-body p-5">
-              <div className="mb-5">
-                <h3 className="h4 font-weight-bold text-theme">Admin Login</h3>
+    <div className="d-flex justify-content-center align-items-center vh-100">
+      <div id="main-wrapper" className="container">
+        <div className="row justify-content-center">
+          <div className="col-xl-6">
+            <div className="card border-1">
+              <div className="card-body p-5">
+                <div className="mb-5">
+                  <h3 className="h4 font-weight-bold text-theme">Admin Login</h3>
+                </div>
+
+                <h6 className="h5 mb-0">Welcome back!</h6>
+                <p className="text-muted mt-2 mb-4">
+                  Enter your email address and password to access admin panel.
+                </p>
+
+                {error && <p className="error-message">{error}</p>}
+
+                <form onSubmit={handleLogin}>
+                  <div className="form-group mb-4">
+                    <input
+                      type="email"
+                      name="email"
+                      className="form-control"
+                      value={username}
+                      onChange={(e) => setUsername(e.target.value)}
+                      placeholder="Email"
+                    />
+                  </div>
+                  <div className="form-group mb-4">
+                    <input
+                      type="password"
+                      name="password"
+                      className="form-control"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      placeholder="Password"
+                    />
+                  </div>
+                  <a href="#forgot-password" className="forgot-link">
+                    Forgot password?
+                  </a>
+                  <button
+                    type="submit"
+                    className="btn btn-primary btn-block mt-2"
+                  >
+                    Login
+                  </button>
+                </form>
               </div>
-
-              <h6 className="h5 mb-0">Welcome back!</h6>
-              <p className="text-muted mt-2 mb-4">
-                Enter your email address and password to access admin panel.
-              </p>
-
-              {error && <p className="error-message">{error}</p>}
-
-              <form onSubmit={handleLogin}>
-                <div className="form-group mb-4">
-                  <input
-                    type="email"
-                    name="email"
-                    className="form-control"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    placeholder="Email"
-                  />
-                </div>
-                <div className="form-group mb-4">
-                  <input
-                    type="password"
-                    name="password"
-                    className="form-control"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder="Password"
-                  />
-                </div>
-                <a href="#forgot-password" className="forgot-link">
-                  Forgot password?
-                </a>
-                <button
-                  type="submit"
-                  className="btn btn-primary btn-block mt-2"
-                >
-                  Login
-                </button>
-              </form>
             </div>
           </div>
         </div>

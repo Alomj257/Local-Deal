@@ -3,7 +3,7 @@ import Layout from "../../../utils/Layout";
 
 function Entertainment() {
   return (
-    <Layout>
+    <Layout showNavbar={true}>
       <div>Entertainment</div>
     </Layout>
   );

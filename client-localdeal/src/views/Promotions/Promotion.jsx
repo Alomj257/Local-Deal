@@ -77,7 +77,7 @@ const Promotion = () => {
 
   return (
     <>
-      <Layout>
+      <Layout showNavbar={true} showFooter={true}>
         <Container>
           <Row>
             <h3 className="promotion-heading">

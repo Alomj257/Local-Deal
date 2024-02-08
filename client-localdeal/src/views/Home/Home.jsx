@@ -60,13 +60,12 @@ const Slideshow = ({ images }) => {
 const Home = () => {
   return (
     <>
-      <Layout>
+      <Layout showNavbar={true} showFooter={true}>
         <div className="Home">
           <header className="Home-header">
             <Slideshow images={images} />
           </header>
         </div>
-
         <Service />
       </Layout>
     </>

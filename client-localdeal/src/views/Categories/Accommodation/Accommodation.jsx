@@ -3,7 +3,7 @@ import Layout from "../../../utils/Layout";
 
 function Accommodation() {
   return (
-    <Layout>
+    <Layout showNavbar={true}>
       <div>Accommodation</div>
     </Layout>
   );

@@ -3,7 +3,7 @@ import Layout from "../../../utils/Layout";
 
 function Beauty() {
   return (
-    <Layout>
+    <Layout showNavbar={true}>
       <div>Beauty</div>
     </Layout>
   );

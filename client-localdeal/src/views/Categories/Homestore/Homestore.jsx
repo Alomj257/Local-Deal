@@ -3,7 +3,7 @@ import Layout from "../../../utils/Layout";
 
 function Homestore() {
   return (
-    <Layout>
+    <Layout showNavbar={true}>
       <div>Homestore</div>
     </Layout>
   );

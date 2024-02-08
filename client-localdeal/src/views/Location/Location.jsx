@@ -3,7 +3,7 @@ import Layout from '../../utils/Layout'
 
 function Location() {
   return (
-    <Layout>
+    <Layout showNavbar={true}>
     <div>Location</div>
     </Layout>
   )
