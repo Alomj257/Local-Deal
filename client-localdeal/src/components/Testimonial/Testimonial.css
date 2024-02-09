@@ -1,0 +1,10 @@
+.control-button {
+  border: none; 
+  background-color: transparent; 
+  cursor: pointer;
+}
+
+.control-button span {
+  font-size: 30px;
+  color: lightblue; 
+}

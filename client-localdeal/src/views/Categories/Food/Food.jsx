@@ -158,7 +158,7 @@ const menuItems = [
   },
   // Add more menu items here...
 ];
-const itemsPerPage = 10;
+const itemsPerPage = 12;
 
 const Food = () => {
   const [currentPage, setCurrentPage] = useState(1);

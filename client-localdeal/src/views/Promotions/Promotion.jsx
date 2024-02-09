@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import "./Promotion.css";
 import Layout from "../../utils/Layout";
+import Testimonial from "../../components/Testimonial/Testimonial";
+import BrandSection from "../../components/BrandSection/BrandSection";
 
 const Promotion = () => {
   const [scrollDirection] = useState("down");
@@ -79,6 +81,8 @@ const Promotion = () => {
     <>
       <Layout showNavbar={true} showFooter={true}>
         <Container>
+          <Testimonial />
+          <BrandSection />
           <Row>
             <h3 className="promotion-heading">
               Promotions <small> Explore different promotions</small>
