@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./Home.css";
 import Service from "../Services/Service";
+import Banner from "../../components/Banner/Banner";
+import Testimonial from "../../components/Testimonial/Testimonial";
+import BrandSection from "../../components/BrandSection/BrandSection";
 import image1 from "../../assets/homeimages/Home.png";
 import image2 from "../../assets/homeimages/4.png";
 import image3 from "../../assets/homeimages/5.png";
@@ -67,6 +70,9 @@ const Home = () => {
           </header>
         </div>
         <Service />
+        <BrandSection />
+        <Testimonial />
+        <Banner />
       </Layout>
     </>
   );

@@ -70,7 +70,7 @@ export default function Testimonial() {
 
   return (
     <Container>
-      <Row className="justify-content-center">
+      <Row className="justify-content-center mt-5">
         <Col md="12" xl="8" className="text-center">
           <h3 className="fw-bold mb-3 text-primary">What customers say about Localdeal</h3>
           <p className="mb-5">Localdeal has been rated 4.8 out of 5 based on 962 reviews as of August 2023</p>

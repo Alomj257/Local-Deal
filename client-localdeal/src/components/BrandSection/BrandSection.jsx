@@ -6,7 +6,7 @@ function BrandSection() {
         <Container>
             <div className="justify-content-center">
                 <div md="12" xl="8" className="text-center">
-                    <h3 className="fw-bold mb-3 text-primary">There are so many reasons to love Justlife!</h3>
+                    <h3 className="fw-bold mb-3 text-primary">There are so many reasons to love Localdeal!</h3>
                     <p className="mb-5">Here are the top 4 as of August 2023</p>
                 </div>
             </div>
@@ -18,7 +18,7 @@ function BrandSection() {
                         </div>
                         <div className="card-body card-body-cascade text-center pb-0">
                             <h4 className="card-title mb-3 p-2 custom-color"><strong>Top rated professionals</strong></h4>
-                            <p className="card-text mb-5">Our professionals are reliable & well- trained, with an average rating of 4.78 out of 51 </p>
+                            <p className="card-text mb-5">Our professionals are reliable & well- trained, average rating of 4.78</p>
                         </div>
                     </div>
                 </Col>
@@ -30,7 +30,7 @@ function BrandSection() {
                         </div>
                         <div className="card-body card-body-cascade text-center pb-0">
                             <h4 className="card-title mb-3 p-2 custom-color"><strong>Same day <br />availability</strong></h4>
-                            <p className="card-text mb-5">Book in less than 60 seconds, and even select same day slots </p>
+                            <p className="card-text mb-5">Book in less than 60 seconds, and even select same day slots. </p>
                         </div>
                     </div>
                 </Col>
@@ -42,7 +42,7 @@ function BrandSection() {
                         </div>
                         <div className="card-body card-body-cascade text-center pb-0">
                             <h4 className="card-title mb-3 p-2 custom-color"><strong>Top quality value for money services</strong></h4>
-                            <p className="card-text mb-5">Our professionals are equipped with the best tools and our services are always priced with you in mind</p>
+                            <p className="card-text mb-5">Our professionals are equipped with the best tools and our services.</p>
                         </div>
                     </div>
                 </Col>

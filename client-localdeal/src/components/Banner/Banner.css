@@ -1,0 +1,27 @@
+.banner-row {
+    background: linear-gradient(to right, #ff8a00, #da1b60);
+    color: white;
+  }
+  
+  .shield-icon {
+    color: #dfe7eb;
+    font-size: 6rem;
+  }
+  
+  .banner-subheading {
+    font-size: 2rem;
+    font-weight: 600;
+  }
+  
+  @media (max-width: 768px) {
+    .shield-icon {
+      font-size: 2rem;
+    }
+    .banner-heading {
+      font-size: 1.5rem;
+    }
+    .banner-subheading {
+      font-size: 1.2rem;
+    }
+  }
+  

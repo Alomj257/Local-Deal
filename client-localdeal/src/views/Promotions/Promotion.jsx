@@ -5,6 +5,12 @@ import "./Promotion.css";
 import Layout from "../../utils/Layout";
 import Testimonial from "../../components/Testimonial/Testimonial";
 import BrandSection from "../../components/BrandSection/BrandSection";
+import Banner from "../../components/Banner/Banner";
+import Promo from "../../components/Promo/Promo";
+import image1 from '../../assets/categories/1.jpg'
+import image2 from '../../assets/categories/2.jpg'
+import image3 from '../../assets/categories/3.jpg'
+import image4 from '../../assets/categories/4.jpg'
 
 const Promotion = () => {
   const [scrollDirection] = useState("down");
@@ -16,30 +22,28 @@ const Promotion = () => {
       text: "Description for Promotion 1. This is a sample text for the promotion.Unlock unbeatable savings and discover hidden gems in your neighborhood with LocalDeal – where incredible discounts meet community convenience! Dont miss out on exclusive offers tailored just for you ",
       uploadDate: "2024-01-26",
       uploadedBy: "Jahangir",
-      imageUrl: "https://farm4.staticflickr.com/3049/2327691528_f060ee2d1f.jpg",
+      imageUrl: image1,
     },
     {
       heading: "Promotion 2",
       text: "Description for Promotion 2. This is another sample text for the promotion. Unlock unbeatable savings and discover hidden gems in your neighborhood with LocalDeal – where incredible discounts meet community convenience! Dont miss out on exclusive offers tailored just for you",
       uploadDate: "2024-01-27",
       uploadedBy: "Jahangir",
-      imageUrl: "https://farm4.staticflickr.com/3319/3211138044_9232086442.jpg",
+      imageUrl: image2,
     },
     {
       heading: "Promotion 3",
       text: "Description for Promotion 3. This is a sample text for the promotion. Unlock unbeatable savings and discover hidden gems in your neighborhood with LocalDeal – where incredible discounts meet community convenience! Dont miss out on exclusive offers tailored just for you",
       uploadDate: "2024-01-26",
       uploadedBy: "Jahangir",
-      imageUrl:
-        "https://farm4.staticflickr.com/3224/3081748027_0ee3d59fea_z_d.jpg",
+      imageUrl: image3,
     },
     {
       heading: "Promotion 4",
       text: "Description for Promotion 4. This is another sample text for the promotion. Unlock unbeatable savings and discover hidden gems in your neighborhood with LocalDeal – where incredible discounts meet community convenience! Dont miss out on exclusive offers tailored just for you",
       uploadDate: "2024-01-27",
       uploadedBy: "Jahangir",
-      imageUrl:
-        "https://farm3.staticflickr.com/2220/1572613671_7311098b76_z_d.jpg",
+      imageUrl: image4,
     },
   ];
 
@@ -80,20 +84,13 @@ const Promotion = () => {
   return (
     <>
       <Layout showNavbar={true} showFooter={true}>
+        <Promo />
         <Container>
-          <Testimonial />
-          <BrandSection />
-          <Row>
-            <h3 className="promotion-heading">
-              Promotions <small> Explore different promotions</small>
-            </h3>
-          </Row>
           {promotions.map((promotion, index) => (
             <Row
               key={index}
-              className={`promotion-row ${
-                scrollDirection === "down" ? "down-scroll" : "up-scroll"
-              }`}
+              className={`promotion-row ${scrollDirection === "down" ? "down-scroll" : "up-scroll"
+                }`}
               style={{ opacity: 0 }}
             >
               <Col lg={6} className={`order-lg-${index % 2 === 0 ? "1" : "2"}`}>
@@ -122,7 +119,11 @@ const Promotion = () => {
               </Col>
             </Row>
           ))}
+
         </Container>
+        <Testimonial />
+        <BrandSection />
+        <Banner />
       </Layout>
     </>
   );
