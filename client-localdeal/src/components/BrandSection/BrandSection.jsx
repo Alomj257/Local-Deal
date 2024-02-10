@@ -41,7 +41,7 @@ function BrandSection() {
                             <i className="fas fa-chart-line fa-4x text-success d-flex justify-content-center align-items-center"></i>
                         </div>
                         <div className="card-body card-body-cascade text-center pb-0">
-                            <h4 className="card-title mb-3 p-2 custom-color"><strong>Top quality value for money services</strong></h4>
+                            <h4 className="card-title mb-3 p-2 custom-color"><strong>Top quality value for money</strong></h4>
                             <p className="card-text mb-5">Our professionals are equipped with the best tools and our services.</p>
                         </div>
                     </div>

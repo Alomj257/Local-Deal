@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import "./Food.css";
 import "@fortawesome/fontawesome-free/css/all.css";
-import { Container, Row, Col} from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import Layout from "../../../utils/Layout";
 import SearchBar from "../../../components/SearchBar/SearchBar";
 import CustomPagination from "../../../components/CustomPagination/CustomPagination";
@@ -160,9 +160,39 @@ const menuItems = [
 ];
 const itemsPerPage = 12;
 
+const FoodCard = ({ item }) => {
+  return (
+    <div className="__area text-center">
+      <a href=" " className="__card">
+        <button className="__favorit">
+          <i className="fas fa-heart"></i>
+        </button>
+        <img
+          src={item.image}
+          className="img-fluid __img"
+          alt={item.name}
+        />
+        <div className="__card_detail text-left">
+          <h4>{item.name}</h4>
+          <p>{item.location}</p>
+          <p>{item.price}</p>
+          <div className="__type">
+            <span>{item.category}</span>
+            <span>{item.discount}</span>
+          </div>
+          <div className="__detail">
+            <i className="fas fa-star"></i> <span>5.0</span>{" "}
+            <i className="fas fa-clock"></i> <span>30 m</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  );
+};
+
 const Food = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState("All"); // Initially selected category is "All"
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredItems, setFilteredItems] = useState([]);
 
@@ -170,7 +200,7 @@ const Food = () => {
     // Filter items based on the selected category and search query
     const filtered = menuItems.filter(
       (item) =>
-        (!selectedCategory || item.category === selectedCategory) &&
+        (selectedCategory === "All" || item.category === selectedCategory) &&
         (!searchQuery ||
           item.location.toLowerCase().includes(searchQuery.toLowerCase()) ||
           item.category.toLowerCase().includes(searchQuery.toLowerCase()))
@@ -189,10 +219,10 @@ const Food = () => {
   };
 
   // Extracting unique categories
-  const categories = Array.from(new Set(menuItems.map((item) => item.category)));
+  const categories = ["All", ...new Set(menuItems.map((item) => item.category))];
 
   const handleCategoryClick = (category) => {
-    setSelectedCategory(category === "All" ? null : category);
+    setSelectedCategory(category); // Set the selected category
   };
 
   const handleSearchChange = (query) => {
@@ -215,11 +245,8 @@ const Food = () => {
           </Row>
           {/* Category tags */}
           <div className="category-tags mb-5">
-            <span className="category-tag" onClick={() => handleCategoryClick("All")}>
-              All
-            </span>
             {categories.map((category, index) => (
-              <span key={index} className="category-tag" onClick={() => handleCategoryClick(category)}>
+              <span key={index} className={`category-tag ${selectedCategory === category ? 'active' : ''}`} onClick={() => handleCategoryClick(category)}>
                 {category}
               </span>
             ))}
@@ -227,52 +254,29 @@ const Food = () => {
           <Row>
             <Col md={12}>
               {currentItems.length === 0 && (
-                <p className="text-center not-found-message">Nothing found {searchQuery ? `for "${searchQuery}"` : ''} {selectedCategory ? `in category "${selectedCategory}"` : ''}</p>
+                <p className="text-center not-found-message">Nothing found {searchQuery ? `for "${searchQuery}"` : ''} {selectedCategory !== "All" ? `in category "${selectedCategory}"` : ''}</p>
               )}
               <Row>
                 {currentItems.map((item) => (
-                  <Col 
-                  key={item.id} 
-                  xs={12}
-                  md={3} 
-                  className="mb-5"
-                >
-                    <div className="__area text-center">
-                      <a href=" " className="__card">
-                        <button className="__favorit">
-                          <i className="fas fa-heart"></i>
-                        </button>
-                        <img
-                          src={item.image}
-                          className="img-fluid __img"
-                          alt={item.name}
-                        />
-                        <div className="__card_detail text-left">
-                          <h4>{item.name}</h4>
-                          <p>{item.location}</p>
-                          <p>{item.price}</p>
-                          <div className="__type">
-                            <span>{item.category}</span>
-                            <span>{item.discount}</span>
-                          </div>
-                          <div className="__detail">
-                            <i className="fas fa-star"></i> <span>5.0</span>{" "}
-                            <i className="fas fa-clock"></i> <span>30 m</span>
-                          </div>
-                        </div>
-                      </a>
-                    </div>
+                  <Col
+                    key={item.id}
+                    xs={12}
+                    md={4}
+                    lg={3}
+                    className="mb-5"
+                  >
+                    <FoodCard item={item} /> {/* Use the FoodCard component */}
                   </Col>
                 ))}
               </Row>
               {totalPages > 1 && (
                 <CustomPagination
-                totalPages={totalPages}
+                  totalPages={totalPages}
                   currentPage={currentPage}
                   onPageChange={handlePageChange}
                   total={filteredItems.length} // Pass the total number of items
                   itemsPerPage={itemsPerPage}
-              />
+                />
               )}
             </Col>
           </Row>
@@ -283,3 +287,4 @@ const Food = () => {
 };
 
 export default Food;
+export { FoodCard, menuItems };

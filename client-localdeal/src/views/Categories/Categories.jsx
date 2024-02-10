@@ -1,122 +1,79 @@
 // Categories.js
 import React from "react";
 import "./Categories.css";
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import { Container, Row, Col, Card } from "react-bootstrap";
+import { Container, Card, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Layout from "../../utils/Layout";
+import { FoodCard, menuItems } from "./Food/Food";
 
 function Categories() {
   // Static data for demonstration purposes
   const categoryData = [
     {
-      image:
-        "https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(147).webp",
       category: "Food",
       icon: "fas fa-utensils",
-      title: "Cheat day inspirations",
-      description:
-        "LocalDeal Categories: Uncover Your Communitys Treasures, Where Savings Meet Discovery!",
-      date: "2 days ago",
-      link: "Food",
+      link: "/categories/food",
     },
     {
-      image: "https://mdbootstrap.com/img/Photos/Others/photo6.webp",
       category: "Accommodation",
       icon: "fas fa-bed",
-      title: "Cheat day inspirations",
-      description:
-        "LocalDeal Categories: Uncover Your Communitys Treasures, Where Savings Meet Discovery!",
-      date: "2 days ago",
+      link: "/categories/accommodation",
     },
     {
-      image: "https://mdbootstrap.com/img/Photos/Others/men.webp",
       category: "Home",
       icon: "fas fa-home",
-      title: "Cheat day inspirations",
-      description:
-        "LocalDeal Categories: Uncover Your Communitys Treasures, Where Savings Meet Discovery!",
-      date: "2 days ago",
+      link: "/categories/home",
     },
     {
-      image: "https://mdbootstrap.com/img/Photos/Others/images/43.webp",
       category: "Beauty",
       icon: "fas fa-scissors",
-      title: "Cheat day inspirations",
-      description:
-        "LocalDeal Categories: Uncover Your Communitys Treasures, Where Savings Meet Discovery!",
-      date: "2 days ago",
+      link: "/categories/beauty",
     },
     {
-      image:
-        "https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).webp",
       category: "Activities",
       icon: "fas fa-gamepad",
-      title: "Cheat day inspirations",
-      description:
-        "LocalDeal Categories: Uncover Your Communitys Treasures, Where Savings Meet Discovery!",
-      date: "2 days ago",
+      link: "/categories/activities",
     },
     {
-      image: "https://mdbootstrap.com/img/Photos/Others/men.webp",
       category: "Entertainment",
       icon: "fas fa-film",
-      title: "Cheat day inspirations",
-      description:
-        "LocalDeal Categories: Uncover Your Communitys Treasures, Where Savings Meet Discovery!",
-      date: "2 days ago",
+      link: "/categories/entertainment",
     },
     {
-      image:
-        "https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(147).webp",
       category: "Services",
       icon: "fas fa-cogs",
-      title: "Cheat day inspirations",
-      description:
-        "LocalDeal Categories: Uncover Your Communitys Treasures, Where Savings Meet Discovery!",
-      date: "2 days ago",
+      link: "/categories/services",
     },
-    // ... (other category data)
+    // Add more categories as needed
   ];
 
   return (
     <>
-      <Layout showNavbar={true} showFooter={true}>
+      <Layout showNavbar={true} showFooter={false}>
         <Container>
-          <Row>
-            <h3 className="categories-heading">
-              Categories <small> Explore different categories</small>
-            </h3>
-          </Row>
-          <Row md={12}>
+          <div className="category-container justify-content-center">
             {categoryData.map((category, index) => (
-              <Col md={3} key={index}>
-                <Card className="card-cascade narrower">
-                  <Card.Img
-                    variant="rounded"
-                    src={category.image}
-                    alt="Card image cap"
-                    className="rounded-top"
-                  />
-                  <Card.Body className="card-body-cascade">
-                    <h5 className="pink-text pb-2 pt-1">
-                      <i className={[category.icon]}></i> {category.category}
-                    </h5>
-                    <h4 className="font-weight-bold card-title">
-                      {category.title}
-                    </h4>
-                    <p className="card-text">{category.description}</p>
-                    <Link
-                      to={`/categories/${category.category}`}
-                      className="btn btn-unique"
-                    >
-                      Read More
-                    </Link>
-                  </Card.Body>
-                  <Card.Footer className="text-muted text-center">
-                    {category.date}
-                  </Card.Footer>
+              <Link key={index} to={category.link} className="category-link">
+                <Card className="category-card mb-3">
+                  <div className="category-content">
+                    <i className={category.icon}></i>
+                    <span>{category.category}</span>
+                  </div>
                 </Card>
+              </Link>
+            ))}
+          </div>
+
+          <Row>
+          {menuItems.map((item, index) => (
+              <Col
+                key={item.id}
+                xs={12}
+                md={4}
+                lg={3}
+                className="mb-5 mt-3"
+              >
+                  <FoodCard key={index} item={item} />
               </Col>
             ))}
           </Row>

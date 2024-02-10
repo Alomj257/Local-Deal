@@ -1,133 +1,68 @@
-/* Categories.css */
-
-.categories-heading {
-    text-align: center;
-    margin-bottom: 50px;
-    color: #20247b;
-    font-weight: 700;
-}
-
-.card-cascade {
-    margin-bottom: 20px;
-}
-
-.card {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    transition: transform 0.3s;
-}
-
-.card-img-top {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
-}
-
-.view-cascade {
-    position: relative;
-}
-
-.card-body {
-    padding: 20px;
-}
-
-.pink-text {
-    color: #e91e63;
-}
-
-.card-title {
-    color: #20247b;
-    margin-bottom: 10px;
-    font-size: 18px;
-}
-
-.card-text {
-    color: #333;
-}
-
-.btn-unique {
-    background-color: #e91e63;
-    color: #fff;
-    padding: 8px 16px;
+.container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .category-container {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    max-width: 100%; 
+    padding: 0 10px;
+    justify-content: flex-start; 
+  }
+  
+  .category-card {
+    flex: 0 0 auto;
+    margin-right: 10px;
+    white-space: nowrap;
     border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.card-footer {
-    background-color: #f8f9fa;
-    padding: 10px;
-    text-align: center;
-}
-@media (min-width: 764px) and (max-width: 1024px) {
-    .card-cascade {
-        margin-bottom: 20px;
+    transition: transform 0.3s ease;
+  }
+  
+  .category-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .category-content {
+    display: flex;
+    font-weight: 600;
+    color: #ff8e37;
+    align-items: center;
+    padding: 8px 12px;
+    border-radius: 1rem;
+    background-color: #feefe3;
+  }
+  
+  .category-content i {
+    margin-right: 5px;
+  }
+  
+  .category-link {
+    text-decoration: none !important;
+  }
+  /* Custom scrollbar styling */
+.category-container::-webkit-scrollbar {
+    width: 2px; /* Set the width of the scrollbar */
+    height: 3px;
+  }
+  
+  .category-container::-webkit-scrollbar-track {
+    background: transparent; 
+  }
+  
+  .category-container::-webkit-scrollbar-thumb {
+    background: #525dfc; 
+    border-radius: 10px; 
+  }
+  
+  .category-container::-webkit-scrollbar-thumb:hover {
+    background: #3a45b7; 
+  }
+  
+  @media (max-width: 1024px) {
+    .category-container {
+      justify-content: flex-start !important; 
     }
-
-    .card {
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        transition: transform 0.3s;
-    }
-
-    .card-img-top {
-        width: 100%;
-        height: auto;
-        object-fit: cover;
-        box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
-    }
-
-    .view-cascade {
-        position: relative;
-    }
-
-    .card-body {
-        padding: 20px;
-    }
-
-    .pink-text {
-        color: #e91e63;
-    }
-
-    .card-title {
-        margin-bottom: 10px;
-        font-size: 18px;
-    }
-
-    .card-text {
-        color: #333;
-    }
-
-    .btn-unique {
-        background-color: #e91e63;
-        color: #fff;
-        padding: 8px 16px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-    }
-
-    .card-footer {
-        background-color: #f8f9fa;
-        padding: 10px;
-        text-align: center;
-    }
-
-    /* Adjust the number of columns when the screen size is between 764px and 1024px */
-    .col-md-3 {
-        flex: 0 0 33.33333%;
-        max-width: 33.33333%;
-    }
-
-    /* Centering the cards when the number is odd */
-    .row {
-        justify-content: center;
-    }
-
-    /* Add some spacing between the centered cards */
-    .row::after {
-        content: "";
-        flex: auto;
-    }
-}
+  }
+  

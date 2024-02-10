@@ -125,6 +125,7 @@
 
 /* Custom scrollbar styling */
 .category-tags::-webkit-scrollbar {
+  width: 2px;
   height: 2px;
 }
 
@@ -135,6 +136,10 @@
 .category-tags::-webkit-scrollbar-thumb {
   background:  #525dfc; 
   border-radius: 10px;
+}
+.category-tag.active {
+  background-color: orange;
+  color: white; /* Optionally, change text color to white for better visibility */
 }
 
 /* Media query for smaller screens */
