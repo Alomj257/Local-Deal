@@ -52,6 +52,7 @@
 .__card_detail h4 {
   color: #474340;
   line-height: 100%;
+  font-size: 18px;
   font-weight: bold;
 }
 
@@ -78,7 +79,7 @@
 }
 
 .__detail i {
-  font-size: 21px;
+  font-size: 18px;
   display: inline-block;
   vertical-align: middle;
   color: #525dfc; /* Icon color */
@@ -145,6 +146,11 @@
 /* Media query for smaller screens */
 @media screen and (max-width: 540px) {
   .category-tags {
-    justify-content: flex-start; /* Align to the start for smaller screens */
+    justify-content: flex-start !important; /* Align to the start for smaller screens */
+  }
+}
+@media (max-width: 1024px) {
+  .category-tags {
+    justify-content: flex-start !important; /* Align to the start for smaller screens */
   }
 }

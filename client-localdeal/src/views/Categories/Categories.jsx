@@ -5,6 +5,7 @@ import { Container, Card, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Layout from "../../utils/Layout";
 import { FoodCard, menuItems } from "./Food/Food";
+import { AccommodationCard, accommodationItems} from "./Accommodation/Accommodation";
 
 function Categories() {
   // Static data for demonstration purposes
@@ -74,6 +75,19 @@ function Categories() {
                 className="mb-5 mt-3"
               >
                   <FoodCard key={index} item={item} />
+              </Col>
+            ))}
+          </Row>
+          <Row>
+          {accommodationItems.map((item, index) => (
+              <Col
+                key={item.id}
+                xs={12}
+                md={4}
+                lg={3}
+                className="mb-5 mt-3"
+              >
+                  <AccommodationCard key={index} item={item} />
               </Col>
             ))}
           </Row>
