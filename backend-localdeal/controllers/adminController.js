@@ -16,7 +16,7 @@ const registerAdmin = async (req, res) => {
       });
     });
     const { password, cnfpassword } = req.body;
-    console.log(password, cnfpassword);
+    console.log(req.body);
     if (password !== cnfpassword) {
       return res
         .status(500)
@@ -29,7 +29,7 @@ const registerAdmin = async (req, res) => {
         message: "User already exist please try to login",
       });
     }
-    req.body.profile = "/profile/image" + req?.file?.originalname;
+    req.body.profile = "/profile/image/" + req?.file?.originalname;
     req.body.path = req?.file?.path;
     const newUser = await new Admin(req.body).save();
     res.status(201).json({
@@ -43,6 +43,39 @@ const registerAdmin = async (req, res) => {
   }
 };
 module.exports = registerAdmin;
+const UpdateUser = async (req, res) => {
+  try {
+    await new Promise((resolve, reject) => {
+      upload.single("file")(req, res, function (err) {
+        if (err) {
+          res.status(400).json({
+            success: false,
+            message: "image uploading issue please try again...",
+          });
+        } else resolve();
+      });
+    });
+    console.log(req.body);
+    if (req.file) {
+      req.body.profile = "/profile/image/" + req?.file?.originalname;
+      req.body.path = req?.file?.path;
+    }
+    const { password, ...other } = req.body;
+    const updatedUser = await Admin.findByIdAndUpdate(
+      req.params.id,
+      { $set: other },
+      { new: true }
+    );
+    res.status(201).json({
+      success: true,
+      updatedUser,
+      message: "Admin updated successfully....!",
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({ error: error.message });
+  }
+};
 
 const loginAdmin = async (req, res) => {
   const { email, password } = req.body;
@@ -65,7 +98,7 @@ const loginAdmin = async (req, res) => {
       expiresIn: "1h",
     });
 
-    res.json({ token });
+    res.json({ token, admin });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -93,31 +126,33 @@ const getUserById = async (req, res) => {
   }
 };
 const updateAdmin = async (req, res) => {
+  console.log(req.body);
   try {
-    if (req?.file) {
-      await new Promise((resolve, reject) => {
-        upload.single("file")(req, res, function (err) {
-          if (err) {
-            res.status(400).json({
-              success: false,
-              message: "image uploading issue please try again...",
-            });
-          } else resolve();
-        });
-      });
-      req.body.profile = "/profile/image" + req?.file?.originalname;
-      req.body.path = req?.file?.path;
-    }
     console.log(req.body);
-    const user = await Admin.findByIdAndUpdate(
+    await new Promise((resolve, reject) => {
+      upload.single("file")(req, res, function (err) {
+        if (err) {
+          res.status(400).json({
+            success: false,
+            message: "image uploading issue please try again...",
+          });
+        } else resolve();
+      });
+    });
+    req.body.profile = "/profile/image/" + req?.file?.originalname;
+    req.body.path = req?.file?.path;
+    const updatedUser = await Admin.findByIdAndUpdate(
       req.params.id,
       { $set: req.body },
       { new: true }
     );
-    res
-      .status(200)
-      .json({ success: true, user, message: "Admin updated successfully...." });
+    res.status(200).json({
+      success: true,
+      updatedUser,
+      message: "Admin updated successfully....",
+    });
   } catch (error) {
+    console.log(error);
     res.status(500).json({ success: false, message: error.message });
   }
 };
@@ -140,10 +175,11 @@ const deleteAdmin = async (req, res) => {
 };
 
 module.exports = {
+  updateAdmin,
   registerAdmin,
   loginAdmin,
   getAllUsers,
   getUserById,
-  updateAdmin,
   deleteAdmin,
+  UpdateUser,
 };

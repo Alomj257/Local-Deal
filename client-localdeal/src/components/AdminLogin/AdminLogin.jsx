@@ -2,24 +2,26 @@ import React, { useState } from "react";
 import "./AdminLogin.css";
 import adminLogin from "../../services/adminService";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
 
 const AdminLogin = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const [auth, setAuth] = useAuth();
 
   const handleLogin = async (e) => {
     e.preventDefault();
-
     if (!username || !password) {
       setError("Please fill in all fields.");
       return;
     }
-
     try {
-      const token = await adminLogin(username, password);
-      console.log("Login successful, token:", token);
+      const response = await adminLogin(username, password);
+      console.log("Login successful, token:", response);
+      setAuth({ ...auth, user: response?.admin, token: response?.token });
+      localStorage.setItem("auth", JSON.stringify(response));
       // Clear username and password after successful login
       setUsername("");
       setPassword("");
@@ -44,7 +46,9 @@ const AdminLogin = () => {
             <div className="card border-1">
               <div className="card-body p-5">
                 <div className="mb-5">
-                  <h3 className="h4 font-weight-bold text-theme">Admin Login</h3>
+                  <h3 className="h4 font-weight-bold text-theme">
+                    Admin Login
+                  </h3>
                 </div>
 
                 <h6 className="h5 mb-0">Welcome back!</h6>

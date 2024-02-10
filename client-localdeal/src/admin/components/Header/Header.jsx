@@ -96,7 +96,7 @@ const Header = () => {
             className={activeLink === "user" ? "active" : ""}
             onClick={() => {
               handleItemClick("user");
-              navigate("/admin/users");
+              navigate("/admin/all-users");
             }}
           >
             {menuCollapse ? (

@@ -24,6 +24,7 @@ const useFetch = (url) => {
     setloading(true);
     try {
       const res = await axios.get(API_URL + url);
+      console.log(res);
       setdata(res.data);
     } catch (error) {
       seterror(error);

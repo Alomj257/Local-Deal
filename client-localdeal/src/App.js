@@ -46,7 +46,7 @@ const App = () => {
           <Route path="/categories/services" element={<Services />} />
           {/* Admin panel */}
           <Route path="/admin" element={<DashBoard />}>
-            <Route path="users" element={<User />} />
+            <Route path="all-users" element={<User />} />
             <Route path="promotion" element={<PromotionAdmin />} />
             <Route path="settings" element={<Settings />} />
             <Route path="logout" element={<Logout />} />

@@ -1,15 +1,16 @@
+// UpdateAdmin.js
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { updateadmin } from "../../../services/adminService";
-import useFetch from "../../../Hooks/useFetch";
 
-const UpdateAdmin = ({ oldUser }) => {
-  const { reFetch } = useFetch("/admin/users");
+const UpdateAdmin = ({ oldUser, onUserUpdate }) => {
   const [user, setUser] = useState(oldUser);
+
   const handleInputChange = (event) => {
     const { name, value, files } = event.target;
     setUser({ ...user, [name]: files ? files[0] : value });
   };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -22,12 +23,13 @@ const UpdateAdmin = ({ oldUser }) => {
       console.log(res);
       if (res.success) {
         toast.success(res?.message);
-        reFetch();
+        // Trigger a re-fetch of data in the parent component
+        onUserUpdate();
       } else {
         toast.success(res?.message);
       }
     } catch (error) {
-      console.error("Error adding user:", error);
+      console.error("Error updating user:", error);
       toast.error(error);
     }
   };
@@ -163,13 +165,13 @@ const UpdateAdmin = ({ oldUser }) => {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="passport">Passport No.</label>
+              <label htmlFor="passportNo">Passport No.</label>
               <input
                 type="text"
-                id="passport"
-                name="passport"
+                id="passportNo"
+                name="passportNo"
                 className="form-control"
-                value={user?.passport}
+                value={user?.passportNo}
                 onChange={handleInputChange}
               />
             </div>

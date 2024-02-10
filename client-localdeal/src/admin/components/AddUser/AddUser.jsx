@@ -3,7 +3,7 @@ import "./AddUser.css";
 import { register } from "../../../services/adminService";
 import { toast } from "react-toastify";
 
-const AddUser = () => {
+const AddUser = ({ onUserAdd }) => {
   const [user, setUser] = useState({});
 
   const handleInputChange = (event) => {
@@ -18,8 +18,9 @@ const AddUser = () => {
       for (let key in user) {
         formData.append(key, user[key]);
       }
-      const res = await register(user);
+      const res = await register(formData);
       if (res.success) {
+        onUserAdd(user);
         toast.success(res?.message);
       } else {
         toast.success(res?.message);
@@ -183,13 +184,13 @@ const AddUser = () => {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="passport">Passport No.</label>
+              <label htmlFor="passportNo">Passport No.</label>
               <input
                 type="text"
-                id="passport"
-                name="passport"
+                id="passportNo"
+                name="passportNo"
                 className="form-control"
-                value={user?.passport}
+                value={user?.passportNo}
                 onChange={handleInputChange}
               />
             </div>

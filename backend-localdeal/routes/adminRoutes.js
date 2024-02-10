@@ -7,7 +7,7 @@ router.post("/register", adminController.registerAdmin);
 router.post("/login", adminController.loginAdmin);
 router.get("/users", adminController.getAllUsers);
 router.get("/users/:id", adminController.getUserById);
-router.put("/users/:id", adminController.updateAdmin);
+router.put("/update/:id", adminController.UpdateUser);
 router.delete("/users/:id", adminController.deleteAdmin);
 
 module.exports = router;

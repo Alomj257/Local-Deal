@@ -14,10 +14,10 @@ const allowedOrigins = [
 
 // Middleware
 // Set Cache-Control header for all responses
-app.use((req, res, next) => {
-  res.setHeader("Cache-Control", "public, max-age=3600"); // Adjust max-age as needed
-  next();
-});
+// app.use((req, res, next) => {
+//   res.setHeader("Cache-Control", "public, max-age=3600"); // Adjust max-age as needed
+//   next();
+// });
 
 // CORS setup
 app.use(

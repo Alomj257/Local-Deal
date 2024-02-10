@@ -1,5 +1,4 @@
 import React from "react";
-import logo from "../../../assets/homeimages/Home.png";
 import {
   MdContacts,
   MdLocationPin,
@@ -15,13 +14,12 @@ import {
   BsGlobeAsiaAustralia,
 } from "react-icons/bs";
 const ViewUser = ({ user }) => {
-  console.log(user);
   return (
     <div className="container  mb-5">
       <div className="d-flex justify-content-center flex-column">
         <div className="border rounded-circle m-auto shadow p-1  border-4">
           <img
-            src={logo}
+            src={`http://localhost:5000${user?.profile}`}
             alt="profile"
             height={100}
             width={100}
@@ -41,7 +39,6 @@ const ViewUser = ({ user }) => {
           {user?.name}
         </div>
         <div className="text-lowercase  border-bottom pt-3 ">
-          {" "}
           <BsFillThreadsFill
             size={25}
             className="text-white bg-secondary rounded p-1 me-2"
@@ -67,7 +64,7 @@ const ViewUser = ({ user }) => {
             size={25}
             className="text-white bg-secondary rounded p-1 me-2"
           />
-          {user?.contact}
+          {user?.phoneNo}
         </div>
         <div className=" border-bottom pt-3 ">
           <BsFileTextFill
@@ -102,7 +99,7 @@ const ViewUser = ({ user }) => {
             size={25}
             className="text-white bg-secondary rounded p-1 me-2"
           />
-          {user?.passport}
+          {user?.passportNo}
         </div>
       </div>
     </div>

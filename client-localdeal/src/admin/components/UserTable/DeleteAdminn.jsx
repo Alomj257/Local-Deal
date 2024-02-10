@@ -4,13 +4,12 @@ import { deleteAdmin } from "../../../services/adminService";
 import { toast } from "react-toastify";
 import useFetch from "../../../Hooks/useFetch";
 
-const DeleteAdmin = ({ user }) => {
-  const { reFetch } = useFetch("/admin/users");
+const DeleteAdmin = ({ user, onUserDelete }) => {
   const handledelete = async (id) => {
     try {
       const res = await deleteAdmin(id);
       toast.success(res.message);
-      reFetch();
+      onUserDelete();
     } catch (error) {
       toast.success(error);
     }

@@ -27,7 +27,7 @@ export const register = async (user) => {
 
 export const updateadmin = async (user, id) => {
   try {
-    const res = await axios.put(`${API_URL}/admin/users/${id}`, user, {
+    const res = await axios.put(`${API_URL}/admin/update/${id}`, user, {
       headers: { "Content-Type": "multipart/form-data" },
     });
     return res.data;
