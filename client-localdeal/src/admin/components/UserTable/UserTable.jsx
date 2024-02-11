@@ -14,6 +14,7 @@ const UserTable = () => {
   const [users, setUsers] = useState([]);
   const [page] = useState(10);
   const [curPage, setCurPage] = useState(1);
+  const [filteredUsers, setFilteredUsers] = useState([]);
   const { data, loading, reFetch } = useFetch(
     `/admin/users?limit=${page * curPage}`
   );
@@ -32,7 +33,21 @@ const UserTable = () => {
   };
   useEffect(() => {
     setUsers(data);
+    setFilteredUsers(data);
   }, [data]);
+  const handleFiltered = (value) => {
+    const filteredData = users.filter(
+      (user) =>
+        user.name.toLowerCase().includes(value.toLowerCase()) ||
+        user.email.toLowerCase().includes(value.toLowerCase()) ||
+        user.phoneNo.toLowerCase().includes(value.toLowerCase())
+    );
+    setFilteredUsers(filteredData);
+  };
+  const handleSearch = (e) => {
+    const { value } = e.target;
+    handleFiltered(value);
+  };
   const handleUserUpdate = () => {
     reFetch();
   };
@@ -55,7 +70,12 @@ const UserTable = () => {
           <AddUser onUserAdd={handleAddUser} />
         </Modal>
         <div className="ms-auto">
-          <input type="text" placeholder="Search..." className="form-control" />
+          <input
+            type="text"
+            placeholder="Search..."
+            onChange={handleSearch}
+            className="form-control"
+          />
         </div>
       </div>
       <div>
@@ -83,8 +103,8 @@ const UserTable = () => {
                   <span className="sr-only">Loading...</span>
                 </div>
               </div>
-            ) : Array.isArray(users) ? (
-              users?.map((user, key) => (
+            ) : Array.isArray(filteredUsers) ? (
+              filteredUsers?.map((user, key) => (
                 <tr key={user?._id}>
                   <td>{key + 1}</td>
                   <td>{user?.name}</td>
