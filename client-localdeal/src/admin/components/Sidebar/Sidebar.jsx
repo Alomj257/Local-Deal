@@ -13,17 +13,10 @@ function Sidebar() {
   return (
     <div className={`sidebar ${isOpen ? "open" : ""}`}>
       <div className="logo-details">
-        {/* <i className="bx bxl-bitcoin icon"></i> */}
-        {isOpen && (
-          <i>
-            <img
-              src={icon}
-              alt="Logo"
-              style={{ width: "20px", height: "20px" }}
-            />
-          </i>
-        )}
-        <div className="logo_name">Local Deal</div>
+        <i className="icon">
+          <img src={icon} alt="Logo" style={{ width: "20px", height: "20px" }} />
+        </i>
+        <div className="logo_name">LocalDeal</div>
         <i
           className={`bx ${isOpen ? "bx-menu-alt-right" : "bx-menu"}`}
           id="btn"
@@ -31,11 +24,11 @@ function Sidebar() {
         ></i>
       </div>
       <ul className="nav-list px-0 m-0">
-        {/* <li>
-                    <i className='bx bx-search'></i>
-                    <input type="text" placeholder="Search..." />
-                    <span className="tooltip">Search</span>
-                </li> */}
+        <li>
+          <i className='bx bx-search'></i>
+          <input type="text" placeholder="Search..." />
+          <span className="tooltip">Search</span>
+        </li>
         <li>
           <Link to="/admin">
             <i className="bx bx-grid-alt"></i>
@@ -48,12 +41,16 @@ function Sidebar() {
             <i className="bx bx-category-alt"></i>
             <span className="links_name">Category</span>
           </Link>
-          <span className="tooltip">Category</span>
-          <ul className="category-list ">
-            <li className="links_name">category 1 </li>
-            <li className="links_name">category 2</li>
-            <li className="links_name">category 3 </li>
-            <li className="links_name">category 4 </li>
+          {/* <span className="tooltip">Category</span> */}
+          <ul className="sub-menu">
+            <li><Link to="/admin/category1" className="links_name">Food</Link></li>
+            <li><Link to="/admin/category2" className="links_name">Accommodation</Link></li>
+            <li><Link to="/admin/category2" className="links_name">Entertainment</Link></li>
+            <li><Link to="/admin/category2" className="links_name">Activities</Link></li>
+            <li><Link to="/admin/category2" className="links_name">Services</Link></li>
+            <li><Link to="/admin/category2" className="links_name">Beauty</Link></li>
+            <li><Link to="/admin/category2" className="links_name">Home</Link></li>
+            {/* Add more submenu items as needed */}
           </ul>
         </li>
         <li>
@@ -78,18 +75,18 @@ function Sidebar() {
           <span className="tooltip">Setting</span>
         </li>
         <li>
-          <Link to="/admin/lougout">
-            <i className="bx bx-log-out-circle"></i>
-            <span className="links_name">Logout</span>
-          </Link>
-          <span className="tooltip"> Logout</span>
-        </li>
-        <li>
           <Link to="/help">
             <i className="bx bx-help-circle"></i>
             <span className="links_name">Help & Support</span>
           </Link>
           <span className="tooltip">Help & Support</span>
+        </li>
+        <li>
+          <Link to="/admin/lougout">
+            <i className="bx bx-log-out-circle"></i>
+            <span className="links_name">Logout</span>
+          </Link>
+          <span className="tooltip"> Logout</span>
         </li>
       </ul>
     </div>

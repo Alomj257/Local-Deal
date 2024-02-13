@@ -17,8 +17,8 @@
     padding: 6px 14px;
     z-index: 99;
     transition: all 0.5s ease;
+    overflow-y: visible;
 }
-
 .sidebar::-webkit-scrollbar {
     width: 0;
 }
@@ -49,7 +49,7 @@
 
 .sidebar .logo-details .logo_name {
     color: #fff;
-    font-size: 15px;
+    font-size: 18px;
     font-weight: 600;
     opacity: 0;
     transition: all 0.5s ease;
@@ -181,7 +181,7 @@
 
 .sidebar li a .links_name {
     color: #fff;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 400;
     white-space: nowrap;
     opacity: 0;
@@ -203,7 +203,7 @@
 .sidebar li i {
     height: 50px;
     line-height: 50px;
-    font-size: 18px;
+    font-size: 20px;
     border-radius: 12px;
 }
 
@@ -259,7 +259,34 @@
 .sidebar .category:hover .category-list{
     display: block;
 }
-
+/* Add this CSS to your existing Sidebar.css file */
+.sidebar .sub-menu {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: calc(100% - 15px);
+    width: 200px;
+    border-radius: 6px;
+    z-index: 999;
+  }
+  
+  .sidebar .sub-menu a {
+    display: block;
+    padding: 6px 10px;
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  
+  .sidebar .sub-menu a:hover {
+    background-color: white;
+    color: #11101d;
+  }
+  
+  .sidebar li:hover .sub-menu {
+    display: block;
+  }
+  
 @media (max-width: 420px) {
     .sidebar li .tooltip {
         display: none;
