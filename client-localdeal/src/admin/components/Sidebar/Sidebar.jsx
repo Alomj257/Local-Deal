@@ -58,7 +58,12 @@ function Sidebar() {
             <i className="bx bx-heart"></i>
             <span className="links_name">Promotion</span>
           </Link>
-          <span className="tooltip">Promotion</span>
+          {/* <span className="tooltip">Promotion</span> */}
+          <ul className="sub-menu">
+            <li><Link to="/admin/category1" className="links_name">Premium </Link></li>
+            <li><Link to="/admin/category2" className="links_name">Basic</Link></li>
+            {/* Add more submenu items as needed */}
+          </ul>
         </li>
         <li>
           <Link to="/admin/users">
