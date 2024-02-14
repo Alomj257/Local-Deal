@@ -1,10 +1,8 @@
-import axios from "axios";
-
-const API_URL = "http://localhost:5000/api"; // Update with your backend server URL
+import Axios from "../Axios";
 
 const adminLogin = async (email, password) => {
   try {
-    const response = await axios.post(`${API_URL}/admin/login`, {
+    const response = await Axios.post(`/admin/login`, {
       email,
       password,
     });
@@ -16,7 +14,7 @@ const adminLogin = async (email, password) => {
 
 export const register = async (user) => {
   try {
-    const res = await axios.post(`${API_URL}/admin/register`, user, {
+    const res = await Axios.post(`/admin/register`, user, {
       headers: { "Content-Type": "multipart/form-data" },
     });
     return res.data;
@@ -27,7 +25,7 @@ export const register = async (user) => {
 
 export const updateadmin = async (user, id) => {
   try {
-    const res = await axios.put(`${API_URL}/admin/update/${id}`, user, {
+    const res = await Axios.put(`/admin/update/${id}`, user, {
       headers: { "Content-Type": "multipart/form-data" },
     });
     return res.data;
@@ -37,7 +35,7 @@ export const updateadmin = async (user, id) => {
 };
 export const deleteAdmin = async (id) => {
   try {
-    const res = await axios.delete(`${API_URL}/admin/users/${id}`);
+    const res = await Axios.delete(`/admin/users/${id}`);
     return res.data;
   } catch (error) {
     throw error.response.data.message;

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "./Sidebar.css";
 import { Link } from "react-router-dom";
 import icon from "../../../assets/icons/logo_icon.png";
+import Logout from "../../../Logout/Logout";
+import Modal from "../../../utils/Modal/Modal";
 
 function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,7 +16,11 @@ function Sidebar() {
     <div className={`sidebar ${isOpen ? "open" : ""}`}>
       <div className="logo-details">
         <i className="icon">
-          <img src={icon} alt="Logo" style={{ width: "20px", height: "20px" }} />
+          <img
+            src={icon}
+            alt="Logo"
+            style={{ width: "20px", height: "20px" }}
+          />
         </i>
         <div className="logo_name">LocalDeal</div>
         <i
@@ -25,7 +31,7 @@ function Sidebar() {
       </div>
       <ul className="nav-list px-0 m-0">
         <li>
-          <i className='bx bx-search'></i>
+          <i className="bx bx-search"></i>
           <input type="text" placeholder="Search..." />
           <span className="tooltip">Search</span>
         </li>
@@ -37,19 +43,47 @@ function Sidebar() {
           <span className="tooltip">Dashboard</span>
         </li>
         <li className="position-relative category">
-          <Link to="/admin/category">
+          <Link>
             <i className="bx bx-category-alt"></i>
             <span className="links_name">Category</span>
           </Link>
           {/* <span className="tooltip">Category</span> */}
           <ul className="sub-menu">
-            <li><Link to="/admin/category1" className="links_name">Food</Link></li>
-            <li><Link to="/admin/category2" className="links_name">Accommodation</Link></li>
-            <li><Link to="/admin/category2" className="links_name">Entertainment</Link></li>
-            <li><Link to="/admin/category2" className="links_name">Activities</Link></li>
-            <li><Link to="/admin/category2" className="links_name">Services</Link></li>
-            <li><Link to="/admin/category2" className="links_name">Beauty</Link></li>
-            <li><Link to="/admin/category2" className="links_name">Home</Link></li>
+            <li>
+              <Link to="/admin/category1" className="links_name">
+                Food
+              </Link>
+            </li>
+            <li>
+              <Link to="/admin/category2" className="links_name">
+                Accommodation
+              </Link>
+            </li>
+            <li>
+              <Link to="/admin/category2" className="links_name">
+                Entertainment
+              </Link>
+            </li>
+            <li>
+              <Link to="/admin/category2" className="links_name">
+                Activities
+              </Link>
+            </li>
+            <li>
+              <Link to="/admin/category2" className="links_name">
+                Services
+              </Link>
+            </li>
+            <li>
+              <Link to="/admin/category2" className="links_name">
+                Beauty
+              </Link>
+            </li>
+            <li>
+              <Link to="/admin/category2" className="links_name">
+                Home
+              </Link>
+            </li>
             {/* Add more submenu items as needed */}
           </ul>
         </li>
@@ -60,8 +94,16 @@ function Sidebar() {
           </Link>
           {/* <span className="tooltip">Promotion</span> */}
           <ul className="sub-menu">
-            <li><Link to="/admin/category1" className="links_name">Premium </Link></li>
-            <li><Link to="/admin/category2" className="links_name">Basic</Link></li>
+            <li>
+              <Link to="/admin/category1" className="links_name">
+                Premium{" "}
+              </Link>
+            </li>
+            <li>
+              <Link to="/admin/category2" className="links_name">
+                Basic
+              </Link>
+            </li>
             {/* Add more submenu items as needed */}
           </ul>
         </li>
@@ -87,10 +129,18 @@ function Sidebar() {
           <span className="tooltip">Help & Support</span>
         </li>
         <li>
-          <Link to="/admin/lougout">
-            <i className="bx bx-log-out-circle"></i>
-            <span className="links_name">Logout</span>
-          </Link>
+          {/* <Link> */}
+
+          <span className="links_name">
+            <Modal
+              btnClasss="border-0 bg-transparent"
+              btnText={<i className="bx bx-log-out-circle" />}
+              bodyClass="bg-white"
+            >
+              <Logout />
+            </Modal>
+          </span>
+          {/* </Link> */}
           <span className="tooltip"> Logout</span>
         </li>
       </ul>

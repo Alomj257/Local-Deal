@@ -1,17 +1,16 @@
 import { useState, useEffect, useContext, createContext } from "react";
-import Axios from "axios";
+import Cookies from "js-cookie";
+import Axios from "../Axios";
 const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
   const [auth, setAuth] = useState({
     user: null,
     token: "",
   });
-
   //default axios
-  Axios.defaults.headers.common["Authorization"] = auth?.token;
 
   useEffect(() => {
-    const data = localStorage.getItem("auth");
+    const data = Cookies.get("auth");
     if (data) {
       const parseData = JSON.parse(data);
       setAuth({
@@ -19,9 +18,11 @@ const AuthProvider = ({ children }) => {
         user: parseData.admin,
         token: parseData.token,
       });
+      Axios.defaults.headers.common["Authorization"] = parseData?.token;
     }
     //eslint-disable-next-line
   }, []);
+
   return (
     <AuthContext.Provider value={[auth, setAuth]}>
       {children}

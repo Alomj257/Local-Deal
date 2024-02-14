@@ -16,7 +16,6 @@ const registerAdmin = async (req, res) => {
       });
     });
     const { password, cnfpassword } = req.body;
-    console.log(req.body);
     if (password !== cnfpassword) {
       return res
         .status(500)
@@ -55,7 +54,6 @@ const UpdateUser = async (req, res) => {
         } else resolve();
       });
     });
-    console.log(req.body);
     if (req.file) {
       req.body.profile = "/profile/image/" + req?.file?.originalname;
       req.body.path = req?.file?.path;

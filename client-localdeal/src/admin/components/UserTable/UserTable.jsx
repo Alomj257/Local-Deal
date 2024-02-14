@@ -32,8 +32,8 @@ const UserTable = () => {
     );
   };
   useEffect(() => {
-    setUsers(data);
-    setFilteredUsers(data);
+    setUsers(Array.isArray(data) ? data : []);
+    setFilteredUsers(Array.isArray(data) ? data : []);
   }, [data]);
   const handleFiltered = (value) => {
     const filteredData = users.filter(

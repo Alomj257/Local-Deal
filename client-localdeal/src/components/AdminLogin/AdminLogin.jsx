@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Cookie from "js-cookie";
 import "./AdminLogin.css";
 import adminLogin from "../../services/adminService";
 import { useNavigate } from "react-router-dom";
@@ -19,9 +20,11 @@ const AdminLogin = () => {
     }
     try {
       const response = await adminLogin(username, password);
+      console.log(response);
       console.log("Login successful, token:", response);
       setAuth({ ...auth, user: response?.admin, token: response?.token });
-      localStorage.setItem("auth", JSON.stringify(response));
+      // localStorage.setItem("auth", JSON.stringify(response));
+      Cookie.set("auth", JSON.stringify(response), { expires: 2 });
       // Clear username and password after successful login
       setUsername("");
       setPassword("");

@@ -141,14 +141,18 @@ const AddUser = ({ onUserAdd }) => {
             </div>
             <div className="form-group">
               <label htmlFor="role">Role</label>
-              <input
+              <select
+                className="form-control"
                 type="text"
                 id="role"
                 name="role"
-                className="form-control"
-                value={user?.role}
                 onChange={handleInputChange}
-              />
+              >
+                <option value="USER">User</option>
+                <option value="ADMIN">Admin</option>
+                <option value="OTHER">Other</option>
+              </select>
+              {/* value={user?.role} */}
             </div>
             <div className="form-group">
               <label htmlFor="qualification">Qualifications</label>

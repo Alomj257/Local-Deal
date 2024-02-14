@@ -37,6 +37,7 @@ const adminSchema = new mongoose.Schema({
     type: String,
     required: true,
     default: "USER",
+    enum: ["USER", "ADMIN", "OTHER"],
   },
   path: {
     type: String,

@@ -2,12 +2,14 @@
 const express = require("express");
 const router = express.Router();
 const adminController = require("../controllers/adminController");
+const VerifyUser = require("../middleware/VerifyUser");
+const IsAdmin = require("../middleware/VarifyAdmin");
 
 router.post("/register", adminController.registerAdmin);
 router.post("/login", adminController.loginAdmin);
-router.get("/users", adminController.getAllUsers);
-router.get("/users/:id", adminController.getUserById);
-router.put("/update/:id", adminController.UpdateUser);
-router.delete("/users/:id", adminController.deleteAdmin);
+router.get("/users", VerifyUser, IsAdmin, adminController.getAllUsers);
+router.get("/users/:id", VerifyUser, IsAdmin, adminController.getUserById);
+router.put("/update/:id", VerifyUser, IsAdmin, adminController.UpdateUser);
+router.delete("/users/:id", VerifyUser, IsAdmin, adminController.deleteAdmin);
 
 module.exports = router;
