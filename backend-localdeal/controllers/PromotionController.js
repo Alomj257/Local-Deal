@@ -1,4 +1,3 @@
-// controllers/PromotionController.js
 const Promotion = require('../models/PromotionModel');
 
 const getAllPromotions = async (req, res) => {

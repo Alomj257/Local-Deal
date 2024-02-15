@@ -1,4 +1,3 @@
-// routes/promotionRoutes.js
 const express = require('express');
 const promotionController = require('../controllers/PromotionController');
 

@@ -2,11 +2,14 @@
 const mongoose = require('mongoose');
 
 const promotionSchema = new mongoose.Schema({
-  heading: String,
-  text: String,
-  uploadDate: Date,
-  uploadedBy: String,
-  imageUrl: String,
+  businessName: String,
+  promotionType: String,
+  imageUrls: [String],
+  location: String,
+  promotionPlan: String,
+  offer: String,
+  description: String,
+  link: String
 });
 
 const Promotion = mongoose.model('Promotion', promotionSchema);
