@@ -6,7 +6,6 @@ import Layout from "../../utils/Layout";
 import Testimonial from "../../components/Testimonial/Testimonial";
 import BrandSection from "../../components/BrandSection/BrandSection";
 import Banner from "../../components/Banner/Banner";
-import Promo from "../../components/Promo/Promo";
 
 function Promotion() {
   const promotions = [

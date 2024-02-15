@@ -17,5 +17,5 @@ router.use('/contact', contactRoutes);
 router.use('/newsletter', newsletterRoutes);
 router.use('/admin', adminRoutes);
 router.use('/categories', foodRoutes, accommodationRoutes, beautyRoutes, entertainmentRoutes, activitiesRoutes, homestoreRoutes, serviceRoutes);
-router.use('/promotions', promotionRoutes);
+router.use('', promotionRoutes);
 module.exports = router;
