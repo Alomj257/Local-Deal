@@ -189,7 +189,7 @@ const AccommodationCard = ({ item }) => {
           alt={item.name}
         />
         <div className="__card_detail text-left">
-          <a href=""><h4>{item.name}</h4></a>
+          <a href="#"><h4>{item.name}</h4></a>
           <p>{item.location}</p>
           <p>{item.price}</p>
           <div className="__type">
