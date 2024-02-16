@@ -7,6 +7,7 @@ const accommodationSchema = new mongoose.Schema({
   category: String,
   price: String,
   image: String,
+  discount: String,
   description: String,
   facilities: [String],
 });

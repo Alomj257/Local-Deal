@@ -7,6 +7,7 @@ const beautySchema = new mongoose.Schema({
   category: String,
   services: [String],
   price: String,
+  discount: String,
   image: String,
   description: String,
   rating: Number,

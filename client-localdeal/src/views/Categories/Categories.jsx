@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import Layout from "../../utils/Layout";
 import { FoodCard, menuItems } from "./Food/Food";
 import { AccommodationCard, accommodationItems} from "./Accommodation/Accommodation";
+import { HomestoreCard, homestoreItems } from "./Homestore/Homestore";
+import { BeautyCard, beautyItems } from "./Beauty/Beauty";
 
 function Categories() {
   // Static data for demonstration purposes
@@ -23,7 +25,7 @@ function Categories() {
     {
       category: "Home",
       icon: "fas fa-home",
-      link: "/categories/home",
+      link: "/categories/homestore",
     },
     {
       category: "Beauty",
@@ -88,6 +90,32 @@ function Categories() {
                 className="mb-5 mt-3"
               >
                   <AccommodationCard key={index} item={item} />
+              </Col>
+            ))}
+          </Row>
+          <Row>
+          {homestoreItems.map((item, index) => (
+              <Col
+                key={item.id}
+                xs={12}
+                md={4}
+                lg={3}
+                className="mb-5 mt-3"
+              >
+                  <HomestoreCard key={index} item={item} />
+              </Col>
+            ))}
+          </Row>
+          <Row>
+          {beautyItems.map((item, index) => (
+              <Col
+                key={item.id}
+                xs={12}
+                md={4}
+                lg={3}
+                className="mb-5 mt-3"
+              >
+                  <BeautyCard key={index} item={item} />
               </Col>
             ))}
           </Row>

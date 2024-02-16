@@ -5,7 +5,11 @@ const homestoreSchema = new mongoose.Schema({
   name: String,
   location: String,
   category: String,
-  products: [{ name: String, price: String, description: String, image: String }],
+  price: String,
+  image: String,
+  description: String,
+  discount: String,
+  products: [String],
 });
 
 const Homestore = mongoose.model('Homestore', homestoreSchema);

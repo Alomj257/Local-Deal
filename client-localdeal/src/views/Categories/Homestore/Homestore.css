@@ -1,0 +1,47 @@
+.__products {
+    margin-top: 10px;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+.toggle-products {
+    background-color: #d3e7fd;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 6px;
+    padding: 4px 10px;
+    cursor: pointer;
+    color: #007bff;
+}
+
+.toggle-icon {
+    margin-top: 5px;
+    margin-left: 5px;
+    transition: transform 0.3s;
+}
+
+.rotate {
+    transform: rotate(180deg);
+}
+
+.products-list {
+    list-style: none;
+    padding: 2px 6px;
+    margin: 0;
+    display: none;
+}
+
+.products-list.show {
+    display: block;
+}
+
+.products-list li {
+    margin-bottom: 3px;
+    font-size: 12px;
+}
+
+.products-list li:last-child {
+    margin-bottom: 0;
+}

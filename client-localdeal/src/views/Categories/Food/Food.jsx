@@ -162,6 +162,7 @@ const itemsPerPage = 12;
 
 const FoodCard = ({ item }) => {
   return (
+    <>
     <div className="__area text-center">
       <a href=" " className="__card">
         <button className="__favorit">
@@ -187,6 +188,7 @@ const FoodCard = ({ item }) => {
         </div>
       </a>
     </div>
+    </>
   );
 };
 

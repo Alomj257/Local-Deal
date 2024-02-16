@@ -105,11 +105,11 @@
 /* Category tags */
 .category-tags {
   display: flex;
-  justify-content: center; /* Center initially */
-  align-items: center; /* Center vertically */
+  justify-content: center;
+  align-items: center;
   padding: 10px 0;
-  overflow-x: auto; /* Add horizontal overflow */
-  margin: 0 auto; /* Center the container */
+  overflow-x: auto;
+  margin: 0 auto;
 }
 
 .category-tag {
