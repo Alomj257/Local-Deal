@@ -6,7 +6,7 @@ import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import Layout from "../../../utils/Layout";
 import SearchBar from "../../../components/SearchBar/SearchBar";
 import CustomPagination from "../../../components/CustomPagination/CustomPagination";
-import image from '../../../assets/categories/Accommodation.png';
+import image from '../../../assets/categories/Activity.png';
 
 // Data for Activities items
 const activitiesItems = [

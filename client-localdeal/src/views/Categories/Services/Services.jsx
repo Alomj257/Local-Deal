@@ -6,21 +6,120 @@ import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import Layout from "../../../utils/Layout";
 import SearchBar from "../../../components/SearchBar/SearchBar";
 import CustomPagination from "../../../components/CustomPagination/CustomPagination";
-import image from '../../../assets/categories/Accommodation.png';
+import image from '../../../assets/categories/Services.png';
 
 // Data for Service items
 const serviceItems = [
   {
     id: 1,
-    name: "Service 1",
-    category: "Category 1",
-    description: "Description of Service 1",
+    name: "House Cleaning",
+    category: "Home Services",
+    description: "Professional cleaning for your home, including dusting, vacuuming, and sanitizing.",
+    price: "$80",
+    provider: "Clean Sweep Services",
+    duration: "2 hours",
+    image: "https://img.freepik.com/free-photo/standard-quality-control-collage-concept_23-2149595847.jpg?w=740&t=st=1708121058~exp=1708121658~hmac=e06aef71aae0aac2e469acd53489099dcc20521d06ceefd6657b7494cc4f3a5e",
+    rating: 4.8
+  },
+  {
+    id: 2,
+    name: "Personal Training Session",
+    category: "Fitness",
+    description: "Customized workout sessions with a certified personal trainer to help you achieve your fitness goals.",
     price: "$50",
-    provider: "Provider 1",
+    provider: "FitFusion Fitness",
     duration: "1 hour",
-    image: "https://example.com/service1.jpg",
+    image: "https://img.freepik.com/free-photo/portrait-man-cleaning-his-house_23-2148119212.jpg?w=740&t=st=1708121138~exp=1708121738~hmac=0f6208b6983bb716c6b880bb98e8a759205c9096a40d2c71d807440ae8b41e6b",
+    rating: 4.9
+  },
+  {
+    id: 3,
+    name: "Graphic Design Consultation",
+    category: "Creative Services",
+    description: "Professional consultation and design services for branding, logos, and marketing materials.",
+    price: "$100",
+    provider: "Creative Minds Design Studio",
+    duration: "1 hour",
+    image: "https://img.freepik.com/free-photo/cheerful-asian-plumber-sitting-floor-repairing-kitchen-sink_1098-17780.jpg?w=740&t=st=1708121124~exp=1708121724~hmac=9f027137fbed51ca92ac23728dc1411b4a86e45fedf800bb1ceb3f9122c2f95d",
+    rating: 4.7
+  },
+  {
+    id: 4,
+    name: "Massage Therapy",
+    category: "Wellness",
+    description: "Relaxing massage therapy sessions to relieve stress, tension, and muscle pain.",
+    price: "$60",
+    provider: "Tranquil Touch Spa",
+    duration: "1 hour",
+    image: "https://img.freepik.com/free-photo/part-male-construction-worker_329181-3734.jpg?w=740&t=st=1708121101~exp=1708121701~hmac=e9f1b56345f0fef904fe0ee00f34769738f7e0bee688725b698cc27256c4b408",
+    rating: 4.6
+  },
+  {
+    id: 5,
+    name: "Computer Repair Service",
+    category: "Technology",
+    description: "Expert repair and troubleshooting services for computers, laptops, and peripherals.",
+    price: "$70",
+    provider: "TechFix Solutions",
+    duration: "1 hour",
+    image: "https://img.freepik.com/free-photo/side-view-woman-working-as-plumber_23-2150746373.jpg?w=740&t=st=1708121091~exp=1708121691~hmac=df7036beb830f427bfa7bd96323f5d9a60e0b4c1e67a2162edee51e637d1d5d5",
     rating: 4.5
   },
+  {
+    id: 6,
+    name: "House Cleaning",
+    category: "Home Services",
+    description: "Professional cleaning for your home, including dusting, vacuuming, and sanitizing.",
+    price: "$80",
+    provider: "Clean Sweep Services",
+    duration: "2 hours",
+    image: "https://img.freepik.com/free-photo/standard-quality-control-collage-concept_23-2149595847.jpg?w=740&t=st=1708121058~exp=1708121658~hmac=e06aef71aae0aac2e469acd53489099dcc20521d06ceefd6657b7494cc4f3a5e",
+    rating: 4.8
+  },
+  {
+    id: 7,
+    name: "Personal Training Session",
+    category: "Fitness",
+    description: "Customized workout sessions with a certified personal trainer to help you achieve your fitness goals.",
+    price: "$50",
+    provider: "FitFusion Fitness",
+    duration: "1 hour",
+    image: "https://img.freepik.com/free-photo/portrait-man-cleaning-his-house_23-2148119212.jpg?w=740&t=st=1708121138~exp=1708121738~hmac=0f6208b6983bb716c6b880bb98e8a759205c9096a40d2c71d807440ae8b41e6b",
+    rating: 4.9
+  },
+  {
+    id: 8,
+    name: "Graphic Design Consultation",
+    category: "Creative Services",
+    description: "Professional consultation and design services for branding, logos, and marketing materials.",
+    price: "$100",
+    provider: "Creative Minds Design Studio",
+    duration: "1 hour",
+    image: "https://img.freepik.com/free-photo/cheerful-asian-plumber-sitting-floor-repairing-kitchen-sink_1098-17780.jpg?w=740&t=st=1708121124~exp=1708121724~hmac=9f027137fbed51ca92ac23728dc1411b4a86e45fedf800bb1ceb3f9122c2f95d",
+    rating: 4.7
+  },
+  {
+    id: 9,
+    name: "Massage Therapy",
+    category: "Wellness",
+    description: "Relaxing massage therapy sessions to relieve stress, tension, and muscle pain.",
+    price: "$60",
+    provider: "Tranquil Touch Spa",
+    duration: "1 hour",
+    image: "https://img.freepik.com/free-photo/part-male-construction-worker_329181-3734.jpg?w=740&t=st=1708121101~exp=1708121701~hmac=e9f1b56345f0fef904fe0ee00f34769738f7e0bee688725b698cc27256c4b408",
+    rating: 4.6
+  },
+  {
+    id: 10,
+    name: "Computer Repair Service",
+    category: "Technology",
+    description: "Expert repair and troubleshooting services for computers, laptops, and peripherals.",
+    price: "$70",
+    provider: "TechFix Solutions",
+    duration: "1 hour",
+    image: "https://img.freepik.com/free-photo/side-view-woman-working-as-plumber_23-2150746373.jpg?w=740&t=st=1708121091~exp=1708121691~hmac=df7036beb830f427bfa7bd96323f5d9a60e0b4c1e67a2162edee51e637d1d5d5",
+    rating: 4.5
+  }
   // Add more items here...
 ];
 
@@ -53,7 +152,8 @@ const ServiceCard = ({ item }) => {
             <span>{item.duration}</span>
           </div>
           <div className="__detail">
-            <FontAwesomeIcon icon={["fas", "star"]} /> <span>{item.rating}</span>{" "}
+          <i className="fas fa-star"></i> <span>{item.rating}</span>{" "}
+            <i className="fas fa-clock"></i> <span>3 km</span>
             {/* Example rating */}
           </div>
           <div className="__details">

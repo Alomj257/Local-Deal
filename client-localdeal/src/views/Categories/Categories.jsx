@@ -9,6 +9,7 @@ import { AccommodationCard, accommodationItems } from "./Accommodation/Accommoda
 import { HomestoreCard, homestoreItems } from "./Homestore/Homestore";
 import { BeautyCard, beautyItems } from "./Beauty/Beauty";
 import { ActivitiesCard, activitiesItems } from "./Activities/Activities";
+import { EntertainmentCard, entertainmentItems } from "./Entertainment/Entertainment";
 
 function Categories() {
   // Static data for demonstration purposes
@@ -145,6 +146,22 @@ function Categories() {
                 className="mb-5 mt-3"
               >
                 <ActivitiesCard key={index} item={item} />
+              </Col>
+            ))}
+          </Row>
+          <Row>
+            <h2>Entertainment</h2>
+          </Row>
+          <Row>
+            {entertainmentItems.map((item, index) => (
+              <Col
+                key={item.id}
+                xs={12}
+                md={4}
+                lg={3}
+                className="mb-5 mt-3"
+              >
+                <EntertainmentCard key={index} item={item} />
               </Col>
             ))}
           </Row>

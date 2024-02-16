@@ -6,132 +6,132 @@ import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import Layout from "../../../utils/Layout";
 import SearchBar from "../../../components/SearchBar/SearchBar";
 import CustomPagination from "../../../components/CustomPagination/CustomPagination";
-import image from '../../../assets/categories/Accommodation.png';
+import image from '../../../assets/categories/Entertainment.png'; // Update image import
 
 // Data for Entertainment items
 const entertainmentItems = [
   {
     id: 1,
-    name: "Concert Night: Jazz Under the Stars",
-    location: "Central Park, New York",
-    category: "Concert",
-    type: "Live Music",
-    description: "Enjoy an evening of smooth jazz under the starry sky at Central Park. Renowned jazz musicians will perform their best hits, creating a magical atmosphere.",
-    price: "$25",
-    schedule: "Every Friday and Saturday at 7:00 PM",
-    image: "https://img.freepik.com/free-vector/realistic-cinematography-bright-with-film-reels-camera-filmstrip-cinema-awards-illustration_1284-51085.jpg?w=900&t=st=1708117586~exp=1708118186~hmac=e47ee6de0490ba9947ff7da50acf5fade4243610abe39280a940d6d067f6562d",
-    rating: 4.8
-  },
-  {
-    id: 2,
-    name: "Movie Marathon: Classic Cinema Rewind",
-    location: "CinemaCity Theater, Los Angeles",
-    category: "Movie",
-    type: "Film Screening",
-    description: "Immerse yourself in the golden age of cinema with a marathon of classic movies. From iconic comedies to timeless dramas, experience the magic of the silver screen.",
-    price: "$15",
-    schedule: "Every Sunday from 2:00 PM to 10:00 PM",
-    image: "https://img.freepik.com/free-photo/copy-space-lightbox-anf-popcorn_23-2148470128.jpg?w=740&t=st=1708117832~exp=1708118432~hmac=0934e6f639efd0a362526861432a0250ff445d77475f935a6f01092449eda5eb",
+    name: "Movie Night",
+    location: "Local Cinema",
+    category: "Movies",
+    type: "Indoor",
+    description: "Enjoy the latest blockbuster movies in the comfort of a local cinema.",
+    price: "$12",
+    schedule: "Every Friday at 7:00 PM",
+    image: "https://img.freepik.com/free-photo/front-view-fresh-popcorn-pink-table-movie-cinema-color_140725-72928.jpg?w=740&t=st=1708120520~exp=1708121120~hmac=adc00452abc3bf2844ec524d54f89e5c63ef654fa19b0ca001d9981d11ddf3b4",
     rating: 4.5
   },
   {
-    id: 3,
-    name: "Stand-Up Comedy Night",
-    location: "Laugh Lounge, Chicago",
-    category: "Comedy Show",
-    type: "Stand-Up",
-    description: "Get ready for an evening filled with laughter and good vibes! Top comedians from around the country will tickle your funny bone with their hilarious performances.",
-    price: "$20",
-    schedule: "Every Wednesday and Thursday at 8:00 PM",
-    image: "https://img.freepik.com/free-vector/film-strip-with-light-effect-cinema-background_1017-38171.jpg?w=826&t=st=1708117659~exp=1708118259~hmac=8ddc4e8f89292c2509dbbe04a25ccdf364dcb3c8483562722200d93999817174",
-    rating: 4.7
-  },
-  {
-    id: 4,
-    name: "Magic Show Extravaganza",
-    location: "Mystique Theater, Las Vegas",
-    category: "Magic Show",
-    type: "Illusion",
-    description: "Prepare to be amazed as world-class illusionists take you on a journey through the realm of magic. Witness mind-bending tricks and breathtaking illusions that defy explanation.",
-    price: "$30",
-    schedule: "Every Friday and Saturday at 9:00 PM",
-    image: "https://img.freepik.com/free-vector/film-strip-with-light-effect-cinema-background_1017-38171.jpg?w=826&t=st=1708117659~exp=1708118259~hmac=8ddc4e8f89292c2509dbbe04a25ccdf364dcb3c8483562722200d93999817174",
-    rating: 4.9
-  },
-  {
-    id: 5,
-    name: "Art Exhibition: Beyond Boundaries",
-    location: "Metropolitan Museum of Art, New York",
-    category: "Art Exhibition",
-    type: "Showcase",
-    description: "Explore a world of artistic wonder at the Metropolitan Museum of Art. From classical masterpieces to contemporary creations, this exhibition transcends boundaries and inspires the imagination.",
-    price: "Free Admission",
-    schedule: "Ongoing Exhibition",
-    image: "https://img.freepik.com/free-photo/copy-space-lightbox-anf-popcorn_23-2148470128.jpg?w=740&t=st=1708117832~exp=1708118432~hmac=0934e6f639efd0a362526861432a0250ff445d77475f935a6f01092449eda5eb",
-    rating: 4.6
-  },
-  {
-    id: 1,
-    name: "Concert Night: Jazz Under the Stars",
-    location: "Central Park, New York",
-    category: "Concert",
-    type: "Live Music",
-    description: "Enjoy an evening of smooth jazz under the starry sky at Central Park. Renowned jazz musicians will perform their best hits, creating a magical atmosphere.",
-    price: "$25",
-    schedule: "Every Friday and Saturday at 7:00 PM",
-    image: "https://img.freepik.com/free-vector/realistic-cinematography-bright-with-film-reels-camera-filmstrip-cinema-awards-illustration_1284-51085.jpg?w=900&t=st=1708117586~exp=1708118186~hmac=e47ee6de0490ba9947ff7da50acf5fade4243610abe39280a940d6d067f6562d",
-    rating: 4.8
-  },
-  {
     id: 2,
-    name: "Movie Marathon: Classic Cinema Rewind",
-    location: "CinemaCity Theater, Los Angeles",
-    category: "Movie",
-    type: "Film Screening",
-    description: "Immerse yourself in the golden age of cinema with a marathon of classic movies. From iconic comedies to timeless dramas, experience the magic of the silver screen.",
-    price: "$15",
-    schedule: "Every Sunday from 2:00 PM to 10:00 PM",
-    image: "https://img.freepik.com/free-photo/copy-space-lightbox-anf-popcorn_23-2148470128.jpg?w=740&t=st=1708117832~exp=1708118432~hmac=0934e6f639efd0a362526861432a0250ff445d77475f935a6f01092449eda5eb",
+    name: "Movie Night",
+    location: "Local Cinema",
+    category: "Movies 1",
+    type: "Indoor",
+    description: "Enjoy the latest blockbuster movies in the comfort of a local cinema.",
+    price: "$12",
+    schedule: "Every Friday at 7:00 PM",
+    image: "https://img.freepik.com/premium-psd/cinema-time-with-3d-glasses-popcorn_23-2148470121.jpg?w=740",
     rating: 4.5
   },
   {
-    id: 3,
-    name: "Stand-Up Comedy Night",
-    location: "Laugh Lounge, Chicago",
-    category: "Comedy Show",
-    type: "Stand-Up",
-    description: "Get ready for an evening filled with laughter and good vibes! Top comedians from around the country will tickle your funny bone with their hilarious performances.",
-    price: "$20",
-    schedule: "Every Wednesday and Thursday at 8:00 PM",
-    image: "https://img.freepik.com/free-vector/film-strip-with-light-effect-cinema-background_1017-38171.jpg?w=826&t=st=1708117659~exp=1708118259~hmac=8ddc4e8f89292c2509dbbe04a25ccdf364dcb3c8483562722200d93999817174",
-    rating: 4.7
+    "id": 3,
+    "name": "Live Concert",
+    "location": "City Arena",
+    "category": "Concerts",
+    "type": "Outdoor",
+    "description": "Experience the thrill of a live music performance at the iconic City Arena.",
+    "price": "$50",
+    "schedule": "Saturday, June 15th at 8:00 PM",
+    "image": "https://img.freepik.com/free-photo/crowd-fans-enjoying-rock-concert-during-festival_53876-64707.jpg?size=626&ext=jpg",
+    "rating": 4.8
   },
   {
-    id: 4,
-    name: "Magic Show Extravaganza",
-    location: "Mystique Theater, Las Vegas",
-    category: "Magic Show",
-    type: "Illusion",
-    description: "Prepare to be amazed as world-class illusionists take you on a journey through the realm of magic. Witness mind-bending tricks and breathtaking illusions that defy explanation.",
-    price: "$30",
-    schedule: "Every Friday and Saturday at 9:00 PM",
-    image: "https://img.freepik.com/free-vector/film-strip-with-light-effect-cinema-background_1017-38171.jpg?w=826&t=st=1708117659~exp=1708118259~hmac=8ddc4e8f89292c2509dbbe04a25ccdf364dcb3c8483562722200d93999817174",
-    rating: 4.9
+    "id": 4,
+    "name": "Stand-up Comedy Show",
+    "location": "Laugh House Comedy Club",
+    "category": "Comedy",
+    "type": "Indoor",
+    "description": "Laugh until your sides hurt with hilarious stand-up acts at Laugh House Comedy Club.",
+    "price": "$20",
+    "schedule": "Every Thursday at 9:00 PM",
+    "image": "https://img.freepik.com/free-photo/happy-comedian-telling-jokes-performing-stage_1150-25732.jpg?size=626&ext=jpg",
+    "rating": 4.6
   },
   {
-    id: 5,
-    name: "Art Exhibition: Beyond Boundaries",
-    location: "Metropolitan Museum of Art, New York",
-    category: "Art Exhibition",
-    type: "Showcase",
-    description: "Explore a world of artistic wonder at the Metropolitan Museum of Art. From classical masterpieces to contemporary creations, this exhibition transcends boundaries and inspires the imagination.",
-    price: "Free Admission",
-    schedule: "Ongoing Exhibition",
-    image: "https://img.freepik.com/free-photo/copy-space-lightbox-anf-popcorn_23-2148470128.jpg?w=740&t=st=1708117832~exp=1708118432~hmac=0934e6f639efd0a362526861432a0250ff445d77475f935a6f01092449eda5eb",
-    rating: 4.6
+    "id": 5,
+    "name": "Art Exhibition",
+    "location": "City Art Gallery",
+    "category": "Art",
+    "type": "Indoor",
+    "description": "Discover captivating artworks from local and international artists at the City Art Gallery.",
+    "price": "Free",
+    "schedule": "Open daily from 10:00 AM to 6:00 PM",
+    "image": "https://img.freepik.com/free-photo/blurred-exhibition-gallery-museum-abstract-art-display-background_1418-2195.jpg?size=626&ext=jpg",
+    "rating": 4.3
   },
+  {
+    id: 6,
+    name: "Movie Night",
+    location: "Local Cinema",
+    category: "Movies",
+    type: "Indoor",
+    description: "Enjoy the latest blockbuster movies in the comfort of a local cinema.",
+    price: "$12",
+    schedule: "Every Friday at 7:00 PM",
+    image: "https://img.freepik.com/free-photo/front-view-fresh-popcorn-pink-table-movie-cinema-color_140725-72928.jpg?w=740&t=st=1708120520~exp=1708121120~hmac=adc00452abc3bf2844ec524d54f89e5c63ef654fa19b0ca001d9981d11ddf3b4",
+    rating: 4.5
+  },
+  {
+    id: 7,
+    name: "Movie Night",
+    location: "Local Cinema",
+    category: "Movies 1",
+    type: "Indoor",
+    description: "Enjoy the latest blockbuster movies in the comfort of a local cinema.",
+    price: "$12",
+    schedule: "Every Friday at 7:00 PM",
+    image: "https://img.freepik.com/premium-psd/cinema-time-with-3d-glasses-popcorn_23-2148470121.jpg?w=740",
+    rating: 4.5
+  },
+  {
+    "id": 8,
+    "name": "Live Concert",
+    "location": "City Arena",
+    "category": "Concerts",
+    "type": "Outdoor",
+    "description": "Experience the thrill of a live music performance at the iconic City Arena.",
+    "price": "$50",
+    "schedule": "Saturday, June 15th at 8:00 PM",
+    "image": "https://img.freepik.com/free-photo/crowd-fans-enjoying-rock-concert-during-festival_53876-64707.jpg?size=626&ext=jpg",
+    "rating": 4.8
+  },
+  {
+    "id": 9,
+    "name": "Stand-up Comedy Show",
+    "location": "Laugh House Comedy Club",
+    "category": "Comedy",
+    "type": "Indoor",
+    "description": "Laugh until your sides hurt with hilarious stand-up acts at Laugh House Comedy Club.",
+    "price": "$20",
+    "schedule": "Every Thursday at 9:00 PM",
+    "image": "https://img.freepik.com/free-photo/happy-comedian-telling-jokes-performing-stage_1150-25732.jpg?size=626&ext=jpg",
+    "rating": 4.6
+  },
+  {
+    "id": 10,
+    "name": "Art Exhibition",
+    "location": "City Art Gallery",
+    "category": "Art",
+    "type": "Indoor",
+    "description": "Discover captivating artworks from local and international artists at the City Art Gallery.",
+    "price": "Free",
+    "schedule": "Open daily from 10:00 AM to 6:00 PM",
+    "image": "https://img.freepik.com/free-photo/blurred-exhibition-gallery-museum-abstract-art-display-background_1418-2195.jpg?size=626&ext=jpg",
+    "rating": 4.3
+  },
+  // Add more entertainment items here
 ];
-
 
 const itemsPerPage = 12;
 
@@ -162,19 +162,16 @@ const EntertainmentCard = ({ item }) => {
             <span>{item.type}</span>
           </div>
           <div className="__detail">
-          <i className="fas fa-star"></i> <span>{item.rating}</span>{" "}
-          <i className="fas fa-clock"></i> <span>3 km</span>
-            {/* Example rating */}
+            <i className="fas fa-star"></i> <span>{item.rating}</span>{" "}
+            <i className="fas fa-clock"></i> <span>3 km</span>
           </div>
-          <div className="__details">
+          <div className="__description">
+            {/* <p>{item.description}</p> */}
             <span onClick={toggleDetails} className="toggle-details">
-              See details{" "}
+              {showDetails ? "Hide schedule" : "See schedule"}{" "}
               <FontAwesomeIcon icon={faAngleDown} className={`toggle-icon ${showDetails ? 'rotate' : ''}`} />
             </span>
-            <div className={`details ${showDetails ? 'show' : ''}`}>
-              <p>{item.description}</p>
-              <p>Schedule: {item.schedule}</p>
-            </div>
+            {showDetails && <p><strong>Schedule:</strong> {item.schedule}</p>}
           </div>
         </div>
       </div>
