@@ -1,23 +1,36 @@
-/* Promotion.module.css */
+.promotion-card .latest-promo {
+  padding: 6px 28px;
+  border-radius: 2px 2rem 2px 2rem;
+  margin-right: 2px;
+  color: #fff;
+  display: inline-block;
+  background: linear-gradient(to right, #f0430e, #ffcc33);
+  box-shadow: 0 2px 4px rgba(252, 36, 36, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.promotion-card .latest-promo:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
 
 .promotion-card {
-  border: none;
+  border: 1px solid #ddd;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .promotion-card:hover {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  border-color: #aaa;
 }
 
 .promotion-card-body {
-  padding: 20px;
+  padding: 15px;
 }
 
 .promotion-card-title {
-  font-size: 25px;
-  font-weight: bold;
-  margin-bottom: 10px;
+  font-size: 28px;
 }
 
 .promotion-card-subtitle {
@@ -29,42 +42,40 @@
 .location {
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .location svg {
-  margin-right: 5px;
-  color: blue;
+  margin-right: 8px;
 }
 
 .offer {
   font-size: 1.2rem;
-  margin-bottom: 10px;
-  color: red;
+  margin-bottom: 15px;
+  color: #dc3545;
 }
 
 .description {
   color: #6c757d;
-  margin-top: 10px;
+  margin-top: 15px;
 }
 
 .carousel {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .carousel img {
-  height: 100%;
-  border-radius: 5px;
+  max-height: 300px;
+  border-radius: 8px;
 }
 
-
 .promotion-header {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .promotion-header h2 {
-  font-size: 30px;
+  font-size: 36px;
   font-weight: 600;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   color: rgb(223, 160, 3);
 }

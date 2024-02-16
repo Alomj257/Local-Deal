@@ -10,9 +10,19 @@ import Banner from "../../components/Banner/Banner";
 function Promotion() {
   const promotions = [
     {
-      businessName: "Hotel the plaza",
+      "businessName": "Taste of Italy 1",
+      "promotionType": "Restaurant",
+      "imageUrls": ["https://picsum.photos/320/180"],
+      "location": "Rome",
+      "promotionPlan": "Premium",
+      "offer": "Special Set Menu",
+      "description": "Savor the authentic flavors of Italy with our special set menu at Taste of Italy in the heart of Rome!",
+      "link": "https://example.com/taste-of-italy"
+    },
+    {
+      businessName: "Hotel the plaza 8",
       promotionType: "Hotel",
-      imageUrls: ["https://picsum.photos/318/180", "https://picsum.photos/319/180", "https://picsum.photos/320/180"],
+      imageUrls: ["https://picsum.photos/319/180", "https://picsum.photos/320/180"],
       location: "Cape Town",
       promotionPlan: "Basic",
       offer: "50% off",
@@ -20,7 +30,7 @@ function Promotion() {
       link: "https://example.com/og-the-sea"
     },
     {
-      businessName: "OG the see ",
+      businessName: "OG the see7 ",
       promotionType: "Food",
       imageUrls: ["https://picsum.photos/318/180", "https://picsum.photos/319/180", "https://picsum.photos/320/180"],
       location: "Kolkata",
@@ -30,7 +40,7 @@ function Promotion() {
       link: "https://example.com/og-the-sea"
     },
     {
-      "businessName": "Sunset Resort",
+      "businessName": "Sunset Resort 6",
       "promotionType": "Hotel",
       "imageUrls": ["https://picsum.photos/318/180", "https://picsum.photos/319/180", "https://picsum.photos/320/180"],
       "location": "Maui",
@@ -40,7 +50,7 @@ function Promotion() {
       "link": "https://example.com/sunset-resort"
     },
     {
-      "businessName": "Spice Village",
+      "businessName": "Spice Village 5",
       "promotionType": "Restaurant",
       "imageUrls": ["https://picsum.photos/318/180", "https://picsum.photos/319/180", "https://picsum.photos/320/180"],
       "location": "New Delhi",
@@ -50,7 +60,7 @@ function Promotion() {
       "link": "https://example.com/spice-village"
     },
     {
-      businessName: "Hotel the plaza",
+      businessName: "Hotel the plaza 4",
       promotionType: "Hotel",
       imageUrls: ["https://picsum.photos/318/180", "https://picsum.photos/319/180", "https://picsum.photos/320/180"],
       location: "Cape Town",
@@ -60,9 +70,9 @@ function Promotion() {
       link: "https://example.com/hotel-the-plaza"
     },
     {
-      businessName: "OG the see ",
+      businessName: "OG the see 3 ",
       promotionType: "Food",
-      imageUrls: ["https://picsum.photos/318/180", "https://picsum.photos/319/180", "https://picsum.photos/320/180"],
+      imageUrls: ["https://picsum.photos/318/180", "https://picsum.photos/320/180"],
       location: "Kolkata",
       promotionPlan: "Premium",
       offer: "50% off",
@@ -70,9 +80,9 @@ function Promotion() {
       link: "https://example.com/og-the-sea"
     },
     {
-      "businessName": "Mountain View",
+      "businessName": "Mountain View 2",
       "promotionType": "Hotel",
-      "imageUrls": ["https://picsum.photos/318/180", "https://picsum.photos/319/180", "https://picsum.photos/320/180"],
+      "imageUrls": ["https://picsum.photos/319/180", "https://picsum.photos/320/180"],
       "location": "Aspen",
       "promotionPlan": "Basic",
       "offer": "20% off",
@@ -80,15 +90,15 @@ function Promotion() {
       "link": "https://example.com/mountain-view-lodge"
     },
     {
-      "businessName": "Taste of Italy",
+      "businessName": "Taste of Italy 1",
       "promotionType": "Restaurant",
-      "imageUrls": ["https://picsum.photos/318/180", "https://picsum.photos/319/180", "https://picsum.photos/320/180"],
+      "imageUrls": ["https://picsum.photos/320/180"],
       "location": "Rome",
       "promotionPlan": "Premium",
       "offer": "Special Set Menu",
       "description": "Savor the authentic flavors of Italy with our special set menu at Taste of Italy in the heart of Rome!",
       "link": "https://example.com/taste-of-italy"
-    }
+    },
 
 
     // Add more promotions as needed
@@ -99,7 +109,7 @@ function Promotion() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentPromotionIndex((prevIndex) => (prevIndex + 1) % promotions.length);
-    }, 15000); // Change this interval as needed (in milliseconds)
+    }, 5000); // Change this interval as needed (in milliseconds)
 
     return () => clearInterval(interval);
   }, [promotions.length]);
@@ -119,6 +129,9 @@ function Promotion() {
       </Carousel>
     );
   };
+
+  // Get the three latest promotions
+  const latestPromotions = promotions.slice(0, 3);
 
   const DescriptionWithReadMore = ({ description }) => {
     const [expanded, setExpanded] = useState(false);
@@ -140,44 +153,40 @@ function Promotion() {
     );
   };
 
+
+
   const basicPromotions = promotions.filter(promotion => promotion.promotionPlan === "Basic");
   const premiumPromotions = promotions.filter(promotion => promotion.promotionPlan === "Premium");
 
   return (
     <Layout showNavbar={true} showFooter={true}>
       <Container>
-        <Row className='promotion-header'>
-          <Col>
-            <Row>
-              <Col md={12} xs={12} className="mb-4">
-                <Card className='promotion-card'>
-                  <Row>
-                    <Col md={6} className='p-5'>
-                      {renderCarousel(promotions[currentPromotionIndex].imageUrls)}
-                    </Col>
-                    <Col md={6} className='mt-5'>
-                      <CardBody>
-                        <CardTitle className='promotion-card-title'>{promotions[currentPromotionIndex].businessName}</CardTitle>
-                        <CardSubtitle className="mb-2 text-muted promotion-card-subtitle">{promotions[currentPromotionIndex].promotionType}</CardSubtitle>
-                        <CardText>
-                          <div className="location">
-                            <FaMapMarkerAlt /> {promotions[currentPromotionIndex].location}
-                          </div>
-                          <div className="offer">
-                            <strong>Offer:</strong> {promotions[currentPromotionIndex].offer}
-                          </div>
-                          <div className="description">
-                            <strong>Description:</strong> description={promotions[currentPromotionIndex].description}
-                          </div>
-                        </CardText>
-                      </CardBody>
-                    </Col>
-                  </Row>
-                </Card>
-              </Col>
-            </Row>
-          </Col>
-        </Row>
+        <Carousel>
+          {latestPromotions.map((promotion, index) => (
+            <Carousel.Item key={index}>
+              <div className='promotion-card' style={{ backgroundImage: `url(${promotion.imageUrls[0]})` }}>
+                <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '100%' }}>
+                  <CardBody className="text-center">
+                    <CardTitle className='promotion-card-title'><span className='latest-promo'>{promotion.businessName}</span></CardTitle>
+                    <CardSubtitle className="mb-2 text-muted promotion-card-subtitle"><span className='latest-promo'>{promotion.promotionType}</span></CardSubtitle>
+                    <CardText>
+                      <div className="text-center">
+                        <div className="offer">
+                          <span className='latest-promo'><strong>Offer:</strong> {promotion.offer}</span>
+                        </div>
+                        <div className="location d-flex align-items-center justify-content-center">
+                          <span className='latest-promo'><FaMapMarkerAlt style={{ marginRight: '5px' }} />
+                            {promotion.location}</span>
+                        </div>
+                      </div>
+                    </CardText>
+                  </CardBody>
+                </div>
+              </div>
+            </Carousel.Item>
+          ))}
+        </Carousel>
+
         <Row className='mt-5 p-2 promotion-header'>
           <Col>
             <h2>Premium Promotions</h2>
