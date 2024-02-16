@@ -20,6 +20,7 @@ const menuItems = [
     description:
       "Satisfy Your Tastebuds with Flavourful Chicken and Seafood at Mozambik",
     discount: "Save 26%",
+    rating: 4.3
   },
   {
     id: 2,
@@ -31,6 +32,7 @@ const menuItems = [
       "https://img.freepik.com/free-photo/fresh-pasta-with-hearty-bolognese-parmesan-cheese-generated-by-ai_188544-9469.jpg?w=826&t=st=1706554250~exp=1706554850~hmac=954c2e92a7dcabee57952d4ede7ca632f8b95a0308602b073e7aac072351351c",
     description: "A Deluxe Weekend Breakfast Buffet for 2",
     discount: "Save 35%",
+    rating: 4.7
   },
   {
     id: 3,
@@ -42,6 +44,7 @@ const menuItems = [
       "https://img.freepik.com/free-photo/gourmet-grilled-meat-plate-glowing-with-heat-generated-by-ai_188544-24644.jpg?w=826&t=st=1706554271~exp=1706554871~hmac=825d8a2d0b1587c459d549df1085ae31c49b62c8bab435a19fd8f03da36ce2fc",
     description: "Enjoy a Mouthwatering Chicken and Seafood Combo at Mozambik",
     discount: "Save 35%",
+    rating: 4
   },
   {
     id: 4,
@@ -54,6 +57,7 @@ const menuItems = [
     description:
       "Satisfy Your Tastebuds with Flavourful Chicken and Seafood at Mozambik",
     discount: "Save 26%",
+    rating: 4.0
   },
   {
     id: 5,
@@ -65,6 +69,7 @@ const menuItems = [
       "https://img.freepik.com/free-photo/penne-pasta-tomato-sauce-with-chicken-tomatoes-wooden-table_2829-19744.jpg?w=740&t=st=1706554350~exp=1706554950~hmac=3e6b0c6d52ef6ec59778877cddbf643bdb584f69430971f46209be077a146772",
     description: "A Deluxe Weekend Breakfast Buffet for 2",
     discount: "Save 35%",
+    rating: 4.7
   },
   {
     id: 6,
@@ -76,6 +81,7 @@ const menuItems = [
       "https://img.freepik.com/free-photo/traditional-indian-soup-lentils-indian-dhal-spicy-curry-bowl-spices-herbs-rustic-black-wooden-table_2829-18717.jpg?w=740&t=st=1706554369~exp=1706554969~hmac=06b1b6e8b74120ab43b22b29e2e13ea4d7f7a4af334b3ecf98a1bc61188ecdd8",
     description: "Enjoy a Mouthwatering Chicken and Seafood Combo at Mozambik",
     discount: "Save 35%",
+    rating: 4.1
   },
   {
     id: 7,
@@ -88,6 +94,7 @@ const menuItems = [
     description:
       "Satisfy Your Tastebuds with Flavourful Chicken and Seafood at Mozambik",
     discount: "Save 26%",
+    rating: 4.5
   },
   {
     id: 8,
@@ -99,6 +106,7 @@ const menuItems = [
       "https://img.freepik.com/free-photo/gourmet-grilled-meat-plate-glowing-with-heat-generated-by-ai_188544-24644.jpg?w=826&t=st=1706554271~exp=1706554871~hmac=825d8a2d0b1587c459d549df1085ae31c49b62c8bab435a19fd8f03da36ce2fc",
     description: "A Deluxe Weekend Breakfast Buffet for 2",
     discount: "Save 35%",
+    rating: 4.7
   },
   {
     id: 9,
@@ -110,6 +118,7 @@ const menuItems = [
       "https://img.freepik.com/free-photo/traditional-indian-soup-lentils-indian-dhal-spicy-curry-bowl-spices-herbs-rustic-black-wooden-table_2829-18717.jpg?w=740&t=st=1706554369~exp=1706554969~hmac=06b1b6e8b74120ab43b22b29e2e13ea4d7f7a4af334b3ecf98a1bc61188ecdd8",
     description: "Enjoy a Mouthwatering Chicken and Seafood Combo at Mozambik",
     discount: "Save 35%",
+    rating: 4.1
   },
   {
     id: 10,
@@ -122,6 +131,7 @@ const menuItems = [
     description:
       "Satisfy Your Tastebuds with Flavourful Chicken and Seafood at Mozambik",
     discount: "Save 26%",
+    rating: 4.5
   },
   {
     id: 11,
@@ -133,6 +143,7 @@ const menuItems = [
       "https://img.freepik.com/free-photo/traditional-indian-soup-lentils-indian-dhal-spicy-curry-bowl-spices-herbs-rustic-black-wooden-table_2829-18717.jpg?w=740&t=st=1706554369~exp=1706554969~hmac=06b1b6e8b74120ab43b22b29e2e13ea4d7f7a4af334b3ecf98a1bc61188ecdd8",
     description: "A Deluxe Weekend Breakfast Buffet for 2",
     discount: "Save 35%",
+    rating: 4.6
   },
   {
     id: 12,
@@ -144,6 +155,7 @@ const menuItems = [
       "https://img.freepik.com/free-photo/gourmet-grilled-meat-plate-glowing-with-heat-generated-by-ai_188544-24644.jpg?w=826&t=st=1706554271~exp=1706554871~hmac=825d8a2d0b1587c459d549df1085ae31c49b62c8bab435a19fd8f03da36ce2fc",
     description: "Enjoy a Mouthwatering Chicken and Seafood Combo at Mozambik",
     discount: "Save 35%",
+    rating: 4.1
   },
   {
     id: 13,
@@ -155,6 +167,7 @@ const menuItems = [
       "https://img.freepik.com/free-photo/traditional-indian-soup-lentils-indian-dhal-spicy-curry-bowl-spices-herbs-rustic-black-wooden-table_2829-18717.jpg?w=740&t=st=1706554369~exp=1706554969~hmac=06b1b6e8b74120ab43b22b29e2e13ea4d7f7a4af334b3ecf98a1bc61188ecdd8",
     description: "Enjoy a Mouthwatering Chicken and Seafood Combo at Mozambik",
     discount: "Save 35%",
+    rating: 4.2
   },
   // Add more menu items here...
 ];
@@ -182,7 +195,7 @@ const FoodCard = ({ item }) => {
             <span>{item.discount}</span>
           </div>
           <div className="__detail">
-            <i className="fas fa-star"></i> <span>5.0</span>{" "}
+          <i className="fas fa-star"></i> <span>{item.rating}</span>{" "}
             <i className="fas fa-clock"></i> <span>30 m</span>
           </div>
         </div>

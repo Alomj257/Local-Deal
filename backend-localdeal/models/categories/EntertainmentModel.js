@@ -10,6 +10,7 @@ const entertainmentSchema = new mongoose.Schema({
   price: String,
   schedule: String,
   image: String,
+  rating: Number,
 });
 
 const Entertainment = mongoose.model('Entertainment', entertainmentSchema);

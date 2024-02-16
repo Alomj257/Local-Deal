@@ -20,7 +20,8 @@ const accommodationItems = [
     image: "https://img.freepik.com/free-photo/modern-studio-apartment-design-with-bedroom-living-space_1262-12375.jpg?w=740&t=st=1707589100~exp=1707589700~hmac=8bfe997cb84d16421c68c9e8bbc7063e18db737c0ed3f60692d171fb2021afe4",
     description: "Luxurious accommodation with stunning views",
     facilities: ["Free Wi-Fi", "Swimming Pool", "Room Service"],
-    discount: "10% off" // Add discount information
+    discount: "10% off", // Add discount information
+    rating: 4.8
   },
   {
     "id": 2,
@@ -31,7 +32,8 @@ const accommodationItems = [
     "image": "https://img.freepik.com/free-photo/luxury-hotel-lobby-interior_1150-15761.jpg?size=626&ext=jpg",
     "description": "Experience unparalleled luxury and comfort in the heart of Maldives",
     "facilities": ["Private Beach Access", "Spa & Wellness Center", "Fine Dining Restaurants"],
-    "discount": "15% off"
+    "discount": "15% off",
+    "rating": 4.8
 },
 {
   "id": 3,
@@ -42,9 +44,10 @@ const accommodationItems = [
   "image": "https://img.freepik.com/free-photo/young-girls-travellers-sitting-lobby-hostel-hotel_74855-11619.jpg?size=626&ext=jpg",
   "description": "Affordable and cozy accommodation perfect for budget travelers",
   "facilities": ["Dormitory Beds", "Common Kitchen", "Free Breakfast"],
-  "discount": "35%"
+  "discount": "35%",
+  "rating": 4.8
 },
-{
+,{
   "id": 4,
   "name": "Charming Boutique Inn",
   "location": "Paris",
@@ -53,7 +56,8 @@ const accommodationItems = [
   "image": "https://img.freepik.com/free-photo/interior-design-modern-living-room-boutique-hotel_1262-18577.jpg?size=626&ext=jpg",
   "description": "Experience the charm of Paris in our intimate boutique hotel",
   "facilities": ["Vintage Decor", "Artisanal Breakfast", "Library Lounge"],
-  "discount": "20% off"
+  "discount": "20% off",
+  "rating": 4.8
 },
 {
   "id": 5,
@@ -64,7 +68,8 @@ const accommodationItems = [
   "image": "https://img.freepik.com/free-photo/modern-luxury-villa-sea-view-swimming-pool-sunbeds-santorini-greece_176420-290.jpg?size=626&ext=jpg",
   "description": "Escape to a private villa overlooking the Aegean Sea",
   "facilities": ["Private Pool", "Panoramic Views", "Fully Equipped Kitchen"],
-  "discount": "10% off"
+  "discount": "10% off",
+  "rating": 4.7
 },
 {
   "id": 6,
@@ -75,8 +80,9 @@ const accommodationItems = [
   "image": "https://img.freepik.com/free-photo/modern-studio-apartment-design-with-bedroom-living-space_1262-12375.jpg?size=626&ext=jpg",
   "description": "Spacious and modern apartments for extended stays",
   "facilities": ["Weekly Housekeeping", "Fitness Center", "Concierge Service"],
-  "discount": "5% off"
-},
+  "discount": "5% off",
+  "rating": 4.5
+,},
 {
   "id": 7,
   "name": "Tropical Paradise",
@@ -86,9 +92,10 @@ const accommodationItems = [
   "image": "https://img.freepik.com/free-photo/villa-pool_1203-1205.jpg?size=626&ext=jpg",
   "description": "Indulge in luxury surrounded by lush tropical landscapes",
   "facilities": ["Infinity Pool", "Private Villas", "Beachfront Dining"],
-  "discount": "13%"
+  "discount": "13%",
+  "rating": 4.1
 },
-{
+,{
   id: 8,
   name: "Accommodation 1",
   location: "Cape Town",
@@ -97,7 +104,8 @@ const accommodationItems = [
   image: "https://img.freepik.com/free-photo/modern-studio-apartment-design-with-bedroom-living-space_1262-12375.jpg?w=740&t=st=1707589100~exp=1707589700~hmac=8bfe997cb84d16421c68c9e8bbc7063e18db737c0ed3f60692d171fb2021afe4",
   description: "Luxurious accommodation with stunning views",
   facilities: ["Free Wi-Fi", "Swimming Pool", "Room Service"],
-  discount: "10% off" // Add discount information
+  discount: "10% off", // Add discount information
+  "rating": 4.3
 },
 {
   "id": 9,
@@ -108,7 +116,8 @@ const accommodationItems = [
   "image": "https://img.freepik.com/free-photo/luxury-hotel-lobby-interior_1150-15761.jpg?size=626&ext=jpg",
   "description": "Experience unparalleled luxury and comfort in the heart of Maldives",
   "facilities": ["Private Beach Access", "Spa & Wellness Center", "Fine Dining Restaurants"],
-  "discount": "15% off"
+  "discount": "15% off",
+  "rating": 4.8
 },
 {
 "id": 10,
@@ -119,9 +128,10 @@ const accommodationItems = [
 "image": "https://img.freepik.com/free-photo/young-girls-travellers-sitting-lobby-hostel-hotel_74855-11619.jpg?size=626&ext=jpg",
 "description": "Affordable and cozy accommodation perfect for budget travelers",
 "facilities": ["Dormitory Beds", "Common Kitchen", "Free Breakfast"],
-"discount": "35%"
+"discount": "35%",
+"rating": 4.9
 },
-{
+,{
 "id": 11,
 "name": "Charming Boutique Inn",
 "location": "Paris",
@@ -130,7 +140,8 @@ const accommodationItems = [
 "image": "https://img.freepik.com/free-photo/interior-design-modern-living-room-boutique-hotel_1262-18577.jpg?size=626&ext=jpg",
 "description": "Experience the charm of Paris in our intimate boutique hotel",
 "facilities": ["Vintage Decor", "Artisanal Breakfast", "Library Lounge"],
-"discount": "20% off"
+"discount": "20% off",
+"rating": 4.7
 },
 {
 "id": 12,
@@ -141,7 +152,8 @@ const accommodationItems = [
 "image": "https://img.freepik.com/free-photo/modern-luxury-villa-sea-view-swimming-pool-sunbeds-santorini-greece_176420-290.jpg?size=626&ext=jpg",
 "description": "Escape to a private villa overlooking the Aegean Sea",
 "facilities": ["Private Pool", "Panoramic Views", "Fully Equipped Kitchen"],
-"discount": "10% off"
+"discount": "10% off",
+"rating": 4.8
 },
 {
 "id": 13,
@@ -152,8 +164,9 @@ const accommodationItems = [
 "image": "https://img.freepik.com/free-photo/modern-studio-apartment-design-with-bedroom-living-space_1262-12375.jpg?size=626&ext=jpg",
 "description": "Spacious and modern apartments for extended stays",
 "facilities": ["Weekly Housekeeping", "Fitness Center", "Concierge Service"],
-"discount": "5% off"
-},
+"discount": "5% off",
+"rating": 5
+,},
 {
 "id": 14,
 "name": "Tropical Paradise",
@@ -163,9 +176,10 @@ const accommodationItems = [
 "image": "https://img.freepik.com/free-photo/villa-pool_1203-1205.jpg?size=626&ext=jpg",
 "description": "Indulge in luxury surrounded by lush tropical landscapes",
 "facilities": ["Infinity Pool", "Private Villas", "Beachfront Dining"],
-"discount": "13%"
+"discount": "13%",
+"rating": 4.8
 }
-  // Add more accommodation items here...
+ , // Add more accommodation items here...
 ];
 
 const itemsPerPage = 12;
@@ -197,7 +211,7 @@ const AccommodationCard = ({ item }) => {
             <span>{item.discount}</span>
           </div>
           <div className="__detail">
-            <i className="fas fa-star"></i> <span>5.0</span>{" "}
+          <i className="fas fa-star"></i> <span>{item.rating}</span>{" "}
             <i className="fas fa-clock"></i> <span>3 km</span>
             {/* Example rating */}
           </div>

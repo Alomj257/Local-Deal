@@ -5,11 +5,12 @@ const activitySchema = new mongoose.Schema({
   name: String,
   location: String,
   category: String,
-  date: Date,
-  duration: String,
+  price: String,
+  discount: String,
+  image: String,
   description: String,
   participants: [String],
-  image: String,
+  rating: Number,
 });
 
 const Activity = mongoose.model('Activity', activitySchema);

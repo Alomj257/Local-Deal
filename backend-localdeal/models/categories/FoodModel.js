@@ -9,6 +9,7 @@ const foodSchema = new mongoose.Schema({
   image: String,
   description: String,
   discount: String,
+  rating: Number,
 });
 
 const Food = mongoose.model('Food', foodSchema);

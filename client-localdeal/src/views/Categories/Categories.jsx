@@ -5,9 +5,10 @@ import { Container, Card, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Layout from "../../utils/Layout";
 import { FoodCard, menuItems } from "./Food/Food";
-import { AccommodationCard, accommodationItems} from "./Accommodation/Accommodation";
+import { AccommodationCard, accommodationItems } from "./Accommodation/Accommodation";
 import { HomestoreCard, homestoreItems } from "./Homestore/Homestore";
 import { BeautyCard, beautyItems } from "./Beauty/Beauty";
+import { ActivitiesCard, activitiesItems } from "./Activities/Activities";
 
 function Categories() {
   // Static data for demonstration purposes
@@ -66,9 +67,12 @@ function Categories() {
               </Link>
             ))}
           </div>
+          <Row>
+            <h2>Food</h2>
+          </Row>
 
           <Row>
-          {menuItems.map((item, index) => (
+            {menuItems.map((item, index) => (
               <Col
                 key={item.id}
                 xs={12}
@@ -76,12 +80,15 @@ function Categories() {
                 lg={3}
                 className="mb-5 mt-3"
               >
-                  <FoodCard key={index} item={item} />
+                <FoodCard key={index} item={item} />
               </Col>
             ))}
           </Row>
           <Row>
-          {accommodationItems.map((item, index) => (
+            <h2>Accommodation</h2>
+          </Row>
+          <Row>
+            {accommodationItems.map((item, index) => (
               <Col
                 key={item.id}
                 xs={12}
@@ -89,12 +96,15 @@ function Categories() {
                 lg={3}
                 className="mb-5 mt-3"
               >
-                  <AccommodationCard key={index} item={item} />
+                <AccommodationCard key={index} item={item} />
               </Col>
             ))}
           </Row>
           <Row>
-          {homestoreItems.map((item, index) => (
+            <h2>Home Store</h2>
+          </Row>
+          <Row>
+            {homestoreItems.map((item, index) => (
               <Col
                 key={item.id}
                 xs={12}
@@ -102,12 +112,15 @@ function Categories() {
                 lg={3}
                 className="mb-5 mt-3"
               >
-                  <HomestoreCard key={index} item={item} />
+                <HomestoreCard key={index} item={item} />
               </Col>
             ))}
           </Row>
           <Row>
-          {beautyItems.map((item, index) => (
+            <h2>Beauty</h2>
+          </Row>
+          <Row>
+            {beautyItems.map((item, index) => (
               <Col
                 key={item.id}
                 xs={12}
@@ -115,7 +128,23 @@ function Categories() {
                 lg={3}
                 className="mb-5 mt-3"
               >
-                  <BeautyCard key={index} item={item} />
+                <BeautyCard key={index} item={item} />
+              </Col>
+            ))}
+          </Row>
+          <Row>
+            <h2>Activities</h2>
+          </Row>
+          <Row>
+            {activitiesItems.map((item, index) => (
+              <Col
+                key={item.id}
+                xs={12}
+                md={4}
+                lg={3}
+                className="mb-5 mt-3"
+              >
+                <ActivitiesCard key={index} item={item} />
               </Col>
             ))}
           </Row>

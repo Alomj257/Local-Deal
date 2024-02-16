@@ -19,6 +19,7 @@ const homestoreItems = [
     image: "https://img.freepik.com/free-photo/gourmet-grilled-meat-plate-glowing-with-heat-generated-by-ai_188544-24644.jpg?w=826&t=st=1706554271~exp=1706554871~hmac=825d8a2d0b1587c459d549df1085ae31c49b62c8bab435a19fd8f03da36ce2fc",
     description: "Description of Product 1",
     discount: "10% off",
+    rating: 4.4,
     products: ["Product A", "Product B", "Product C"]
   },
   {
@@ -30,6 +31,7 @@ const homestoreItems = [
     image: "https://img.freepik.com/free-photo/modern-minimalistic-white-living-room-interior-design_144627-44068.jpg?w=826&t=st=1706554271~exp=1706554871~hmac=fb8749d229cb2f48d660db95e0a6ef102cbac01d7c42cd0e8540f99af76e54f3",
     description: "Luxurious sofa set for your living room",
     discount: "15% off",
+    rating: 4.5,
     products: ["3-seater sofa", "2-seater sofa", "Armchair"]
   },
   {
@@ -41,6 +43,7 @@ const homestoreItems = [
     image: "https://img.freepik.com/free-photo/classy-dining-room-interior_1262-12824.jpg?w=826&t=st=1706554271~exp=1706554871~hmac=4cf021d1d7ff4c9f042cbea7e1ae16f0b6ef1232c1b36b5aabb7fb686536e91d",
     description: "Complete bedroom set with bed and wardrobe",
     discount: "20% off",
+    rating: 4.9,
     products: ["Queen-size bed", "Wardrobe", "Bedside table"]
   },
   {
@@ -52,6 +55,7 @@ const homestoreItems = [
     image: "https://img.freepik.com/free-photo/classy-dining-room-interior_1262-12824.jpg?w=826&t=st=1706554271~exp=1706554871~hmac=4cf021d1d7ff4c9f042cbea7e1ae16f0b6ef1232c1b36b5aabb7fb686536e91d",
     description: "Elegant dining table set for your dining room",
     discount: "25% off",
+    rating: 5.0,
     products: ["Dining table", "Chairs (x4)", "Buffet table"]
   },
   {
@@ -63,6 +67,7 @@ const homestoreItems = [
     image: "https://img.freepik.com/free-photo/tv-living-room-modern-home-interior_58409-8513.jpg?w=826&t=st=1706554271~exp=1706554871~hmac=64f8a1a90a4529a014b5b9ccf29ad72b9e8a460b31a52a80e19ecbfa51f75b5d",
     description: "High-definition smart TV for ultimate entertainment",
     discount: "30% off",
+    rating: 3.8,
     products: ["Smart TV", "Remote control", "Wall mount"]
   },
   {
@@ -74,6 +79,7 @@ const homestoreItems = [
     image: "https://img.freepik.com/free-photo/modern-home-cinema-system-living-room-interior_58409-3331.jpg?w=826&t=st=1706554271~exp=1706554871~hmac=dd24676db005514899e560d674d5fc32ad88d1a3b548c0ee8bba63126c7f3c17",
     description: "Immersive home theater system for cinematic experience",
     discount: "35% off",
+    rating: 6.8,
     products: ["Soundbar", "Subwoofer", "Surround speakers"]
   },
   {
@@ -85,6 +91,7 @@ const homestoreItems = [
     image: "https://img.freepik.com/free-photo/interior-kitchen-room-white-cabinets-white-fridge-woman-stands-cabinet-takes-product_1150-20717.jpg?w=826&t=st=1706554271~exp=1706554871~hmac=5a94f27a13c4293a8a40e31b7a947cb445715a46c0250380bb3f0208945d27f3",
     description: "Essential kitchen appliances for your modern kitchen",
     discount: "15% off",
+    rating: 2.8,
     products: ["Refrigerator", "Microwave", "Toaster"]
   },
   {
@@ -96,6 +103,7 @@ const homestoreItems = [
     image: "https://img.freepik.com/free-photo/modern-home-cinema-system-living-room-interior_58409-3331.jpg?w=826&t=st=1706554271~exp=1706554871~hmac=dd24676db005514899e560d674d5fc32ad88d1a3b548c0ee8bba63126c7f3c17",
     description: "Keep your home safe and secure with advanced security system",
     discount: "10% off",
+    rating: 2.8,
     products: ["CCTV cameras (x4)", "Alarm system", "Smart door lock"]
   },
   {
@@ -107,6 +115,7 @@ const homestoreItems = [
     image: "https://img.freepik.com/free-photo/handsome-man-showing-touch-control-panel-with-automation-icons_1098-22221.jpg?w=826&t=st=1706554271~exp=1706554871~hmac=67fdca57c040d4e4dfb1f3cf47270706dbf7b27e1e41ed05b68870073df8e0cf",
     description: "Make your home smarter with these intelligent devices",
     discount: "20% off",
+    rating: 4.8,
     products: ["Smart speaker", "Smart bulbs (x3)", "Smart thermostat"]
   },
   {
@@ -118,6 +127,7 @@ const homestoreItems = [
     image:"https://img.freepik.com/free-photo/modern-home-cinema-system-living-room-interior_58409-3331.jpg?w=826&t=st=1706554271~exp=1706554871~hmac=dd24676db005514899e560d674d5fc32ad88d1a3b548c0ee8bba63126c7f3c17",
     description: "Stylish desk for your productive home office",
     discount: "10% off",
+    rating: 3.9,
     products: ["Desk", "Office chair", "Desk lamp"]
   },
   {
@@ -129,6 +139,7 @@ const homestoreItems = [
     image: "https://img.freepik.com/free-photo/open-modern-fridge-full-fresh-food-healthy-eating-concept_155003-22183.jpg?w=826&t=st=1706554271~exp=1706554871~hmac=2d0a30bfc67e5c0b9ae9a5c189af71a9ff6c17f4242352926dcd3f0526072be2",
     description: "High-tech refrigerator with smart features for convenience",
     discount: "15% off",
+    rating: 4.1,
     products: ["Smart refrigerator", "Ice maker", "Vegetable drawer"]
   },
   {
@@ -140,6 +151,7 @@ const homestoreItems = [
     image: "https://img.freepik.com/free-photo/luxury-garden-furniture-set-home-garden-gazebo-outdoor-living-patio-furniture_1150-14192.jpg?w=826&t=st=1706554271~exp=1706554871~hmac=480d0e6ec52f169a0f7eafcb9d4879646f69e62d0c72ec7612608ffeb562d109",
     description: "Relax in your garden with this elegant furniture set",
     discount: "20% off",
+    rating: 4.6,
     products: ["Table", "Chairs (x4)", "Umbrella"]
   },
   {
@@ -151,6 +163,7 @@ const homestoreItems = [
     image: "https://img.freepik.com/free-photo/open-modern-fridge-full-fresh-food-healthy-eating-concept_155003-22183.jpg?w=826&t=st=1706554271~exp=1706554871~hmac=2d0a30bfc67e5c0b9ae9a5c189af71a9ff6c17f4242352926dcd3f0526072be2",
     description: "High-tech refrigerator with smart features for convenience",
     discount: "15% off",
+    rating: 4.7,
     products: ["Smart refrigerator", "Ice maker", "Vegetable drawer"]
   }
 ];
@@ -185,7 +198,7 @@ const HomestoreCard = ({ item }) => {
             <span>{item.discount}</span>
           </div>
           <div className="__detail">
-            <i className="fas fa-star"></i> <span>5.0</span>{" "}
+          <i className="fas fa-star"></i> <span>{item.rating}</span>{" "}
             <i className="fas fa-clock"></i> <span>3 km</span>
             {/* Example rating */}
           </div>

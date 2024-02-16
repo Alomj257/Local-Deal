@@ -6,10 +6,11 @@ const accommodationSchema = new mongoose.Schema({
   location: String,
   category: String,
   price: String,
-  image: String,
   discount: String,
+  image: String,
   description: String,
   facilities: [String],
+  rating: Number,
 });
 
 const Accommodation = mongoose.model('Accommodation', accommodationSchema);

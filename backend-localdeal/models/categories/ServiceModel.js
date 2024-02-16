@@ -9,6 +9,7 @@ const serviceSchema = new mongoose.Schema({
   provider: String,
   duration: String,
   image: String,
+  rating: Number,
 });
 
 const Service = mongoose.model('Service', serviceSchema);

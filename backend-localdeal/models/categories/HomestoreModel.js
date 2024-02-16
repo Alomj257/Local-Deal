@@ -10,6 +10,7 @@ const homestoreSchema = new mongoose.Schema({
   description: String,
   discount: String,
   products: [String],
+  rating: Number
 });
 
 const Homestore = mongoose.model('Homestore', homestoreSchema);
