@@ -168,7 +168,7 @@ const UserTable = () => {
                       <Modal
                         btnText={<MdDelete size={20} />}
                         btnClasss="btn  btn-transpenrent text-white"
-                        bodyClass="bg-danger border card col-7  col-sm-5 col-md-3"
+                        bodyClass="bg-white border card"
                       >
                         <DeleteAdmin onUserDelete={handleDelete} user={user} />
                       </Modal>
