@@ -10,6 +10,7 @@ import image3 from "../../assets/homeimages/5.png";
 import image4 from "../../assets/homeimages/Collections.png";
 import image5 from "../../assets/homeimages/Features.png";
 import Layout from "../../utils/Layout";
+import Pricing from "../../components/Pricing/Pricing";
 
 const images = [image1, image2, image3, image4, image5];
 
@@ -72,6 +73,7 @@ const Home = () => {
         <Service />
         <BrandSection />
         <Testimonial />
+        <Pricing />
         <Banner />
       </Layout>
     </>

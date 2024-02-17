@@ -7,7 +7,7 @@ import useFetch from "../../../Hooks/useFetch";
 import Modal from "../../../utils/Modal/Modal";
 import ViewUser from "./ViewUser";
 import UpdateAdmin from "./UpdateAdmin";
-import DeleteAdmin from "./DeleteAdminn";
+import DeleteAdmin from "./DeleteAdmin";
 import AddUser from "../AddUser/AddUser";
 
 const UserTable = () => {

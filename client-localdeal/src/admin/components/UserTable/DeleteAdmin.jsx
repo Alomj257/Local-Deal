@@ -2,7 +2,6 @@ import React from "react";
 import { MdDelete } from "react-icons/md";
 import { deleteAdmin } from "../../../services/adminService";
 import { toast } from "react-toastify";
-import useFetch from "../../../Hooks/useFetch";
 
 const DeleteAdmin = ({ user, onUserDelete }) => {
   const handledelete = async (id) => {
