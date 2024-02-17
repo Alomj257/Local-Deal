@@ -169,12 +169,8 @@ const UserTable = () => {
                       <Modal
                         btnText={<MdDelete size={20} />}
                         btnClasss="btn  btn-transpenrent text-white"
-<<<<<<< Updated upstream
-                        bodyClass="bg-white border card"
-=======
                         bodyClass="bg-danger border card col-7  col-sm-5 col-md-3"
                         closeIcon="fs-1 text-dark"
->>>>>>> Stashed changes
                       >
                         <DeleteAdmin onUserDelete={handleDelete} user={user} />
                       </Modal>
