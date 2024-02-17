@@ -83,7 +83,8 @@ const UserTable = () => {
               type="text"
               placeholder="Search..."
               onChange={handleSearch}
-              className="form-control "
+              className="form-control"
+              style={{borderRadius: '2rem', border:'none'}}
             />
             <span
               className="p-2  table-icons  rounded-circle"
@@ -169,7 +170,7 @@ const UserTable = () => {
                       <Modal
                         btnText={<MdDelete size={20} />}
                         btnClasss="btn  btn-transpenrent text-white"
-                        bodyClass="bg-danger border card col-7  col-sm-5 col-md-3"
+                        bodyClass="bg-white border card"
                         closeIcon="fs-1 text-dark"
                       >
                         <DeleteAdmin onUserDelete={handleDelete} user={user} />
