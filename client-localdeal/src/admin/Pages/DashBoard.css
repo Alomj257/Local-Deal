@@ -1,6 +1,5 @@
 .dashboard .profile{
     cursor: pointer;
-   
 }
 .dashboard .profile img{
     width: 2rem;
@@ -30,4 +29,14 @@
 .not-profile-list{
     height: 0;
     overflow: hidden;
+}
+
+.admin-outlet{
+    height: 88vh;
+    overflow: scroll;
+    -ms-overflow-style: none;  
+  scrollbar-width: none; 
+}
+.admin-outlet::-webkit-scrollbar{
+    display: none;
 }

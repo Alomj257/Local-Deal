@@ -36,10 +36,10 @@ const UpdateAdmin = ({ oldUser, onUserUpdate }) => {
 
   return (
     <div className="container">
-      <div className="add-user">
+      <div className="add-user text-dark">
         <h3 className="text-center fw-bold">Update Admin</h3>
         <form className="add-user-form text-start" onSubmit={handleSubmit}>
-          <div className="row row-cols-md-2">
+          <div className="row row-cols-md-2 text-dark">
             <div className="form-group">
               <label htmlFor="name">Name</label>
               <input

@@ -93,7 +93,7 @@ const loginAdmin = async (req, res) => {
     }
 
     const token = jwt.sign({ adminId: admin._id }, "yourSecretKey", {
-      expiresIn: "1h",
+      expiresIn: "3h",
     });
 
     res.json({ token, admin });

@@ -22,6 +22,14 @@ import PromotionAdmin from "./admin/Pages/Promotion";
 import Settings from "./admin/Pages/Settings";
 import Logout from "./admin/Pages/Logout";
 import { ToastContainer } from "react-toastify";
+import AdminFood from "./admin/Pages/Category/Food";
+import AdminCategory from "./admin/Pages/Category/Category";
+import AdminAccomodation from "./admin/Pages/Category/Accomodation";
+import AdminEntertaiment from "./admin/Pages/Category/Entertaiment";
+import AdminActivities from "./admin/Pages/Category/Activities";
+import AdminService from "./admin/Pages/Category/Service";
+import AdminBeaty from "./admin/Pages/Category/Beaty";
+import AdminHome from "./admin/Pages/Category/Home";
 
 const App = () => {
   return (
@@ -49,6 +57,15 @@ const App = () => {
             <Route path="users" element={<User />} />
             <Route path="promotion" element={<PromotionAdmin />} />
             <Route path="setting" element={<Settings />} />
+            <Route path="category" element={<AdminCategory />}>
+              <Route path="food" element={<AdminFood />} />
+              <Route path="accomodation" element={<AdminAccomodation />} />
+              <Route path="entertainment" element={<AdminEntertaiment />} />
+              <Route path="activities" element={<AdminActivities />} />
+              <Route path="service" element={<AdminService />} />
+              <Route path="beauty" element={<AdminBeaty />} />
+              <Route path="home" element={<AdminHome />} />
+            </Route>
             <Route path="logout" element={<Logout />} />
           </Route>
         </Routes>
