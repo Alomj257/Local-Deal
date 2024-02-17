@@ -21,7 +21,7 @@ const DeleteAdmin = ({ user, onUserDelete }) => {
       <div className="d-flex justify-content-between">
         <button
           onClick={() => onUserDelete()}
-          className="btn btn-secondary fw-bold d-flex w-100 justify-content-center fw-5"
+          className="btn btn-secondary fw-bold d-flex w-100 justify-content-center fw-5 mr-2"
         >
           Cancel
         </button>

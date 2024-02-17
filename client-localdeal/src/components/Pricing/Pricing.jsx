@@ -8,7 +8,6 @@ const Pricing = () => {
       <Container className="pricing py-5">
         <Row><h2 className='text-center mb-5' style={{color:'white', fontWeight:'400'}}>Save money and take your business to <br /><strong style={{color:'gold', fontWeight:'800'}}>the next level</strong></h2></Row>
         <Row>
-          {/* Free Tier */}
           <Col xs={12} md={4} lg={4}>
             <Card className="mb-5 mb-lg-0">
               <Card.Body>
@@ -30,7 +29,6 @@ const Pricing = () => {
               </Card.Body>
             </Card>
           </Col>
-          {/* Plus Tier */}
           <Col xs={12} md={4} lg={4}>
             <Card className="mb-5 mb-lg-0">
               <Card.Body>
@@ -52,7 +50,6 @@ const Pricing = () => {
               </Card.Body>
             </Card>
           </Col>
-          {/* Pro Tier */}
           <Col xs={12} md={4} lg={4}>
             <Card>
               <Card.Body>

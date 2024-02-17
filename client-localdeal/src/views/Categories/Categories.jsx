@@ -10,6 +10,7 @@ import { HomestoreCard, homestoreItems } from "./Homestore/Homestore";
 import { BeautyCard, beautyItems } from "./Beauty/Beauty";
 import { ActivitiesCard, activitiesItems } from "./Activities/Activities";
 import { EntertainmentCard, entertainmentItems } from "./Entertainment/Entertainment";
+import { ServiceCard, serviceItems } from "./Services/Services";
 
 function Categories() {
   // Static data for demonstration purposes
@@ -162,6 +163,19 @@ function Categories() {
                 className="mb-5 mt-3"
               >
                 <EntertainmentCard key={index} item={item} />
+              </Col>
+            ))}
+          </Row>
+          <Row>
+            {serviceItems.map((item, index) => (
+              <Col
+                key={item.id}
+                xs={12}
+                md={4}
+                lg={3}
+                className="mb-5 mt-3"
+              >
+                <ServiceCard key={index} item={item} />
               </Col>
             ))}
           </Row>
