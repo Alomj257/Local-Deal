@@ -167,6 +167,9 @@ function Categories() {
             ))}
           </Row>
           <Row>
+            <h2>Services</h2>
+          </Row>
+          <Row>
             {serviceItems.map((item, index) => (
               <Col
                 key={item.id}
