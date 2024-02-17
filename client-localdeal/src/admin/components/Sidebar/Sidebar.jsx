@@ -50,37 +50,37 @@ function Sidebar() {
           {/* <span className="tooltip">Category</span> */}
           <ul className="sub-menu">
             <li>
-              <Link to="/admin/category1" className="links_name">
+              <Link to="/admin/category/food" className="links_name">
                 Food
               </Link>
             </li>
             <li>
-              <Link to="/admin/category2" className="links_name">
+              <Link to="/admin/category/accomodation" className="links_name">
                 Accommodation
               </Link>
             </li>
             <li>
-              <Link to="/admin/category2" className="links_name">
+              <Link to="/admin/category/entertainment" className="links_name">
                 Entertainment
               </Link>
             </li>
             <li>
-              <Link to="/admin/category2" className="links_name">
+              <Link to="/admin/category/activities" className="links_name">
                 Activities
               </Link>
             </li>
             <li>
-              <Link to="/admin/category2" className="links_name">
+              <Link to="/admin/category/service" className="links_name">
                 Services
               </Link>
             </li>
             <li>
-              <Link to="/admin/category2" className="links_name">
+              <Link to="/admin/category/beauty" className="links_name">
                 Beauty
               </Link>
             </li>
             <li>
-              <Link to="/admin/category2" className="links_name">
+              <Link to="/admin/category/home" className="links_name">
                 Home
               </Link>
             </li>

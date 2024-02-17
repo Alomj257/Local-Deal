@@ -16,7 +16,7 @@ import {
 const ViewUser = ({ user }) => {
   return (
     <div className="container  mb-5">
-      <div className="d-flex justify-content-center flex-column">
+      <div className="d-flex flex-column text-dark">
         <div className="border rounded-circle m-auto shadow p-1  border-4">
           <img
             src={`http://localhost:5000${user?.profile}`}
@@ -30,7 +30,7 @@ const ViewUser = ({ user }) => {
           {user?.address + ", " + user?.nationality}
         </p>
       </div>
-      <div className="row row-cols-md-2 text-capitalize">
+      <div className="row row-cols-md-2 text-start text-dark text-capitalize">
         <div className=" border-bottom pt-3 ">
           <MdPeopleAlt
             size={25}

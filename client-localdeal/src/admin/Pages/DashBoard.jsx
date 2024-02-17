@@ -68,7 +68,9 @@ const DashBoard = () => {
               <li onClick={handleLogout}>Logout</li>
             </ul>
           </div>
-          <Outlet />
+          <div className="admin-outlet">
+            <Outlet />
+          </div>
         </main>
       </div>
     </>

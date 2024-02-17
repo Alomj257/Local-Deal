@@ -151,6 +151,7 @@ const UserTable = () => {
                         btnText={<FaRegEdit size={20} />}
                         btnClasss="btn btn-transpenrent mr-2 text-white"
                         bodyClass="bg-white  col-sm-8 col-md-6"
+                        closeIcon="fs-1 text-dark"
                       >
                         <UpdateAdmin
                           oldUser={user}
@@ -161,14 +162,19 @@ const UserTable = () => {
                         btnText={<FaEye size={20} />}
                         btnClasss="btn  btn-transpenrent mr-2 text-white"
                         bodyClass="bg-light  col-sm-8 col-md-6"
-                        closeIcon="fs-1 "
+                        closeIcon="fs-1 text-dark "
                       >
                         <ViewUser user={user} />
                       </Modal>
                       <Modal
                         btnText={<MdDelete size={20} />}
                         btnClasss="btn  btn-transpenrent text-white"
+<<<<<<< Updated upstream
                         bodyClass="bg-white border card"
+=======
+                        bodyClass="bg-danger border card col-7  col-sm-5 col-md-3"
+                        closeIcon="fs-1 text-dark"
+>>>>>>> Stashed changes
                       >
                         <DeleteAdmin onUserDelete={handleDelete} user={user} />
                       </Modal>
