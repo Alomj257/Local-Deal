@@ -24,7 +24,7 @@ const AdminLogin = () => {
       console.log("Login successful, token:", response);
       setAuth({ ...auth, user: response?.admin, token: response?.token });
       // localStorage.setItem("auth", JSON.stringify(response));
-      Cookie.set("auth", JSON.stringify(response), { expires: 2 });
+      Cookie.set("auth", JSON.stringify(response), { expires: 1 / 24 });
       // Clear username and password after successful login
       setUsername("");
       setPassword("");

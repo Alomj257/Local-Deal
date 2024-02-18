@@ -5,7 +5,10 @@ const AdminAccomodation = () => {
   return (
     <div>
       <div className="">
-        <UserTable title=" Accomodation Category List" />
+        <UserTable
+          title=" Accomodation Category List"
+          url="/categories/services"
+        />
       </div>
     </div>
   );

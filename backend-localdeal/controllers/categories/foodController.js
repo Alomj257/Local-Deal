@@ -1,5 +1,5 @@
 // controllers/categories/FoodController.js
-const Food = require('../../models/categories/FoodModel');
+const Food = require("../../models/categories/FoodModel");
 
 const getAllFoods = async (req, res) => {
   try {
@@ -14,7 +14,7 @@ const getFoodById = async (req, res) => {
   try {
     const food = await Food.findById(req.params.id);
     if (!food) {
-      return res.status(404).json({ message: 'Food not found' });
+      return res.status(404).json({ message: "Food not found" });
     }
     res.json(food);
   } catch (error) {
@@ -24,6 +24,10 @@ const getFoodById = async (req, res) => {
 
 const createFood = async (req, res) => {
   try {
+    if (req.file) {
+      req.body.image = "/category/image/" + req?.file?.originalname;
+      req.body.imagepath = req?.file?.path;
+    }
     const newFood = await Food.create(req.body);
     res.status(201).json(newFood);
   } catch (error) {
@@ -33,9 +37,11 @@ const createFood = async (req, res) => {
 
 const updateFood = async (req, res) => {
   try {
-    const updatedFood = await Food.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    const updatedFood = await Food.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
     if (!updatedFood) {
-      return res.status(404).json({ message: 'Food not found' });
+      return res.status(404).json({ message: "Food not found" });
     }
     res.json(updatedFood);
   } catch (error) {
@@ -47,7 +53,7 @@ const deleteFood = async (req, res) => {
   try {
     const deletedFood = await Food.findByIdAndDelete(req.params.id);
     if (!deletedFood) {
-      return res.status(404).json({ message: 'Food not found' });
+      return res.status(404).json({ message: "Food not found" });
     }
     res.json(deletedFood);
   } catch (error) {

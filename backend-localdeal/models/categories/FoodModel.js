@@ -1,5 +1,5 @@
 // models/categories/FoodModel.js
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const foodSchema = new mongoose.Schema({
   name: String,
@@ -7,11 +7,12 @@ const foodSchema = new mongoose.Schema({
   category: String,
   price: String,
   image: String,
+  imagepath: String,
   description: String,
   discount: String,
   rating: Number,
 });
 
-const Food = mongoose.model('Food', foodSchema);
+const Food = mongoose.model("Food", foodSchema);
 
 module.exports = Food;

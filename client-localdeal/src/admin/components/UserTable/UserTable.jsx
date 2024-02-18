@@ -12,14 +12,12 @@ import UpdateAdmin from "./UpdateAdmin";
 import DeleteAdmin from "./DeleteAdmin";
 import AddUser from "../AddUser/AddUser";
 
-const UserTable = ({ title }) => {
+const UserTable = ({ title, url, type }) => {
   const [users, setUsers] = useState([]);
   const [page] = useState(10);
   const [curPage, setCurPage] = useState(1);
   const [filteredUsers, setFilteredUsers] = useState([]);
-  const { data, loading, reFetch } = useFetch(
-    `/admin/users?limit=${page * curPage}`
-  );
+  const { data, loading, reFetch } = useFetch(`${url}?limit=${page * curPage}`);
 
   const toggleStatus = (id) => {
     setUsers((prevUsers) =>
@@ -37,12 +35,23 @@ const UserTable = ({ title }) => {
     setUsers(Array.isArray(data) ? data : []);
     setFilteredUsers(Array.isArray(data) ? data : []);
   }, [data]);
+
+  const columns = [];
+  if (data[0]) {
+    for (const [key] of Object.entries(data[0])) {
+      if (key !== "_id" && key !== "__v") {
+        columns.push(key);
+      }
+    }
+  }
+  console.log(columns);
+
   const handleFiltered = (value) => {
     const filteredData = users.filter(
       (user) =>
-        user.name.toLowerCase().includes(value.toLowerCase()) ||
-        user.email.toLowerCase().includes(value.toLowerCase()) ||
-        user.phoneNo.toLowerCase().includes(value.toLowerCase())
+        user[columns[0]]?.toLowerCase()?.includes(value?.toLowerCase()) ||
+        user[columns[1]]?.toLowerCase()?.includes(value.toLowerCase()) ||
+        user[columns[2]]?.toLowerCase().includes(value.toLowerCase())
     );
     setFilteredUsers(filteredData);
   };
@@ -109,12 +118,25 @@ const UserTable = ({ title }) => {
             >
               <tr>
                 <th scope="col">S. No.</th>
-                <th scope="col">Name</th>
-                <th scope="col">Email</th>
-                <th scope="col">Gender</th>
-                <th scope="col">Contact</th>
-                <th scope="col">Role</th>
-                <th scope="col">Status</th>
+                {columns.map((c, ckey) => {
+                  return (
+                    <>
+                      {ckey < 7 && (
+                        <th key={ckey} scope="col" className="text-capitalize">
+                          {c}
+                        </th>
+                      )}
+                    </>
+                  );
+                })}
+
+                {type === "user" && (
+                  <>
+                    {" "}
+                    <th scope="col">Status</th>
+                    <th scope="col">Enable</th>{" "}
+                  </>
+                )}
                 <th scope="col">Actions</th>
               </tr>
             </thead>
@@ -129,25 +151,47 @@ const UserTable = ({ title }) => {
                 filteredUsers?.map((user, key) => (
                   <tr key={user?._id}>
                     <td>{key + 1}</td>
-                    <td>{user?.name}</td>
-                    <td>{user?.email}</td>
-                    <td>{user?.gender}</td>
-                    <td>{user?.phoneNo}</td>
-                    <td>{user?.role}</td>
-                    <td
-                      style={{
-                        color: user?.status === "Active" ? "green" : "red",
-                      }}
-                    >
-                      {user?.status}
-                    </td>
+                    {columns.map((c, ckey) => {
+                      console.log(user[c]);
+                      return (
+                        <>
+                          {ckey < 7 && (
+                            <td key={ckey} className="text-capitalize">
+                              {c === "image" ? (
+                                <img
+                                  src={`http://localhost:5000${user[c]}`}
+                                  alt="img"
+                                  className="rounded"
+                                  style={{ width: "5rem" }}
+                                />
+                              ) : (
+                                user[c]?.slice(0, 15)
+                              )}
+                            </td>
+                          )}
+                        </>
+                      );
+                    })}
+                    {type === "user" && (
+                      <>
+                        {" "}
+                        <td
+                          style={{
+                            color: user?.status === "Active" ? "green" : "red",
+                          }}
+                        >
+                          {user?.status}
+                        </td>
+                        <td>
+                          <Switch
+                            defaultChecked={user?.status === "Active"}
+                            color="primary"
+                            onChange={() => toggleStatus(user?.id)}
+                          />
+                        </td>
+                      </>
+                    )}
                     <td>
-                      <Switch
-                        defaultChecked={user?.status === "Active"}
-                        color="primary"
-                        onChange={() => toggleStatus(user?.id)}
-                      />
-
                       <Modal
                         btnText={<FaRegEdit size={20} />}
                         btnClasss="btn btn-transpenrent mr-2 text-white"
