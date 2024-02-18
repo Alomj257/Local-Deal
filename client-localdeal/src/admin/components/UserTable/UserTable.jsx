@@ -12,7 +12,7 @@ import UpdateAdmin from "./UpdateAdmin";
 import DeleteAdmin from "./DeleteAdmin";
 import AddUser from "../AddUser/AddUser";
 
-const UserTable = () => {
+const UserTable = ({ title }) => {
   const [users, setUsers] = useState([]);
   const [page] = useState(10);
   const [curPage, setCurPage] = useState(1);
@@ -65,39 +65,39 @@ const UserTable = () => {
     <>
       <div className="user-table p-3 rounded">
         <div className="d-flex justify-content-between mb-3 ">
-          <div className="">
+          <div className="d-flex">
+            <h3 className="m-auto text-white">{title}</h3>
+          </div>
+          <div className="d-flex gap-4">
+            <input
+              type="text"
+              placeholder="Search..."
+              onChange={handleSearch}
+              className="form-control m-auto "
+            />
+            <span
+              className="p-2  table-icons m-auto  rounded-circle"
+              onClick={handleUserUpdate}
+            >
+              <TfiReload size={20} className=" " />
+            </span>
+            <span className="p-2  table-icons  m-auto rounded-circle">
+              <FaFilePdf size={20} className=" " />
+            </span>
+            <span className="p-2  table-icons m-auto rounded-circle">
+              <FaFileExcel size={20} className=" " />
+            </span>
             <Modal
-              btnClasss="add-user-btn btn me-2 fw-bold"
+              btnClasss="table-icons btn rounded-circle"
               bodyClass="bg-white col-sm-8 col-md-6"
               btnText={
                 <>
-                  <MdAddBox /> <> Add User</>
+                  <MdAddBox size={25} />
                 </>
               }
             >
               <AddUser onUserAdd={handleAddUser} />
             </Modal>
-          </div>
-          <div className="d-flex gap-2">
-            <input
-              type="text"
-              placeholder="Search..."
-              onChange={handleSearch}
-              className="form-control"
-              style={{borderRadius: '2rem', border:'none'}}
-            />
-            <span
-              className="p-2  table-icons  rounded-circle"
-              onClick={handleUserUpdate}
-            >
-              <TfiReload size={20} className=" " />
-            </span>
-            <span className="p-2  table-icons  rounded-circle">
-              <FaFilePdf size={20} className=" " />
-            </span>
-            <span className="p-2  table-icons  rounded-circle">
-              <FaFileExcel size={20} className=" " />
-            </span>
           </div>
         </div>
         <div>

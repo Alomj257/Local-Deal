@@ -5,10 +5,7 @@ const AdminAccomodation = () => {
   return (
     <div>
       <div className="">
-        <h3 className="fw-bold my-3 text-primary">
-          Accomodation Category List
-        </h3>
-        <UserTable />
+        <UserTable title=" Accomodation Category List" />
       </div>
     </div>
   );

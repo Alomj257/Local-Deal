@@ -4,8 +4,7 @@ import UserTable from "../../components/UserTable/UserTable";
 const AdminFood = () => {
   return (
     <div className="">
-      <h3 className="fw-bold my-3 text-primary">Food Category List</h3>
-      <UserTable />
+      <UserTable title="Food Category List" />
     </div>
   );
 };
