@@ -5,8 +5,8 @@ import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 const Pricing = () => {
   return (
     <section>
-      <Container className="pricing py-5">
-        <Row><h2 className='text-center mb-5' style={{color:'white', fontWeight:'400'}}>Save money and take your business to <br /><strong style={{color:'gold', fontWeight:'800'}}>the next level</strong></h2></Row>
+      <Container className="pricing">
+        <Row><h2 className='text-center mb-5' style={{color:'black', fontWeight:'400'}}>Save money and take your business to <br /><strong style={{color:'gold', fontWeight:'800'}}>the next level</strong></h2></Row>
         <Row>
           <Col xs={12} md={4} lg={4}>
             <Card className="mb-5 mb-lg-0">

@@ -11,6 +11,7 @@ import image4 from "../../assets/homeimages/Collections.png";
 import image5 from "../../assets/homeimages/Features.png";
 import Layout from "../../utils/Layout";
 import Pricing from "../../components/Pricing/Pricing";
+import Faq from "../../components/Faq/Faq";
 
 const images = [image1, image2, image3, image4, image5];
 
@@ -74,6 +75,7 @@ const Home = () => {
         <BrandSection />
         <Testimonial />
         <Pricing />
+        <Faq />
         <Banner />
       </Layout>
     </>

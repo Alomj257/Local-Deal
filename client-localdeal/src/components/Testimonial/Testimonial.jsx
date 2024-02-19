@@ -17,7 +17,7 @@ const testimonialData = [
     image: "https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(15).webp",
     rating: 5,
     testimonial:
-      "Autem, totam debitis suscipit saepe sapiente magnam officiis quaerat necessitatibus odio assumenda perferendis labore laboriosam.",
+      "Autem, totam debitis suscipit saepe sapiente magnam officiis quaerat necessitatibus odio assumenda.",
   },
   {
     name: "Alexa Horwitz",
@@ -28,8 +28,8 @@ const testimonialData = [
       "Cras sit amet nibh libero, in gravida nulla metus scelerisque ante sollicitudin commodo cras purus odio, vestibulum in tempus viverra turpis.",
   },
   {
-    name: "Alexa Horwitz",
-    role: "Front-end Developer in NY",
+    name: "Jahangir Alom",
+    role: "Technical Manager",
     image: "https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(17).webp",
     rating: 4.5,
     testimonial:
@@ -69,8 +69,8 @@ export default function Testimonial() {
   };
 
   return (
-    <Container>
-      <Row className="justify-content-center mt-5">
+    <Container className="testimonial">
+      <Row className="justify-content-center">
         <Col md="12" xl="8" className="text-center">
           <h3 className="fw-bold mb-3 text-primary">What customers say about Localdeal</h3>
           <p className="mb-5">Localdeal has been rated 4.8 out of 5 based on 962 reviews as of August 2023</p>
@@ -79,7 +79,7 @@ export default function Testimonial() {
       <Row className="text-center">
         {testimonialData.slice(startIndex, startIndex + displayedCards).map((testimonial, index) => (
           <Col md="4" xs={displayedCards === 2 ? 6 : 4} key={index}>
-            <Card>
+            <Card className="testimonial-card">
               <Card.Body className="py-3 mt-1 p">
                 <div className="d-flex justify-content-center mb-4">
                   <img
@@ -113,7 +113,7 @@ export default function Testimonial() {
           </Col>
         ))}
       </Row>
-      <div className="controls text-center mb-4">
+      <div className="controls text-center">
         <button className="control-button" onClick={prevSlide} disabled={startIndex === 0}>
           <span>&#8592;</span>
         </button>

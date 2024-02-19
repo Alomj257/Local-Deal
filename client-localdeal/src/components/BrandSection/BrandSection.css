@@ -1,3 +1,14 @@
+.brand-section {
+    padding: 3rem;
+}
+
+.brand-section-card {
+    border-radius: 1rem;
+    border: 0.5px solid gray;
+    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1)
+}
+
 .custom-color {
-    color: #095283; /* Change this to your desired color */
+    color: #095283;
+    /* Change this to your desired color */
 }
