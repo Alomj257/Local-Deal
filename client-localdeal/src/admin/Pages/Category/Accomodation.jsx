@@ -7,7 +7,7 @@ const AdminAccomodation = () => {
       <div className="">
         <UserTable
           title=" Accomodation Category List"
-          url="/categories/services"
+          url="/categories/accommodations"
         />
       </div>
     </div>

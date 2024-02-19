@@ -21,10 +21,9 @@ const UserTable = ({ title, url, type }) => {
   const [curPage, setCurPage] = useState(1);
   const [filteredUsers, setFilteredUsers] = useState([]);
   const { data, loading, reFetch } = useFetch(`${url}?limit=${page * curPage}`);
-
   const toggleStatus = (id) => {
     setUsers((prevUsers) =>
-      prevUsers.map((user) =>
+      prevUsers?.map((user) =>
         user.id === id
           ? {
               ...user,
@@ -40,8 +39,8 @@ const UserTable = ({ title, url, type }) => {
   }, [data]);
 
   const columns = [];
-  if (data[data.length - 1]) {
-    for (const [key, value] of Object.entries(data[data.length - 1])) {
+  if (data[data?.length - 1]) {
+    for (const [key, value] of Object.entries(data[data?.length - 1])) {
       if (
         key !== "_id" &&
         key !== "__v" &&
@@ -118,7 +117,7 @@ const UserTable = ({ title, url, type }) => {
               ) : (
                 <AddAction
                   title={title}
-                  oldData={data[data.length - 1]}
+                  oldData={data[data?.length - 1]}
                   onUserAdd={handleAddUser}
                 />
               )}
@@ -179,7 +178,7 @@ const UserTable = ({ title, url, type }) => {
                                   className="rounded"
                                   style={{ width: "5rem" }}
                                 />
-                              ) : user[c].length > 15 ? (
+                              ) : user[c]?.length > 15 ? (
                                 user[c]?.slice(0, 15)
                               ) : (
                                 user[c]
@@ -260,7 +259,7 @@ const UserTable = ({ title, url, type }) => {
           </table>
           <div className="px-5 d-flex justify-content-between">
             <div className="my-auto text-white">
-              Showing {curPage} to {page > users.length ? users.length : page}{" "}
+              Showing {curPage} to {page > users?.length ? users?.length : page}{" "}
               of {users?.length}
             </div>
             <ul className={` pagination gap-3 text-white `}>
@@ -287,7 +286,7 @@ const UserTable = ({ title, url, type }) => {
                 className="fs-2 ms-3"
                 onClick={() =>
                   setCurPage(
-                    curPage < Math.ceil(users.length / page)
+                    curPage < Math.ceil(users?.length / page)
                       ? curPage + 1
                       : curPage
                   )

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { updateadmin } from "../../../services/adminService";
 
-const UpdateAction = ({ oldData, onUpdateAction }) => {
+const UpdateAction = ({ oldData, onUpdateAction, title }) => {
   const [data, setUser] = useState(oldData);
 
   const handleInputChange = (event) => {
@@ -51,7 +51,7 @@ const UpdateAction = ({ oldData, onUpdateAction }) => {
   return (
     <div className="container">
       <div className="add-user text-dark">
-        <h3 className="text-center fw-bold">Update </h3>
+        <h3 className="text-center fw-bold">Update {title} </h3>
         <form className="add-user-form text-start" onSubmit={handleSubmit}>
           <div className="row row-cols-md-2 text-dark">
             {formData.map((d, i) => {
