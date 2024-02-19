@@ -11,6 +11,9 @@ import ViewUser from "./ViewUser";
 import UpdateAdmin from "./UpdateAdmin";
 import DeleteAdmin from "./DeleteAdmin";
 import AddUser from "../AddUser/AddUser";
+import UpdateAction from "../CategoryAction/UpdateAction";
+import AddAction from "../CategoryAction/AddAction";
+import ViewAction from "../CategoryAction/ViewAction";
 
 const UserTable = ({ title, url, type }) => {
   const [users, setUsers] = useState([]);
@@ -37,9 +40,14 @@ const UserTable = ({ title, url, type }) => {
   }, [data]);
 
   const columns = [];
-  if (data[0]) {
-    for (const [key] of Object.entries(data[0])) {
-      if (key !== "_id" && key !== "__v") {
+  if (data[data.length - 1]) {
+    for (const [key, value] of Object.entries(data[data.length - 1])) {
+      if (
+        key !== "_id" &&
+        key !== "__v" &&
+        key !== "imagepath" &&
+        !Array.isArray(value)
+      ) {
         columns.push(key);
       }
     }
@@ -69,7 +77,7 @@ const UserTable = ({ title, url, type }) => {
     setUsers([...users, user]);
     reFetch();
   };
-
+  console.log(type);
   return (
     <>
       <div className="user-table p-3 rounded">
@@ -105,7 +113,15 @@ const UserTable = ({ title, url, type }) => {
                 </>
               }
             >
-              <AddUser onUserAdd={handleAddUser} />
+              {type === "user" ? (
+                <AddUser title={title} onUserAdd={handleAddUser} />
+              ) : (
+                <AddAction
+                  title={title}
+                  oldData={data[data.length - 1]}
+                  onUserAdd={handleAddUser}
+                />
+              )}
             </Modal>
           </div>
         </div>
@@ -152,7 +168,6 @@ const UserTable = ({ title, url, type }) => {
                   <tr key={user?._id}>
                     <td>{key + 1}</td>
                     {columns.map((c, ckey) => {
-                      console.log(user[c]);
                       return (
                         <>
                           {ckey < 7 && (
@@ -164,8 +179,10 @@ const UserTable = ({ title, url, type }) => {
                                   className="rounded"
                                   style={{ width: "5rem" }}
                                 />
-                              ) : (
+                              ) : user[c].length > 15 ? (
                                 user[c]?.slice(0, 15)
+                              ) : (
+                                user[c]
                               )}
                             </td>
                           )}
@@ -174,7 +191,6 @@ const UserTable = ({ title, url, type }) => {
                     })}
                     {type === "user" && (
                       <>
-                        {" "}
                         <td
                           style={{
                             color: user?.status === "Active" ? "green" : "red",
@@ -198,10 +214,17 @@ const UserTable = ({ title, url, type }) => {
                         bodyClass="bg-white  col-sm-8 col-md-6"
                         closeIcon="fs-1 text-dark"
                       >
-                        <UpdateAdmin
-                          oldUser={user}
-                          onUserUpdate={handleUserUpdate}
-                        />
+                        {type === "user" ? (
+                          <UpdateAdmin
+                            oldUser={user}
+                            onUserUpdate={handleUserUpdate}
+                          />
+                        ) : (
+                          <UpdateAction
+                            oldData={user}
+                            onUpdateAction={handleUserUpdate}
+                          />
+                        )}
                       </Modal>
                       <Modal
                         btnText={<FaEye size={20} />}
@@ -209,7 +232,11 @@ const UserTable = ({ title, url, type }) => {
                         bodyClass="bg-light  col-sm-8 col-md-6"
                         closeIcon="fs-1 text-dark "
                       >
-                        <ViewUser user={user} />
+                        {type === "user" ? (
+                          <ViewUser user={user} />
+                        ) : (
+                          <ViewAction title={title} data={user} />
+                        )}
                       </Modal>
                       <Modal
                         btnText={<MdDelete size={20} />}
@@ -217,7 +244,11 @@ const UserTable = ({ title, url, type }) => {
                         bodyClass="bg-white border card"
                         closeIcon="fs-1 text-dark"
                       >
-                        <DeleteAdmin onUserDelete={handleDelete} user={user} />
+                        <DeleteAdmin
+                          onUserDelete={handleDelete}
+                          title={title}
+                          user={user}
+                        />
                       </Modal>
                     </td>
                   </tr>

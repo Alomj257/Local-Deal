@@ -3,7 +3,7 @@ import { MdDelete } from "react-icons/md";
 import { deleteAdmin } from "../../../services/adminService";
 import { toast } from "react-toastify";
 
-const DeleteAdmin = ({ user, onUserDelete }) => {
+const DeleteAdmin = ({ user, onUserDelete, title }) => {
   const handleDelete = async (id) => {
     try {
       const res = await deleteAdmin(id);
@@ -17,7 +17,9 @@ const DeleteAdmin = ({ user, onUserDelete }) => {
   return (
     <div>
       <h5 className="text-center text-dark">{user?.name}</h5>
-      <p className="text-dark">Are you sure you want to delete this admin?</p>
+      <p className="text-dark">
+        Are you sure you want to delete from the {title}?
+      </p>
       <div className="d-flex justify-content-between">
         <button
           onClick={() => onUserDelete()}

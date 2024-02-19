@@ -199,10 +199,7 @@ const AddUser = ({ onUserAdd }) => {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="file">Profile Image</label>
-              <small style={{ fontSize: "9px" }}>
-                image must be less than 5MB and jpeg, png, webp, gif formate
-              </small>
+              <label htmlFor="file">Profile Image</label> <br />
               {user?.file && ( // Render image preview if file picture is selected
                 <div className="form-group">
                   <img
@@ -212,7 +209,9 @@ const AddUser = ({ onUserAdd }) => {
                   />
                 </div>
               )}
-
+              <small style={{ fontSize: "9px" }}>
+                image must be less than 5MB and jpeg, png, webp, gif formate
+              </small>
               <input
                 type="file"
                 id="file"

@@ -177,9 +177,7 @@ const UpdateAdmin = ({ oldUser, onUserUpdate }) => {
             </div>
             <div className="form-group">
               <label htmlFor="file">Profile Image</label>
-              <small style={{ fontSize: "9px" }}>
-                image must be less than 5MB and jpeg, png, webp, gif formate
-              </small>
+
               {user?.profile && (
                 <div className="form-group">
                   <img
@@ -189,6 +187,9 @@ const UpdateAdmin = ({ oldUser, onUserUpdate }) => {
                   />
                 </div>
               )}
+              <small style={{ fontSize: "9px" }}>
+                image must be less than 5MB and jpeg, png, webp, gif formate
+              </small>
               <input
                 type="file"
                 id="file"

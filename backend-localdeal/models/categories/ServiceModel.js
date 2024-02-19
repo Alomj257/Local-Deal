@@ -1,17 +1,17 @@
 // models/categories/ServiceModel.js
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const serviceSchema = new mongoose.Schema({
   name: String,
-  category: String,
-  description: String,
-  price: String,
-  provider: String,
   duration: String,
+  category: String,
+  price: String,
   image: String,
+  description: String,
+  provider: String,
   rating: Number,
 });
 
-const Service = mongoose.model('Service', serviceSchema);
+const Service = mongoose.model("Service", serviceSchema);
 
 module.exports = Service;

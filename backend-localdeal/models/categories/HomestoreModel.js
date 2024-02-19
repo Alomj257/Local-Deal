@@ -1,5 +1,5 @@
 // models/categories/HomestoreModel.js
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const homestoreSchema = new mongoose.Schema({
   name: String,
@@ -9,10 +9,10 @@ const homestoreSchema = new mongoose.Schema({
   image: String,
   description: String,
   discount: String,
+  rating: Number,
   products: [String],
-  rating: Number
 });
 
-const Homestore = mongoose.model('Homestore', homestoreSchema);
+const Homestore = mongoose.model("Homestore", homestoreSchema);
 
 module.exports = Homestore;

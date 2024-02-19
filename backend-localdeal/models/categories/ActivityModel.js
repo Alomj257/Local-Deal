@@ -1,18 +1,18 @@
 // models/categories/ActivityModel.js
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const activitySchema = new mongoose.Schema({
   name: String,
   location: String,
   category: String,
   price: String,
-  discount: String,
   image: String,
   description: String,
-  participants: [String],
+  discount: String,
   rating: Number,
+  participants: [String],
 });
 
-const Activity = mongoose.model('Activity', activitySchema);
+const Activity = mongoose.model("Activity", activitySchema);
 
 module.exports = Activity;

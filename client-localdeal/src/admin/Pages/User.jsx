@@ -6,7 +6,7 @@ const User = () => {
     <div className=" user-page">
       {/**/}
 
-      <UserTable title="User Table" url="/admin/users" />
+      <UserTable title="User Table" type="user" url="/admin/users" />
     </div>
   );
 };
