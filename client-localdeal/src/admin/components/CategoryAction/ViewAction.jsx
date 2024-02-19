@@ -30,25 +30,44 @@ const ViewAction = ({ data, title }) => {
           return (
             <>
               {d?.key !== "image" && d?.key !== "description" && (
-                <div key={k} className=" border-bottom pt-3 ">
-                  <span className="fw-bold"> {d.key}</span>:
-                  {Array.isArray(data[d.key]) ? (
-                    <div className=" mt-2 mb-2">
-                      {data[d.key].map((item) => (
-                        <span className="p-1   mx-2 bg-secondary text-white rounded">
-                          {item}
-                        </span>
-                      ))}
+                <>
+                  {!Array.isArray(data[d.key]) && (
+                    <div key={k} className=" border-bottom pt-3 ">
+                      <span className="fw-bold"> {d.key}</span>:
+                      <span>{data[d?.key]}</span>
                     </div>
-                  ) : (
-                    <span>{data[d?.key]}</span>
                   )}
-                </div>
+                </>
               )}
             </>
           );
         })}
       </div>
+
+      {formData.map((d, k) => {
+        return (
+          <>
+            {d?.key !== "image" && d?.key !== "description" && (
+              <div key={k} className="mt-3 text-center">
+                {Array.isArray(data[d.key]) && (
+                  <>
+                    <span className="fw-bold text-dark fs-5 text-capitalize border-bottom">
+                      {d.key}
+                    </span>
+                    <div className=" mt-2  d-flex justify-content-center gap-2 mb-2  ">
+                      {data[d.key].map((item) => (
+                        <div className="p-1  d-flex   mx-2 bg-secondary text-white rounded">
+                          {item}
+                        </div>
+                      ))}
+                    </div>
+                  </>
+                )}
+              </div>
+            )}
+          </>
+        );
+      })}
     </div>
   );
 };
