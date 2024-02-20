@@ -11,6 +11,7 @@ const beautySchema = new mongoose.Schema({
   discount: String,
   services: [String],
   rating: Number,
+  imagepath: String,
 });
 
 const Beauty = mongoose.model("Beauty", beautySchema);

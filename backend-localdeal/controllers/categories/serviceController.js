@@ -1,5 +1,5 @@
 // controllers/categories/ServiceController.js
-const Service = require('../../models/categories/ServiceModel');
+const Service = require("../../models/categories/ServiceModel");
 
 const getAllServices = async (req, res) => {
   try {
@@ -14,7 +14,7 @@ const getServiceById = async (req, res) => {
   try {
     const service = await Service.findById(req.params.id);
     if (!service) {
-      return res.status(404).json({ message: 'Service not found' });
+      return res.status(404).json({ message: "Service not found" });
     }
     res.json(service);
   } catch (error) {
@@ -24,6 +24,10 @@ const getServiceById = async (req, res) => {
 
 const createService = async (req, res) => {
   try {
+    if (req.file) {
+      req.body.image = "/category/image/" + req?.file?.originalname;
+      req.body.imagepath = req?.file?.path;
+    }
     const newService = await Service.create(req.body);
     res.status(201).json(newService);
   } catch (error) {
@@ -33,9 +37,17 @@ const createService = async (req, res) => {
 
 const updateService = async (req, res) => {
   try {
-    const updatedService = await Service.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    if (req.file) {
+      req.body.image = "/category/image/" + req?.file?.originalname;
+      req.body.imagepath = req?.file?.path;
+    }
+    const updatedService = await Service.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
+    );
     if (!updatedService) {
-      return res.status(404).json({ message: 'Service not found' });
+      return res.status(404).json({ message: "Service not found" });
     }
     res.json(updatedService);
   } catch (error) {
@@ -47,7 +59,7 @@ const deleteService = async (req, res) => {
   try {
     const deletedService = await Service.findByIdAndDelete(req.params.id);
     if (!deletedService) {
-      return res.status(404).json({ message: 'Service not found' });
+      return res.status(404).json({ message: "Service not found" });
     }
     res.json(deletedService);
   } catch (error) {

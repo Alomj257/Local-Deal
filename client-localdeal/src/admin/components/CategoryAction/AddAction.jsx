@@ -1,10 +1,12 @@
 // UpdateAdmin.js
 import React, { useState } from "react";
 import { toast } from "react-toastify";
-import { updateadmin } from "../../../services/adminService";
+import { createService } from "../../../services/Category/FoodService";
 
-const AddAction = ({ oldData, onUpdateAction, title }) => {
+const AddAction = ({ oldData, onAddAction, title, url }) => {
   const [data, setData] = useState({});
+  const dataTypes = ["schedule", "date"];
+  const [field, setFields] = useState([]);
 
   const handleInputChange = (event) => {
     const { name, value, files } = event.target;
@@ -19,21 +21,21 @@ const AddAction = ({ oldData, onUpdateAction, title }) => {
         formData.append(key, data[key]);
       }
       console.log(data);
-      const res = await updateadmin(formData, oldData?._id);
+      const res = await createService(url, formData);
       console.log(res);
       if (res.success) {
         toast.success(res?.message);
         // Trigger a re-fetch of data in the parent component
-        onUpdateAction();
       } else {
         toast.success(res?.message);
       }
+      onAddAction();
     } catch (error) {
       console.error("Error updating user:", error);
       toast.error(error);
     }
   };
-  const formData = [];
+  const fields = [];
   if (!oldData) {
     return;
   }
@@ -44,17 +46,39 @@ const AddAction = ({ oldData, onUpdateAction, title }) => {
       key !== "imagepath" &&
       !Array.isArray(value)
     ) {
-      formData.push({ key: key, value: value });
+      fields.push({ key: key, value: value });
     }
   }
 
+  const handleAddField = () => {
+    const newLabel = prompt("Enter new label:");
+    if (newLabel) {
+      setFields([...field, { key: newLabel, value: "" }]);
+    }
+  };
+
+  const handleLabelDoubleClick = (index) => {
+    const newLabel = prompt("Enter new label:", field[index].key);
+    if (newLabel) {
+      const updatedFields = [...field];
+      updatedFields[index].key = newLabel;
+      setFields(updatedFields);
+    }
+  };
   return (
     <div className="container">
       <div className="add-user text-dark">
         <h3 className="text-center fw-bold">Add {title}</h3>
+        <button
+          type="button"
+          className="btn btn-success"
+          onClick={handleAddField}
+        >
+          Add Field
+        </button>
         <form className="add-user-form text-start" onSubmit={handleSubmit}>
           <div className="row row-cols-md-2 text-dark">
-            {formData.map((data, i) => {
+            {fields.map((data, i) => {
               return (
                 <>
                   {data?.key !== "image" && (
@@ -64,7 +88,11 @@ const AddAction = ({ oldData, onUpdateAction, title }) => {
                       </label>
 
                       <input
-                        type="text"
+                        type={
+                          dataTypes.includes(data?.key)
+                            ? "datetime-local"
+                            : "text"
+                        }
                         id={data?.key}
                         name={data?.key}
                         className="form-control"
@@ -76,6 +104,38 @@ const AddAction = ({ oldData, onUpdateAction, title }) => {
                 </>
               );
             })}
+            {/* dynamic field */}
+            {field.map((data, i) => {
+              return (
+                <>
+                  {data?.key !== "image" && (
+                    <div key={i} className="form-group my-3">
+                      <label
+                        htmlFor={data?.key}
+                        className="text-capitalize"
+                        onDoubleClick={() => handleLabelDoubleClick(i)}
+                      >
+                        {data?.key}
+                      </label>
+
+                      <input
+                        type={
+                          dataTypes.includes(data?.key)
+                            ? "datetime-local"
+                            : "text"
+                        }
+                        id={data?.key}
+                        name={data?.key}
+                        className="form-control"
+                        value={data[data?.key]}
+                        onChange={handleInputChange}
+                      />
+                    </div>
+                  )}
+                </>
+              );
+            })}
+            {/* image handle */}
             <div className="form-group my-3">
               <label htmlFor="image" className="text-capitalize">
                 Image

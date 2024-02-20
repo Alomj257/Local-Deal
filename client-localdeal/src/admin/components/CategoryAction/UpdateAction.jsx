@@ -1,9 +1,10 @@
 // UpdateAdmin.js
 import React, { useState } from "react";
 import { toast } from "react-toastify";
-import { updateadmin } from "../../../services/adminService";
+import { updateActionService } from "../../../services/Category/FoodService";
 
-const UpdateAction = ({ oldData, onUpdateAction, title }) => {
+const UpdateAction = ({ oldData, onUpdateAction, title, url }) => {
+  const dataTypes = ["schedule", "date"];
   const [data, setUser] = useState(oldData);
 
   const handleInputChange = (event) => {
@@ -19,15 +20,15 @@ const UpdateAction = ({ oldData, onUpdateAction, title }) => {
         formData.append(key, data[key]);
       }
       console.log(data);
-      const res = await updateadmin(formData, oldData?._id);
+      const res = await updateActionService(url, formData, oldData?._id);
       console.log(res);
       if (res.success) {
         toast.success(res?.message);
         // Trigger a re-fetch of data in the parent component
-        onUpdateAction();
       } else {
         toast.success(res?.message);
       }
+      onUpdateAction();
     } catch (error) {
       console.error("Error updating user:", error);
       toast.error(error);
@@ -64,7 +65,9 @@ const UpdateAction = ({ oldData, onUpdateAction, title }) => {
                       </label>
 
                       <input
-                        type="text"
+                        type={
+                          dataTypes.includes(d?.key) ? "datetime-local" : "text"
+                        }
                         id={d?.key}
                         name={d?.key}
                         className="form-control"

@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 
 const serviceSchema = new mongoose.Schema({
   name: String,
+  location: String,
   duration: String,
   category: String,
   price: String,
@@ -10,6 +11,7 @@ const serviceSchema = new mongoose.Schema({
   description: String,
   provider: String,
   rating: Number,
+  imagepath: String,
 });
 
 const Service = mongoose.model("Service", serviceSchema);

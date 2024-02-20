@@ -42,7 +42,6 @@ function uploadFile(destination) {
       } else if (err) {
         return res.status(400).send({ error: err.message });
       }
-      req.filePath = req.file.path;
       next();
     });
   };

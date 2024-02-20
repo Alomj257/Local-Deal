@@ -76,7 +76,6 @@ const UserTable = ({ title, url, type }) => {
     setUsers([...users, user]);
     reFetch();
   };
-  console.log(type);
   return (
     <>
       <div className="user-table p-3 rounded">
@@ -116,9 +115,10 @@ const UserTable = ({ title, url, type }) => {
                 <AddUser title={title} onUserAdd={handleAddUser} />
               ) : (
                 <AddAction
+                  url={url}
                   title={title}
                   oldData={data[data?.length - 1]}
-                  onUserAdd={handleAddUser}
+                  onAddAction={handleAddUser}
                 />
               )}
             </Modal>
@@ -220,6 +220,7 @@ const UserTable = ({ title, url, type }) => {
                           />
                         ) : (
                           <UpdateAction
+                            url={url}
                             oldData={user}
                             onUpdateAction={handleUserUpdate}
                           />
@@ -244,6 +245,8 @@ const UserTable = ({ title, url, type }) => {
                         closeIcon="fs-1 text-dark"
                       >
                         <DeleteAdmin
+                          url={url}
+                          type={type}
                           onUserDelete={handleDelete}
                           title={title}
                           user={user}

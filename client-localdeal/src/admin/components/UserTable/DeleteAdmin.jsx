@@ -2,12 +2,18 @@ import React from "react";
 import { MdDelete } from "react-icons/md";
 import { deleteAdmin } from "../../../services/adminService";
 import { toast } from "react-toastify";
+import { deleteActionService } from "../../../services/Category/FoodService";
 
-const DeleteAdmin = ({ user, onUserDelete, title }) => {
+const DeleteAdmin = ({ url, user, type, onUserDelete, title }) => {
   const handleDelete = async (id) => {
     try {
-      const res = await deleteAdmin(id);
-      toast.success(res.message);
+      if (type) {
+        const res = await deleteAdmin(id);
+        toast.success(res.message);
+      } else {
+        const res = await deleteActionService(url, id);
+        toast.success(res.message);
+      }
       onUserDelete();
     } catch (error) {
       toast.error(error);

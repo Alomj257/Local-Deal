@@ -11,6 +11,7 @@ const accommodationSchema = new mongoose.Schema({
   discount: String,
   rating: Number,
   facilities: [String],
+  imagepath: String,
 });
 
 const Accommodation = mongoose.model("Accommodation", accommodationSchema);
