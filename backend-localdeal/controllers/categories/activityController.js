@@ -1,5 +1,5 @@
 // controllers/categories/ActivityController.js
-const Activity = require('../../models/categories/ActivityModel');
+const Activity = require("../../models/categories/ActivityModel");
 
 const getAllActivities = async (req, res) => {
   try {
@@ -14,7 +14,7 @@ const getActivityById = async (req, res) => {
   try {
     const activity = await Activity.findById(req.params.id);
     if (!activity) {
-      return res.status(404).json({ message: 'Activity not found' });
+      return res.status(404).json({ message: "Activity not found" });
     }
     res.json(activity);
   } catch (error) {
@@ -24,6 +24,10 @@ const getActivityById = async (req, res) => {
 
 const createActivity = async (req, res) => {
   try {
+    if (req.file) {
+      req.body.image = "/category/image/" + req?.file?.originalname;
+      req.body.imagepath = req?.file?.path;
+    }
     const newActivity = await Activity.create(req.body);
     res.status(201).json(newActivity);
   } catch (error) {
@@ -33,9 +37,17 @@ const createActivity = async (req, res) => {
 
 const updateActivity = async (req, res) => {
   try {
-    const updatedActivity = await Activity.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    if (req.file) {
+      req.body.image = "/category/image/" + req?.file?.originalname;
+      req.body.imagepath = req?.file?.path;
+    }
+    const updatedActivity = await Activity.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
+    );
     if (!updatedActivity) {
-      return res.status(404).json({ message: 'Activity not found' });
+      return res.status(404).json({ message: "Activity not found" });
     }
     res.json(updatedActivity);
   } catch (error) {
@@ -47,7 +59,7 @@ const deleteActivity = async (req, res) => {
   try {
     const deletedActivity = await Activity.findByIdAndDelete(req.params.id);
     if (!deletedActivity) {
-      return res.status(404).json({ message: 'Activity not found' });
+      return res.status(404).json({ message: "Activity not found" });
     }
     res.json(deletedActivity);
   } catch (error) {

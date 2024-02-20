@@ -11,6 +11,7 @@ const homestoreSchema = new mongoose.Schema({
   discount: String,
   rating: Number,
   products: [String],
+  imagepath: String,
 });
 
 const Homestore = mongoose.model("Homestore", homestoreSchema);

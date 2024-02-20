@@ -11,6 +11,7 @@ const activitySchema = new mongoose.Schema({
   discount: String,
   rating: Number,
   participants: [String],
+  imagepath: String,
 });
 
 const Activity = mongoose.model("Activity", activitySchema);

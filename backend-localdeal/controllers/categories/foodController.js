@@ -37,9 +37,17 @@ const createFood = async (req, res) => {
 
 const updateFood = async (req, res) => {
   try {
-    const updatedFood = await Food.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-    });
+    if (req.file) {
+      req.body.image = "/category/image/" + req?.file?.originalname;
+      req.body.imagepath = req?.file?.path;
+    }
+    const updatedFood = await Food.findByIdAndUpdate(
+      req.params.id,
+      { $set: req.body },
+      {
+        new: true,
+      }
+    );
     if (!updatedFood) {
       return res.status(404).json({ message: "Food not found" });
     }

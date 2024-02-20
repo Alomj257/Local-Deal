@@ -1,5 +1,5 @@
 // controllers/categories/HomestoreController.js
-const Homestore = require('../../models/categories/HomestoreModel');
+const Homestore = require("../../models/categories/HomestoreModel");
 
 const getAllHomestores = async (req, res) => {
   try {
@@ -14,7 +14,7 @@ const getHomestoreById = async (req, res) => {
   try {
     const homestore = await Homestore.findById(req.params.id);
     if (!homestore) {
-      return res.status(404).json({ message: 'Homestore not found' });
+      return res.status(404).json({ message: "Homestore not found" });
     }
     res.json(homestore);
   } catch (error) {
@@ -24,6 +24,10 @@ const getHomestoreById = async (req, res) => {
 
 const createHomestore = async (req, res) => {
   try {
+    if (req.file) {
+      req.body.image = "/category/image/" + req?.file?.originalname;
+      req.body.imagepath = req?.file?.path;
+    }
     const newHomestore = await Homestore.create(req.body);
     res.status(201).json(newHomestore);
   } catch (error) {
@@ -33,9 +37,17 @@ const createHomestore = async (req, res) => {
 
 const updateHomestore = async (req, res) => {
   try {
-    const updatedHomestore = await Homestore.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    if (req.file) {
+      req.body.image = "/category/image/" + req?.file?.originalname;
+      req.body.imagepath = req?.file?.path;
+    }
+    const updatedHomestore = await Homestore.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
+    );
     if (!updatedHomestore) {
-      return res.status(404).json({ message: 'Homestore not found' });
+      return res.status(404).json({ message: "Homestore not found" });
     }
     res.json(updatedHomestore);
   } catch (error) {
@@ -47,7 +59,7 @@ const deleteHomestore = async (req, res) => {
   try {
     const deletedHomestore = await Homestore.findByIdAndDelete(req.params.id);
     if (!deletedHomestore) {
-      return res.status(404).json({ message: 'Homestore not found' });
+      return res.status(404).json({ message: "Homestore not found" });
     }
     res.json(deletedHomestore);
   } catch (error) {
