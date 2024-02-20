@@ -46,7 +46,7 @@ export default function Testimonial() {
     const handleResize = () => {
       if (window.innerWidth <= 599) {
         setDisplayedCards(1);
-      } else if(window.innerWidth <= 768){
+      } else if(window.innerWidth < 768){
         setDisplayedCards(2);
       }else {
         setDisplayedCards(3);
@@ -93,7 +93,7 @@ export default function Testimonial() {
       </div>
       <Row className="text-center testimonial">
         {testimonialData.slice(startIndex, startIndex + displayedCards).map((testimonial, index) => (
-          <Col key={startIndex + index}  sm={6} md={4} lg={4}>
+          <Col key={startIndex + index} sm={6} md={4} lg={4}>
             <Card className="testimonial-card">
               <Card.Body className="py-3 mt-1 p d-flex flex-column">
                 <div>
