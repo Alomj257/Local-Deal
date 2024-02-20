@@ -10,7 +10,6 @@ import {
   faCheckCircle,
   faExclamationCircle,
 } from "@fortawesome/free-solid-svg-icons";
-import NewsletterForm from "../../components/Newsletter/NewsletterForm";
 import Layout from "../../utils/Layout";
 
 const ContactUs = () => {
@@ -229,7 +228,6 @@ const ContactUs = () => {
             )}
           </Modal.Footer>
         </Modal>
-        <NewsletterForm />
       </Layout>
     </>
   );

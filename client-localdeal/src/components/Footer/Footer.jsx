@@ -1,11 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Footer.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FaCcVisa, FaCreditCard, FaCcMastercard, FaCcPaypal } from 'react-icons/fa';
 import image from '../../assets/icons/final_white.png';
+import newsletterService from '../../services/newsletterService';
 
 const Footer = () => {
+  const [email, setEmail] = useState('');
+
+  const handleSubscribe = async (e) => {
+    e.preventDefault(); // Prevent default form submission behavior
+    try {
+      // Add validation for email if needed
+      if (!email) {
+        alert('Please enter your email address.');
+        return;
+      }
+
+      await newsletterService.subscribeToNewsletter(email);
+      alert('Successfully subscribed to the newsletter!');
+      setEmail('');
+    } catch (error) {
+      console.error('Error subscribing to newsletter:', error.message);
+      alert('Failed to subscribe to the newsletter. Please try again later.');
+    }
+  };
   return (
     <div style={{ background: 'black' }}>
       <div className="container footer">
@@ -71,9 +91,14 @@ const Footer = () => {
                   <p>Don’t miss to subscribe to our new feeds, kindly fill the form below.</p>
                 </div>
                 <div className="subscribe-form">
-                  <form action="/">
-                    <input type="text" placeholder="Email Address" />
-                    <button><i className="fab fa-telegram-plane"></i></button>
+                <form onSubmit={handleSubscribe}>
+                    <input 
+                      type="text" 
+                      placeholder="Email Address" 
+                      value={email} 
+                      onChange={(e) => setEmail(e.target.value)} 
+                    />
+                    <button type="submit"><i className="fab fa-telegram-plane"></i></button>
                   </form>
                 </div>
               </div>
