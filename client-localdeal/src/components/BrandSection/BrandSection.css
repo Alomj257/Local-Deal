@@ -1,14 +1,36 @@
+/* BrandSection.css */
+
 .brand-section {
-    padding: 3rem;
+    padding: 0 2rem;
+    margin-bottom: 50px;
 }
 
 .brand-section-card {
     border-radius: 1rem;
     border: 0.5px solid gray;
-    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1)
+    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem; /* Add margin between cards */
 }
 
 .custom-color {
     color: #095283;
-    /* Change this to your desired color */
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .brand-section {
+        padding: 0 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .brand-section {
+        padding: 0 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .brand-section-card {
+        margin-bottom: 1rem;
+    }
 }
