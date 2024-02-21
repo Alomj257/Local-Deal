@@ -1,29 +1,26 @@
-.user-table{
-    background: #2980b9;
-    background: linear-gradient(to right, #2980b9, #2c3e50)
-}
+
 .table-icons {
-    border: 2px solid white;
+    border: 2px solid #2980b9;
     cursor: pointer;
 }
 .table-icons svg{
-    color: white;
+    color: #2980b9;
 }
 .table-icons:hover{
- background-color: white;
- color: #2980b9;
- border: 2px solid white;
+ background-color: #2980b9;
+ color: white;
 }
 .table-icons:hover svg{
-    color: #2980b9;
+    color: white;
 }
 .add-user-btn{
     background-color: white;
     color: #2980b9;
     border-radius: 1.5rem;
+    border: 2px solid #2980b9;
 }
 .add-user-btn:hover{
-    background-color: #0a2231;
+    background-color: #2980b9;
     color: white;
 }
 .page-icon-action{
@@ -39,7 +36,6 @@
     cursor: pointer;
 }
 .page-active{
-    border: 3px solid white;
-    padding: 0px 12px;
+    border: 2px solid #2980b9;
     cursor: pointer;
 }

@@ -127,18 +127,20 @@ const updateAdmin = async (req, res) => {
   console.log(req.body);
   try {
     console.log(req.body);
-    await new Promise((resolve, reject) => {
-      upload.single("file")(req, res, function (err) {
-        if (err) {
-          res.status(400).json({
-            success: false,
-            message: "image uploading issue please try again...",
-          });
-        } else resolve();
+    if (req?.file) {
+      await new Promise((resolve, reject) => {
+        upload.single("file")(req, res, function (err) {
+          if (err) {
+            res.status(400).json({
+              success: false,
+              message: "image uploading issue please try again...",
+            });
+          } else resolve();
+        });
       });
-    });
-    req.body.profile = "/profile/image/" + req?.file?.originalname;
-    req.body.path = req?.file?.path;
+      req.body.profile = "/profile/image/" + req?.file?.originalname;
+      req.body.path = req?.file?.path;
+    }
     const updatedUser = await Admin.findByIdAndUpdate(
       req.params.id,
       { $set: req.body },
