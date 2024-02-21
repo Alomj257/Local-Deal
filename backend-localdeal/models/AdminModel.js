@@ -33,6 +33,10 @@ const adminSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  isEnable: {
+    type: Boolean,
+    default: false,
+  },
   role: {
     type: String,
     required: true,
