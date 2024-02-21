@@ -116,6 +116,20 @@ function Sidebar() {
         </li>
         <li>
           <Link to="/admin/setting">
+            <i class='bx bxs-contact'></i>
+            <span className="links_name">Contacts</span>
+          </Link>
+          <span className="tooltip">Contacts</span>
+        </li>
+        <li>
+          <Link to="/admin/setting">
+          <i class='bx bx-bell'></i>
+            <span className="links_name">Subscriber</span>
+          </Link>
+          <span className="tooltip">Subscriber</span>
+        </li>
+        <li>
+          <Link to="/admin/setting">
             <i className="bx bx-cog"></i>
             <span className="links_name">Setting</span>
           </Link>
