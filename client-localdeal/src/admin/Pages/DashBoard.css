@@ -32,7 +32,7 @@
 }
 
 .admin-outlet{
-    height: 88vh;
+    height: 80vh;
     overflow: scroll;
     -ms-overflow-style: none;  
   scrollbar-width: none; 
