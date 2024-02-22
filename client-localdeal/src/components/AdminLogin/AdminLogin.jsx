@@ -209,12 +209,13 @@ const AdminLogin = () => {
       console.log(response);
       console.log("verify successful, res:", response);
       setStep("resetPassword");
+      navigate("/admin-login");
     } catch (error) {
       console.log(error);
       setError(error);
       setTimeout(() => {
         setError("");
-      }, 2000);
+      }, 1000);
     }
   };
 
