@@ -91,6 +91,11 @@ const loginAdmin = async (req, res) => {
     if (!isPasswordMatch) {
       return res.status(401).json({ message: "Invalid credentials" });
     }
+    if (admin && !admin.isEnable) {
+      return res
+        .status(400)
+        .json({ message: "Your account has been blocked/inactive" });
+    }
 
     const token = jwt.sign({ adminId: admin._id }, "yourSecretKey", {
       expiresIn: "3h",
@@ -127,18 +132,20 @@ const updateAdmin = async (req, res) => {
   console.log(req.body);
   try {
     console.log(req.body);
-    await new Promise((resolve, reject) => {
-      upload.single("file")(req, res, function (err) {
-        if (err) {
-          res.status(400).json({
-            success: false,
-            message: "image uploading issue please try again...",
-          });
-        } else resolve();
+    if (req?.file) {
+      await new Promise((resolve, reject) => {
+        upload.single("file")(req, res, function (err) {
+          if (err) {
+            res.status(400).json({
+              success: false,
+              message: "image uploading issue please try again...",
+            });
+          } else resolve();
+        });
       });
-    });
-    req.body.profile = "/profile/image/" + req?.file?.originalname;
-    req.body.path = req?.file?.path;
+      req.body.profile = "/profile/image/" + req?.file?.originalname;
+      req.body.path = req?.file?.path;
+    }
     const updatedUser = await Admin.findByIdAndUpdate(
       req.params.id,
       { $set: req.body },

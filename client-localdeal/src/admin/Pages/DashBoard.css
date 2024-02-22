@@ -1,10 +1,7 @@
 .dashboard .profile{
     cursor: pointer;
 }
-.dashboard .profile img{
-    width: 2rem;
-    overflow: hidden;
-}
+
 .show-profile-list{
     height: auto;
     list-style: none;

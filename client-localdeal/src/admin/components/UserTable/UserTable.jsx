@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { FaEye, FaFilePdf, FaRegEdit } from "react-icons/fa";
-import { MdAddBox, MdDelete } from "react-icons/md";
+import { FaEye, FaPencilAlt } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
 import { Switch } from "@mui/material";
-import { FaFileExcel } from "react-icons/fa";
-import { TfiReload } from "react-icons/tfi";
+import { FiFileText, FiPlusSquare } from 'react-icons/fi';
 import "./UserTable.css";
 import useFetch from "../../../Hooks/useFetch";
 import Modal from "../../../utils/Modal/Modal";
@@ -14,44 +13,41 @@ import AddUser from "../AddUser/AddUser";
 import UpdateAction from "../CategoryAction/UpdateAction";
 import AddAction from "../CategoryAction/AddAction";
 import ViewAction from "../CategoryAction/ViewAction";
+import { updateadmin } from "../../../services/adminService";
+import * as XLSX from "xlsx";
 
-const UserTable = ({ title, url, type }) => {
+const UserTable = ({ title, url, type, columns }) => {
   const [users, setUsers] = useState([]);
   const [page] = useState(10);
   const [curPage, setCurPage] = useState(1);
   const [filteredUsers, setFilteredUsers] = useState([]);
   const { data, loading, reFetch } = useFetch(`${url}?limit=${page * curPage}`);
-  const toggleStatus = (id) => {
-    setUsers((prevUsers) =>
-      prevUsers?.map((user) =>
-        user.id === id
-          ? {
+  const toggleStatus = async (id, olduser) => {
+    try {
+      setFilteredUsers((prevUsers) =>
+        prevUsers?.map((user) =>
+          user._id === id
+            ? {
               ...user,
-              status: user.status === "Active" ? "Inactive" : "Active",
+              isEnable: !user?.isEnable,
             }
-          : user
-      )
-    );
+            : user
+        )
+      );
+      const formData = new FormData();
+      olduser.isEnable = !olduser?.isEnable;
+      for (let key in olduser) {
+        formData.append(key, olduser[key]);
+      }
+      await updateadmin(formData, id);
+    } catch (error) {
+      console.log(error);
+    }
   };
   useEffect(() => {
     setUsers(Array.isArray(data) ? data : []);
     setFilteredUsers(Array.isArray(data) ? data : []);
   }, [data]);
-
-  const columns = [];
-  if (data[data?.length - 1]) {
-    for (const [key, value] of Object.entries(data[data?.length - 1])) {
-      if (
-        key !== "_id" &&
-        key !== "__v" &&
-        key !== "imagepath" &&
-        !Array.isArray(value)
-      ) {
-        columns.push(key);
-      }
-    }
-  }
-  console.log(columns);
 
   const handleFiltered = (value) => {
     const filteredData = users.filter(
@@ -76,38 +72,46 @@ const UserTable = ({ title, url, type }) => {
     setUsers([...users, user]);
     reFetch();
   };
+  const [pageActive, setActivePage] = useState(1);
+  const handleCurPage = (active) => {
+    setActivePage(active);
+  };
+  const handleExport = () => {
+    const wb = XLSX.utils.book_new();
+    const ws = XLSX.utils.json_to_sheet(users);
+    XLSX.utils.book_append_sheet(wb, ws, "Mysheet1");
+    XLSX.writeFile(wb, "sheet.xlsx");
+  };
+
   return (
     <>
-      <div className="user-table p-3 rounded">
+      <div className="user-table p-1 rounded">
         <div className="d-flex justify-content-between mb-3 ">
           <div className="d-flex">
-            <h3 className="m-auto text-white">{title}</h3>
+            <h3 className="m-auto ">{title}</h3>
           </div>
           <div className="d-flex gap-4">
             <input
               type="text"
               placeholder="Search..."
               onChange={handleSearch}
-              className="form-control m-auto "
+              className="form-control m-auto rounded"
             />
+
             <span
-              className="p-2  table-icons m-auto  rounded-circle"
-              onClick={handleUserUpdate}
+              onClick={handleExport}
+              className="d-flex  table-icons m-auto"
             >
-              <TfiReload size={20} className=" " />
-            </span>
-            <span className="p-2  table-icons  m-auto rounded-circle">
-              <FaFilePdf size={20} className=" " />
-            </span>
-            <span className="p-2  table-icons m-auto rounded-circle">
-              <FaFileExcel size={20} className=" " />
+              <FiFileText size={25} className="my-auto mr-1" />{" "}
+               Export
             </span>
             <Modal
-              btnClasss="table-icons btn rounded-circle"
-              bodyClass="bg-white col-sm-8 col-md-6"
+              btnClasss="add-user-btn d-flex btn rounded"
+              bodyClass="bg-white d-flex col-sm-8 col-md-6"
               btnText={
                 <>
-                  <MdAddBox size={25} />
+                  <FiPlusSquare size={25} className="m-auto mr-1" />{" "}
+                  <span className="m-auto ml-2"> Add</span>
                 </>
               }
             >
@@ -125,19 +129,19 @@ const UserTable = ({ title, url, type }) => {
           </div>
         </div>
         <div>
-          <table className="table table-borderless">
-            <thead
-              id="user-table-shadow"
-              className="text-center"
-              style={{ backgroundColor: "#007bff", color: "#fff" }}
-            >
+          <table className="table">
+            <thead id="user-table-shadow" className="text-center text-light bg-dark">
               <tr>
                 <th scope="col">S. No.</th>
                 {columns.map((c, ckey) => {
                   return (
                     <>
                       {ckey < 7 && (
-                        <th key={ckey} scope="col" className="text-capitalize">
+                        <th
+                          key={ckey}
+                          scope="col"
+                          className={"text-capitalize"}
+                        >
                           {c}
                         </th>
                       )}
@@ -147,7 +151,6 @@ const UserTable = ({ title, url, type }) => {
 
                 {type === "user" && (
                   <>
-                    {" "}
                     <th scope="col">Status</th>
                     <th scope="col">Enable</th>{" "}
                   </>
@@ -155,7 +158,7 @@ const UserTable = ({ title, url, type }) => {
                 <th scope="col">Actions</th>
               </tr>
             </thead>
-            <tbody className="text-white text-center">
+            <tbody className=" text-center">
               {loading ? (
                 <div className="text-center">
                   <div className="spinner-border text-primary" role="status">
@@ -170,7 +173,10 @@ const UserTable = ({ title, url, type }) => {
                       return (
                         <>
                           {ckey < 7 && (
-                            <td key={ckey} className="text-capitalize">
+                            <td
+                              key={ckey}
+                              className={c !== "email" ? "text-capitalize" : ""}
+                            >
                               {c === "image" ? (
                                 <img
                                   src={`http://localhost:5000${user[c]}`}
@@ -190,26 +196,29 @@ const UserTable = ({ title, url, type }) => {
                     })}
                     {type === "user" && (
                       <>
-                        <td
-                          style={{
-                            color: user?.status === "Active" ? "green" : "red",
-                          }}
-                        >
-                          {user?.status}
+                        <td>
+                          <span
+                            className={`${user?.isEnable
+                              ? "bg-success text-white"
+                              : "bg-danger text-white"
+                              } rounded p-1  `}
+                          >
+                            {user?.isEnable ? "Active" : "Inactive"}
+                          </span>
                         </td>
                         <td>
                           <Switch
-                            defaultChecked={user?.status === "Active"}
+                            defaultChecked={user?.isEnable === true}
                             color="primary"
-                            onChange={() => toggleStatus(user?.id)}
+                            onChange={() => toggleStatus(user?._id, user)}
                           />
                         </td>
                       </>
                     )}
-                    <td>
+                    <td className="d-flex">
                       <Modal
-                        btnText={<FaRegEdit size={20} />}
-                        btnClasss="btn btn-transpenrent mr-2 text-white"
+                        btnText={<FaPencilAlt size={20} />}
+                        btnClasss="btn btn-transpenrent text-warning mr-2 "
                         bodyClass="bg-white  col-sm-8 col-md-6"
                         closeIcon="fs-1 text-dark"
                       >
@@ -228,7 +237,7 @@ const UserTable = ({ title, url, type }) => {
                       </Modal>
                       <Modal
                         btnText={<FaEye size={20} />}
-                        btnClasss="btn  btn-transpenrent mr-2 text-white"
+                        btnClasss="btn  btn-transpenrent mr-2  text-primary "
                         bodyClass="bg-light  col-sm-8 col-md-6"
                         closeIcon="fs-1 text-dark "
                       >
@@ -240,7 +249,7 @@ const UserTable = ({ title, url, type }) => {
                       </Modal>
                       <Modal
                         btnText={<MdDelete size={20} />}
-                        btnClasss="btn  btn-transpenrent text-white"
+                        btnClasss="btn  btn-transpenrent text-danger "
                         bodyClass="bg-white border card"
                         closeIcon="fs-1 text-dark"
                       >
@@ -261,76 +270,70 @@ const UserTable = ({ title, url, type }) => {
             </tbody>
           </table>
           <div className="px-5 d-flex justify-content-between">
-            <div className="my-auto text-white">
+            <div className="my-auto ">
               Showing {curPage} to {page > users?.length ? users?.length : page}{" "}
               of {users?.length}
             </div>
-            <ul className={` pagination gap-3 text-white `}>
+            <ul className={` pagination gap-3  `}>
               <li
                 className="fs-2 me-3"
                 onClick={() => setCurPage(curPage > 1 ? curPage - 1 : curPage)}
               >
-                <span className={` page-icon-action rounded-circle`}>&lt;</span>
+                <span
+                  onClick={() => handleCurPage(curPage)}
+                  className={`${pageActive < curPage ? "page-active" : ""
+                    } page-icon-action rounded-circle`}
+                >
+                  &lt;
+                </span>
               </li>
-              <li className="my-auto fs-5 px-2  rounded-circle">
-                <span className={` page-icon  rounded-circle`}>{curPage}</span>{" "}
+              <li className="my-auto fs-5    rounded-circle">
+                <span
+                  onClick={() => handleCurPage(curPage)}
+                  className={`${pageActive === curPage ? "page-active" : ""
+                    } page-icon  rounded-circle p-2 px-3`}
+                >
+                  {curPage}
+                </span>{" "}
               </li>
-              <li className="my-auto fs-5 px-2">
-                <span className={`page-icon rounded-circle`}>
+              <li className="my-auto fs-5 ">
+                <span
+                  onClick={() => handleCurPage(curPage + 1)}
+                  className={`${pageActive === curPage + 1 ? "page-active" : ""
+                    } page-icon rounded-circle p-2 px-3`}
+                >
                   {curPage + 1}
                 </span>
               </li>
-              <li className="my-auto fs-5 px-2">
-                <span className={`page-icon rounded-circle`}>
+              <li className={` my-auto fs-5 `}>
+                <span
+                  onClick={() => handleCurPage(curPage + 2)}
+                  className={`${pageActive === curPage + 2 ? "page-active" : ""
+                    }  page-icon rounded-circle p-2 px-3`}
+                >
                   {curPage + 2}
                 </span>
               </li>
               <li
-                className="fs-2 ms-3"
-                onClick={() =>
+                className={`fs-2 ms-3`}
+                onClick={() => {
                   setCurPage(
                     curPage < Math.ceil(users?.length / page)
                       ? curPage + 1
                       : curPage
-                  )
-                }
+                  );
+                }}
               >
-                <span className="page-icon-action  rounded-circle"> &gt;</span>
+                <span
+                  onClick={() => handleCurPage(curPage + 3)}
+                  className={`page-icon-action  rounded-circle  ${pageActive > curPage + 2 ? "page-active" : ""
+                    }`}
+                >
+                  {" "}
+                  &gt;
+                </span>
               </li>
             </ul>
-            {/* <div className="text-white">
-              Showing {curPage} to {page > users.length ? users.length : page}{" "}
-              of {users?.length}
-            </div>
-            <nav aria-label=" ">
-              <ul className="d-flex m-0">
-                <li
-                  className="page-item border fs-2  px-3 bg-light"
-                  style={{ cursor: "pointer" }}
-                  onClick={() =>
-                    setCurPage(curPage > 1 ? curPage - 1 : curPage)
-                  }
-                >
-                  &lt;
-                </li>
-                <li className="page-item border  text-white px-4 fw-bold bg-primary tex-white">
-                  {curPage}
-                </li>
-                <li
-                  className="page-item border p-2 px-3 fs-2 bg-light"
-                  style={{ cursor: "pointer" }}
-                  onClick={() =>
-                    setCurPage(
-                      curPage < Math.ceil(users.length / page)
-                        ? curPage + 1
-                        : curPage
-                    )
-                  }
-                >
-                  &gt;
-                </li>
-              </ul>
-            </nav> */}
           </div>
         </div>
       </div>
