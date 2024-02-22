@@ -43,3 +43,34 @@ export const deleteAdmin = async (id) => {
 };
 
 export default adminLogin;
+
+export const forgetPassword = async (email) => {
+  try {
+    const res = await Axios.post(`/admin/forget/send-email`, email);
+    return res.data;
+  } catch (error) {
+    throw error.response.data.message;
+  }
+};
+
+export const verififyOtp = async (otp) => {
+  try {
+    const res = await Axios.post(`/admin/forget/verify`, otp);
+    return res.data;
+  } catch (error) {
+    throw error.response.data.message;
+  }
+};
+
+export const resetPassword = async (email, password, cnfPassword) => {
+  try {
+    const res = await Axios.post(`/admin/forget/set-password`, {
+      email,
+      password,
+      cnfPassword,
+    });
+    return res.data;
+  } catch (error) {
+    throw error.response.data.message;
+  }
+};

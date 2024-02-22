@@ -37,3 +37,17 @@
 .admin-outlet::-webkit-scrollbar{
     display: none;
 }
+
+
+.messageNot .notice,.messageNot .msg{
+    bottom: -5px;
+    position: absolute;
+    width: 0;
+overflow: hidden;
+font-weight: bold;
+
+}
+
+.messageNot:hover .notice,.messageNot:hover .msg{
+    width: fit-content;
+}

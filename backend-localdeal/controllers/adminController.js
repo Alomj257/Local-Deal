@@ -1,7 +1,9 @@
 // controllers/adminController.js
+const { sendEmailByEmail } = require("../middleware/EmailHandle");
 const upload = require("../middleware/upload");
 const Admin = require("../models/AdminModel");
 const jwt = require("jsonwebtoken");
+const OtpMOdel = require("../models/OTP");
 
 const registerAdmin = async (req, res) => {
   try {
@@ -178,7 +180,58 @@ const deleteAdmin = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+const forgetPassword = async (req, res) => {
+  try {
+    const OTP = Math.floor(Math.random() * 100 + 100000);
+    const sentEmail = await sendEmailByEmail(OTP, req);
+    console.log(sentEmail);
 
+    if (sentEmail) {
+      await new OtpMOdel({ otp: OTP, email: req.body.email }).save();
+      return res
+        .status(200)
+        .json("Check your email. OTP has been sent to your email.");
+    } else {
+      return res
+        .status(400)
+        .json({ message: "Email sending failed. Please try again." });
+    }
+  } catch (error) {
+    console.error("Error sending OTP via email:", error);
+    return res.status(500).json({ message: "Internal server error." });
+  }
+};
+const verififyOtp = async (req, res) => {
+  try {
+    const { otp } = req.body;
+    const email = await OtpMOdel.findOne({ otp: otp });
+    if (!email) {
+      res.status(404).json({ message: "wrong  otp please enter correct otp" });
+    }
+    await OtpMOdel.findOneAndDelete({ otp: otp });
+    res.status(200).json("OTP verified successfully");
+  } catch (error) {
+    console.error("otp not matched:", error);
+    return res.status(500).json({ message: "Internal server error." });
+  }
+};
+const updateUpassword = async (req, res) => {
+  try {
+    const { password, cnfPassword, email } = req.body;
+    if (password != cnfPassword) {
+      return res.status(401).json({ message: "password not matched" });
+    }
+    const admin = await Admin.findOneAndUpdate(
+      { email: email },
+      { $set: req.body },
+      { new: true }
+    );
+    res.status(200).json("passsword update successfully");
+  } catch (error) {
+    console.error("otp not matched:", error);
+    return res.status(500).json({ message: "Internal server error." });
+  }
+};
 module.exports = {
   updateAdmin,
   registerAdmin,
@@ -187,4 +240,7 @@ module.exports = {
   getUserById,
   deleteAdmin,
   UpdateUser,
+  forgetPassword,
+  verififyOtp,
+  updateUpassword,
 };

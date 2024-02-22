@@ -106,7 +106,11 @@
 import React, { useState } from "react";
 import Cookie from "js-cookie";
 import "./AdminLogin.css";
-import adminLogin from "../../services/adminService";
+import adminLogin, {
+  forgetPassword,
+  resetPassword,
+  verififyOtp,
+} from "../../services/adminService";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 
@@ -153,12 +157,71 @@ const AdminLogin = () => {
 
   const handleVerifyCode = async (e) => {
     e.preventDefault();
-    setStep("verifyCode");
+    if (!username) {
+      setError("enter your email id");
+      return;
+    }
+    try {
+      const response = await forgetPassword({ email: username });
+      console.log(response);
+      console.log("forget successful, res:", response);
+      setUsername("");
+      setStep("verifyCode");
+      localStorage.setItem("email", username);
+    } catch (error) {
+      console.log(error);
+      setError(error);
+      setUsername("");
+      setTimeout(() => {
+        setError("");
+      }, 2000);
+    }
   };
 
   const handleResetPassword = async (e) => {
     e.preventDefault();
-    setStep("resetPassword");
+    try {
+      if (!verificationCode) {
+        setError("Enter your OTP");
+      }
+      const response = await verififyOtp({ otp: verificationCode });
+      console.log(response);
+      console.log("verify successful, res:", response);
+      setUsername("");
+      setStep("resetPassword");
+    } catch (error) {
+      console.log(error);
+      setError(error);
+      setUsername("");
+      setTimeout(() => {
+        setError("");
+      }, 2000);
+    }
+  };
+  const ResetPassword = async (e) => {
+    e.preventDefault();
+    try {
+      if (!newPassword || !confirmPassword) {
+        setError("Enter your OTP");
+        return;
+      }
+      const response = await resetPassword(
+        username,
+        newPassword,
+        confirmPassword
+      );
+      console.log(response);
+      console.log("verify successful, res:", response);
+      setUsername("");
+      setStep("resetPassword");
+    } catch (error) {
+      console.log(error);
+      setError(error);
+      setUsername("");
+      setTimeout(() => {
+        setError("");
+      }, 2000);
+    }
   };
 
   return (
@@ -280,7 +343,7 @@ const AdminLogin = () => {
                     <p className="text-muted mt-2 mb-4">
                       Enter your new password and confirm password.
                     </p>
-                    <form onSubmit={handleResetPassword}>
+                    <form onSubmit={ResetPassword}>
                       <div className="form-group mb-4">
                         <input
                           type="password"

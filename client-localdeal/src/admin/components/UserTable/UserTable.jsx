@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FaEye, FaPencilAlt } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { Switch } from "@mui/material";
-import { FiFileText, FiPlusSquare } from 'react-icons/fi';
+import { FiFileText, FiPlusSquare } from "react-icons/fi";
 import "./UserTable.css";
 import useFetch from "../../../Hooks/useFetch";
 import Modal from "../../../utils/Modal/Modal";
@@ -28,9 +28,9 @@ const UserTable = ({ title, url, type, columns }) => {
         prevUsers?.map((user) =>
           user._id === id
             ? {
-              ...user,
-              isEnable: !user?.isEnable,
-            }
+                ...user,
+                isEnable: !user?.isEnable,
+              }
             : user
         )
       );
@@ -98,12 +98,8 @@ const UserTable = ({ title, url, type, columns }) => {
               className="form-control m-auto rounded"
             />
 
-            <span
-              onClick={handleExport}
-              className="d-flex  table-icons m-auto"
-            >
-              <FiFileText size={25} className="my-auto mr-1" />{" "}
-               Export
+            <span onClick={handleExport} className="d-flex  table-icons m-auto">
+              <FiFileText size={25} className="my-auto mr-1" /> Export
             </span>
             <Modal
               btnClasss="add-user-btn d-flex btn rounded"
@@ -130,7 +126,10 @@ const UserTable = ({ title, url, type, columns }) => {
         </div>
         <div>
           <table className="table">
-            <thead id="user-table-shadow" className="text-center text-light bg-dark">
+            <thead
+              id="user-table-shadow"
+              className="text-center text-light bg-dark"
+            >
               <tr>
                 <th scope="col">S. No.</th>
                 {columns.map((c, ckey) => {
@@ -198,10 +197,11 @@ const UserTable = ({ title, url, type, columns }) => {
                       <>
                         <td>
                           <span
-                            className={`${user?.isEnable
-                              ? "bg-success text-white"
-                              : "bg-danger text-white"
-                              } rounded p-1  `}
+                            className={`${
+                              user?.isEnable
+                                ? "bg-success text-white"
+                                : "bg-danger text-white"
+                            } rounded p-1  `}
                           >
                             {user?.isEnable ? "Active" : "Inactive"}
                           </span>
@@ -215,38 +215,43 @@ const UserTable = ({ title, url, type, columns }) => {
                         </td>
                       </>
                     )}
-                    <td className="d-flex">
-                      <Modal
-                        btnText={<FaPencilAlt size={20} />}
-                        btnClasss="btn btn-transpenrent text-warning mr-2 "
-                        bodyClass="bg-white  col-sm-8 col-md-6"
-                        closeIcon="fs-1 text-dark"
-                      >
-                        {type === "user" ? (
-                          <UpdateAdmin
-                            oldUser={user}
-                            onUserUpdate={handleUserUpdate}
-                          />
-                        ) : (
-                          <UpdateAction
-                            url={url}
-                            oldData={user}
-                            onUpdateAction={handleUserUpdate}
-                          />
-                        )}
-                      </Modal>
-                      <Modal
-                        btnText={<FaEye size={20} />}
-                        btnClasss="btn  btn-transpenrent mr-2  text-primary "
-                        bodyClass="bg-light  col-sm-8 col-md-6"
-                        closeIcon="fs-1 text-dark "
-                      >
-                        {type === "user" ? (
-                          <ViewUser user={user} />
-                        ) : (
-                          <ViewAction title={title} data={user} />
-                        )}
-                      </Modal>
+                    <td className="d-flex justify-content-center">
+                      {type !== "subscruber" && (
+                        <>
+                          {" "}
+                          <Modal
+                            btnText={<FaPencilAlt size={20} />}
+                            btnClasss="btn btn-transpenrent text-warning mr-2 "
+                            bodyClass="bg-white  col-sm-8 col-md-6"
+                            closeIcon="fs-1 text-dark"
+                          >
+                            {type === "user" ? (
+                              <UpdateAdmin
+                                oldUser={user}
+                                onUserUpdate={handleUserUpdate}
+                              />
+                            ) : (
+                              <UpdateAction
+                                url={url}
+                                oldData={user}
+                                onUpdateAction={handleUserUpdate}
+                              />
+                            )}
+                          </Modal>
+                          <Modal
+                            btnText={<FaEye size={20} />}
+                            btnClasss="btn  btn-transpenrent mr-2  text-primary "
+                            bodyClass="bg-light  col-sm-8 col-md-6"
+                            closeIcon="fs-1 text-dark "
+                          >
+                            {type === "user" ? (
+                              <ViewUser user={user} />
+                            ) : (
+                              <ViewAction title={title} data={user} />
+                            )}
+                          </Modal>
+                        </>
+                      )}
                       <Modal
                         btnText={<MdDelete size={20} />}
                         btnClasss="btn  btn-transpenrent text-danger "
@@ -281,8 +286,9 @@ const UserTable = ({ title, url, type, columns }) => {
               >
                 <span
                   onClick={() => handleCurPage(curPage)}
-                  className={`${pageActive < curPage ? "page-active" : ""
-                    } page-icon-action rounded-circle`}
+                  className={`${
+                    pageActive < curPage ? "page-active" : ""
+                  } page-icon-action rounded-circle`}
                 >
                   &lt;
                 </span>
@@ -290,8 +296,9 @@ const UserTable = ({ title, url, type, columns }) => {
               <li className="my-auto fs-5    rounded-circle">
                 <span
                   onClick={() => handleCurPage(curPage)}
-                  className={`${pageActive === curPage ? "page-active" : ""
-                    } page-icon  rounded-circle p-2 px-3`}
+                  className={`${
+                    pageActive === curPage ? "page-active" : ""
+                  } page-icon  rounded-circle p-2 px-3`}
                 >
                   {curPage}
                 </span>{" "}
@@ -299,8 +306,9 @@ const UserTable = ({ title, url, type, columns }) => {
               <li className="my-auto fs-5 ">
                 <span
                   onClick={() => handleCurPage(curPage + 1)}
-                  className={`${pageActive === curPage + 1 ? "page-active" : ""
-                    } page-icon rounded-circle p-2 px-3`}
+                  className={`${
+                    pageActive === curPage + 1 ? "page-active" : ""
+                  } page-icon rounded-circle p-2 px-3`}
                 >
                   {curPage + 1}
                 </span>
@@ -308,8 +316,9 @@ const UserTable = ({ title, url, type, columns }) => {
               <li className={` my-auto fs-5 `}>
                 <span
                   onClick={() => handleCurPage(curPage + 2)}
-                  className={`${pageActive === curPage + 2 ? "page-active" : ""
-                    }  page-icon rounded-circle p-2 px-3`}
+                  className={`${
+                    pageActive === curPage + 2 ? "page-active" : ""
+                  }  page-icon rounded-circle p-2 px-3`}
                 >
                   {curPage + 2}
                 </span>
@@ -326,8 +335,9 @@ const UserTable = ({ title, url, type, columns }) => {
               >
                 <span
                   onClick={() => handleCurPage(curPage + 3)}
-                  className={`page-icon-action  rounded-circle  ${pageActive > curPage + 2 ? "page-active" : ""
-                    }`}
+                  className={`page-icon-action  rounded-circle  ${
+                    pageActive > curPage + 2 ? "page-active" : ""
+                  }`}
                 >
                   {" "}
                   &gt;

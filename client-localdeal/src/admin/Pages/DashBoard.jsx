@@ -21,9 +21,15 @@ const DashBoard = () => {
               <span className="text-primary pl-2">Hi,</span>{" "}
               <span className="text-capitalize">{auth?.user?.name}</span>
             </span>
-            <span className="profile">
-              <span>Message</span>
-              <span>Notification</span>
+            <span className="profile d-flex gap-4">
+              <span className="messageNot my-auto">
+                <i className="bx bxs-message-dots fs-4"></i>
+                <span className="msg">Message</span>
+              </span>
+              <span className="my-auto messageNot">
+                <i className="bx fs-4  bxs-bell"></i>
+                <span className=" notice">Notification</span>
+              </span>
               <span>
                 {!auth?.user?.profile ? (
                   <FaUserCircle size={25} />
