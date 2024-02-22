@@ -1,7 +1,11 @@
 // controllers/adminController.js
+
+const { sendEmailByEmail } = require("../middleware/EmailHandle");
 const upload = require("../middleware/upload");
 const Admin = require("../models/AdminModel");
 const jwt = require("jsonwebtoken");
+const OtpMOdel = require("../models/OTP");
+const bcrypt = require("bcrypt");
 
 const registerAdmin = async (req, res) => {
   try {
@@ -178,6 +182,71 @@ const deleteAdmin = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+const forgetPassword = async (req, res) => {
+  try {
+    const OTP = Math.floor(Math.random() * 100 + 100000);
+    const admin = await Admin.findOne({ email: req.body.email });
+    if (!admin) {
+      return res
+        .status(404)
+        .json({ message: "your email not exist please register" });
+    }
+
+    const sentEmail = await sendEmailByEmail(OTP, req);
+    if (sentEmail) {
+      await new OtpMOdel({ otp: OTP, email: req.body.email }).save();
+      return res
+        .status(200)
+        .json("Check your email. OTP has been sent to your email.");
+    } else {
+      return res
+        .status(400)
+        .json({ message: "Email sending failed. Please try again." });
+    }
+  } catch (error) {
+    console.error("Error sending OTP via email:", error);
+    return res.status(500).json({ message: "Internal server error." });
+  }
+};
+const verififyOtp = async (req, res) => {
+  try {
+    const { otp } = req.body;
+    const email = await OtpMOdel.findOne({ otp: otp });
+    if (!email) {
+      return res
+        .status(404)
+        .json({ message: "wrong  otp please enter correct otp" });
+    }
+    await OtpMOdel.findOneAndDelete({ otp: otp });
+    res.status(200).json("OTP verified successfully");
+  } catch (error) {
+    console.error("otp not matched:", error);
+    return res.status(500).json({ message: "Internal server error." });
+  }
+};
+const updateUpassword = async (req, res) => {
+  try {
+    const { password, cnfPassword, email } = req.body;
+    if (password !== cnfPassword) {
+      return res.status(401).json({ message: "Passwords do not match" });
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const admin = await Admin.findOneAndUpdate(
+      { email: email },
+      { $set: { password: hashedPassword } },
+      { new: true }
+    );
+    if (!admin) {
+      return res.status(404).json({ message: "Admin not found" });
+    }
+    return res.status(200).json({ message: "Password updated successfully" });
+  } catch (error) {
+    console.error("Error updating password:", error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+};
 
 module.exports = {
   updateAdmin,
@@ -187,4 +256,7 @@ module.exports = {
   getUserById,
   deleteAdmin,
   UpdateUser,
+  forgetPassword,
+  verififyOtp,
+  updateUpassword,
 };

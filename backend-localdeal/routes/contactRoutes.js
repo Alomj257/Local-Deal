@@ -1,8 +1,12 @@
-const express = require('express');
+const express = require("express");
+const {
+  submitContactForm,
+  getAllContacts,
+} = require("../controllers/contactController");
 const router = express.Router();
-const contactController = require('../controllers/ContactController');
 
 // Define the route for handling the contact form submission
-router.post('/submit', contactController.submitContactForm);
+router.post("/submit", submitContactForm);
+router.get("/", getAllContacts);
 
 module.exports = router;

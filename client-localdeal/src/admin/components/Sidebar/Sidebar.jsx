@@ -115,15 +115,15 @@ function Sidebar() {
           <span className="tooltip">User</span>
         </li>
         <li>
-          <Link to="/admin/setting">
-            <i class='bx bxs-contact'></i>
+          <Link to="/admin/contact">
+            <i class="bx bxs-contact"></i>
             <span className="links_name">Contacts</span>
           </Link>
           <span className="tooltip">Contacts</span>
         </li>
         <li>
-          <Link to="/admin/setting">
-          <i class='bx bx-bell'></i>
+          <Link to="/admin/subscribers">
+            <i class="bx bx-bell"></i>
             <span className="links_name">Subscriber</span>
           </Link>
           <span className="tooltip">Subscriber</span>

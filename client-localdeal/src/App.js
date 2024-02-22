@@ -30,6 +30,8 @@ import AdminActivities from "./admin/Pages/Category/Activities";
 import AdminService from "./admin/Pages/Category/Service";
 import AdminBeaty from "./admin/Pages/Category/Beaty";
 import AdminHome from "./admin/Pages/Category/Home";
+import Contact from "./admin/Pages/Contact";
+import Newslatter from "./admin/Pages/Newslatter";
 
 const App = () => {
   return (
@@ -44,7 +46,7 @@ const App = () => {
           <Route path="/categories" element={<Categories />} />
           <Route path="/promotions" element={<Promotion />} />
           <Route path="/contact" element={<ContactUs />} />
-          <Route path="/adminlogin" element={<AdminLogin />} />
+          <Route path="/admin-login" element={<AdminLogin />} />
           <Route path="/categories/food" element={<Food />} />
           <Route path="/categories/accommodation" element={<Accommodation />} />
           <Route path="/categories/homestore" element={<Homestore />} />
@@ -67,6 +69,8 @@ const App = () => {
               <Route path="home" element={<AdminHome />} />
             </Route>
             <Route path="logout" element={<Logout />} />
+            <Route path="contact" element={<Contact />} />
+            <Route path="subscribers" element={<Newslatter />} />
           </Route>
         </Routes>
       </>
