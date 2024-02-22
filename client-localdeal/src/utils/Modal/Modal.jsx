@@ -2,11 +2,22 @@ import React, { useState } from "react";
 import "./Modal.css";
 import { BiX } from "react-icons/bi";
 
-const Modal = ({ children, btnText, bodyClass, btnClasss, closeIcon }) => {
+const Modal = ({
+  children,
+  btnText,
+  bodyClass,
+  btnClasss,
+  closeIcon,
+  btnStyle,
+}) => {
   const [isModal, setIsModal] = useState(false);
   return (
     <>
-      <button className={btnClasss} onClick={() => setIsModal(!isModal)}>
+      <button
+        className={btnClasss}
+        onClick={() => setIsModal(!isModal)}
+        style={btnStyle}
+      >
         {btnText}
       </button>
       <div className={isModal ? "modal" : "d-none"}>
