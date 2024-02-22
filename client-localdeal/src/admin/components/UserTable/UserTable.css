@@ -68,4 +68,5 @@
 
 .table td, .table th {
     padding: 8px !important;
+    /* border-top: 0 !important; */
 }
