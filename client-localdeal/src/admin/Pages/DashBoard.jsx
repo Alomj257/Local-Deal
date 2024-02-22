@@ -15,7 +15,7 @@ const DashBoard = () => {
       <div className="d-flex dashboard">
         {/* <Header /> */}
         <Sidebar />
-        <main className="w-100 p-3">
+        <main className="w-100 p-2">
           <div className="text-end position-relative d-flex justify-content-between">
             <span className=" my-auto fw-bold">
               <span className="text-primary">Hi,</span>{" "}

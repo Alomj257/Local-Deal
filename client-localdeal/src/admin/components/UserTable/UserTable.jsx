@@ -129,8 +129,8 @@ const UserTable = ({ title, url, type, columns }) => {
           </div>
         </div>
         <div>
-          <table className="table table-bordered  ">
-            <thead id="user-table-shadow" className="text-center">
+          <table className="table">
+            <thead id="user-table-shadow" className="text-center text-light bg-dark">
               <tr>
                 <th scope="col">S. No.</th>
                 {columns.map((c, ckey) => {
