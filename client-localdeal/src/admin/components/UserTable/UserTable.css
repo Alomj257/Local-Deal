@@ -35,6 +35,7 @@
 }
 .add-user-btn svg{
     color: rgb(255, 187, 0);
+    margin-right: 5px !important;
 }
 
 .add-user-btn:hover {

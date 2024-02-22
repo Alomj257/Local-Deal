@@ -111,7 +111,7 @@ const UserTable = ({ title, url, type, columns }) => {
               btnText={
                 <>
                   <FiPlusSquare size={25} className="m-auto mr-1" />{" "}
-                  <span className="m-auto"> Add</span>
+                  <span className="m-auto ml-2"> Add</span>
                 </>
               }
             >
