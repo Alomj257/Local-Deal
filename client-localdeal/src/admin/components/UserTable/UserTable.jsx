@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { FaEye, FaPencilAlt } from "react-icons/fa";
-import { MdAddBox, MdDelete } from "react-icons/md";
+import { MdDelete } from "react-icons/md";
 import { Switch } from "@mui/material";
-import { FaFileExcel } from "react-icons/fa";
+import { FiFileText, FiPlusSquare } from 'react-icons/fi';
 import "./UserTable.css";
 import useFetch from "../../../Hooks/useFetch";
 import Modal from "../../../utils/Modal/Modal";
@@ -28,9 +28,9 @@ const UserTable = ({ title, url, type, columns }) => {
         prevUsers?.map((user) =>
           user._id === id
             ? {
-                ...user,
-                isEnable: !user?.isEnable,
-              }
+              ...user,
+              isEnable: !user?.isEnable,
+            }
             : user
         )
       );
@@ -85,7 +85,7 @@ const UserTable = ({ title, url, type, columns }) => {
 
   return (
     <>
-      <div className="user-table p-3 rounded">
+      <div className="user-table p-1 rounded">
         <div className="d-flex justify-content-between mb-3 ">
           <div className="d-flex">
             <h3 className="m-auto ">{title}</h3>
@@ -100,17 +100,18 @@ const UserTable = ({ title, url, type, columns }) => {
 
             <span
               onClick={handleExport}
-              className="p-2  table-icons m-auto rounded-circle"
+              className="d-flex  table-icons m-auto"
             >
-              <FaFileExcel size={25} className=" " />
+              <FiFileText size={25} className="my-auto mr-1" />{" "}
+               Export
             </span>
             <Modal
               btnClasss="add-user-btn d-flex btn rounded"
               bodyClass="bg-white d-flex col-sm-8 col-md-6"
               btnText={
                 <>
-                  <MdAddBox size={25} className="my-auto" />{" "}
-                  <span className="fw-bold my-auto">Add</span>
+                  <FiPlusSquare size={25} className="m-auto mr-1" />{" "}
+                  <span className="m-auto"> Add</span>
                 </>
               }
             >
@@ -128,8 +129,9 @@ const UserTable = ({ title, url, type, columns }) => {
           </div>
         </div>
         <div>
-          <table className="table table-bordered">
-            <thead id="user-table-shadow" className="text-center">
+          <table className="table">
+            {/* <span>table-bordered</span> */}
+            <thead id="user-table-shadow" className="text-center text-light bg-dark">
               <tr>
                 <th scope="col">S. No.</th>
                 {columns.map((c, ckey) => {
@@ -190,11 +192,10 @@ const UserTable = ({ title, url, type, columns }) => {
                       <>
                         <td>
                           <span
-                            className={`${
-                              user?.isEnable
-                                ? "bg-success text-white"
-                                : "bg-danger text-white"
-                            } rounded p-1  `}
+                            className={`${user?.isEnable
+                              ? "bg-success text-white"
+                              : "bg-danger text-white"
+                              } rounded p-1  `}
                           >
                             {user?.isEnable ? "Active" : "Inactive"}
                           </span>
@@ -274,9 +275,8 @@ const UserTable = ({ title, url, type, columns }) => {
               >
                 <span
                   onClick={() => handleCurPage(curPage)}
-                  className={`${
-                    pageActive < curPage ? "page-active" : ""
-                  } page-icon-action rounded-circle`}
+                  className={`${pageActive < curPage ? "page-active" : ""
+                    } page-icon-action rounded-circle`}
                 >
                   &lt;
                 </span>
@@ -284,9 +284,8 @@ const UserTable = ({ title, url, type, columns }) => {
               <li className="my-auto fs-5    rounded-circle">
                 <span
                   onClick={() => handleCurPage(curPage)}
-                  className={`${
-                    pageActive === curPage ? "page-active" : ""
-                  } page-icon  rounded-circle p-2 px-3`}
+                  className={`${pageActive === curPage ? "page-active" : ""
+                    } page-icon  rounded-circle p-2 px-3`}
                 >
                   {curPage}
                 </span>{" "}
@@ -294,9 +293,8 @@ const UserTable = ({ title, url, type, columns }) => {
               <li className="my-auto fs-5 ">
                 <span
                   onClick={() => handleCurPage(curPage + 1)}
-                  className={`${
-                    pageActive === curPage + 1 ? "page-active" : ""
-                  } page-icon rounded-circle p-2 px-3`}
+                  className={`${pageActive === curPage + 1 ? "page-active" : ""
+                    } page-icon rounded-circle p-2 px-3`}
                 >
                   {curPage + 1}
                 </span>
@@ -304,9 +302,8 @@ const UserTable = ({ title, url, type, columns }) => {
               <li className={` my-auto fs-5 `}>
                 <span
                   onClick={() => handleCurPage(curPage + 2)}
-                  className={`${
-                    pageActive === curPage + 2 ? "page-active" : ""
-                  }  page-icon rounded-circle p-2 px-3`}
+                  className={`${pageActive === curPage + 2 ? "page-active" : ""
+                    }  page-icon rounded-circle p-2 px-3`}
                 >
                   {curPage + 2}
                 </span>
@@ -323,9 +320,8 @@ const UserTable = ({ title, url, type, columns }) => {
               >
                 <span
                   onClick={() => handleCurPage(curPage + 3)}
-                  className={`page-icon-action  rounded-circle  ${
-                    pageActive > curPage + 2 ? "page-active" : ""
-                  }`}
+                  className={`page-icon-action  rounded-circle  ${pageActive > curPage + 2 ? "page-active" : ""
+                    }`}
                 >
                   {" "}
                   &gt;

@@ -37,7 +37,7 @@ const DashBoard = () => {
       <div className="d-flex dashboard">
         {/* <Header /> */}
         <Sidebar />
-        <main className="w-100 p-3">
+        <main className="w-100 p-2">
           <div className="text-end position-relative">
             <span>{auth?.user?.email || "user@gmail.com"}</span>{" "}
             <span className="profile">

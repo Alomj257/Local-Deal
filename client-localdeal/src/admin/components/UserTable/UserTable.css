@@ -1,41 +1,61 @@
-
 .table-icons {
-    border: 2px solid #2980b9;
+    border: 0.5px solid gainsboro;
+    border-radius: 0.2rem;
+    padding: 5px;
     cursor: pointer;
 }
-.table-icons svg{
-    color: #2980b9;
+
+.table-icons svg {
+    color: rgb(255, 187, 0);
 }
-.table-icons:hover{
- background-color: #2980b9;
- color: white;
+
+.table-icons:hover {
+    background-color: gainsboro;
+    color: Black;
 }
-.table-icons:hover svg{
-    color: white;
+
+.table-icons:hover svg {
+    color: black;
 }
-.add-user-btn{
+
+.add-user-btn {
+    border: 0.5px solid gainsboro;
+    border-radius: 0.2rem;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.add-user-btn svg{
+    color: rgb(255, 187, 0);
+}
+
+.add-user-btn:hover {
+    background-color: gainsboro;
+    color: Black;
+}
+.add-user-btn:hover svg{
+    color: Black;
+}
+
+.page-icon-action {
+    border: 1px solid white;
+    padding: 0px 8px;
+    cursor: pointer;
+}
+
+.page-icon-action:hover {
     background-color: white;
     color: #2980b9;
-    border-radius: 1.5rem;
-    border: 2px solid #2980b9;
 }
-.add-user-btn:hover{
-    background-color: #2980b9;
-    color: white;
-}
-.page-icon-action{
-    border: 3px solid white;
-    padding: 0px 12px;
+
+.pagination {
     cursor: pointer;
 }
-.page-icon-action:hover{
-    background-color: white;
-    color: #2980b9;
-}
-.pagination{
+
+.page-active {
+    border: 1px solid #2980b9;
     cursor: pointer;
 }
-.page-active{
-    border: 2px solid #2980b9;
-    cursor: pointer;
+
+.table td, .table th {
+    padding: 8px !important;
 }
