@@ -4,7 +4,6 @@ const OtpSchema = new mongoose.Schema({
   email: {
     type: String,
     required: true,
-    unique: true,
   },
   otp: {
     type: String,
@@ -12,6 +11,6 @@ const OtpSchema = new mongoose.Schema({
   },
 });
 
-const OtpMOdel = mongoose.model("otp", OtpSchema);
+const OtpMOdel = mongoose.model("OTPTable", OtpSchema);
 
 module.exports = OtpMOdel;

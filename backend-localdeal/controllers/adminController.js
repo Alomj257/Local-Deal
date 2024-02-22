@@ -1,9 +1,11 @@
 // controllers/adminController.js
+
 const { sendEmailByEmail } = require("../middleware/EmailHandle");
 const upload = require("../middleware/upload");
 const Admin = require("../models/AdminModel");
 const jwt = require("jsonwebtoken");
 const OtpMOdel = require("../models/OTP");
+const bcrypt = require("bcrypt");
 
 const registerAdmin = async (req, res) => {
   try {
@@ -183,9 +185,14 @@ const deleteAdmin = async (req, res) => {
 const forgetPassword = async (req, res) => {
   try {
     const OTP = Math.floor(Math.random() * 100 + 100000);
-    const sentEmail = await sendEmailByEmail(OTP, req);
-    console.log(sentEmail);
+    const admin = await Admin.findOne({ email: req.body.email });
+    if (!admin) {
+      return res
+        .status(404)
+        .json({ message: "your email not exist please register" });
+    }
 
+    const sentEmail = await sendEmailByEmail(OTP, req);
     if (sentEmail) {
       await new OtpMOdel({ otp: OTP, email: req.body.email }).save();
       return res
@@ -206,7 +213,9 @@ const verififyOtp = async (req, res) => {
     const { otp } = req.body;
     const email = await OtpMOdel.findOne({ otp: otp });
     if (!email) {
-      res.status(404).json({ message: "wrong  otp please enter correct otp" });
+      return res
+        .status(404)
+        .json({ message: "wrong  otp please enter correct otp" });
     }
     await OtpMOdel.findOneAndDelete({ otp: otp });
     res.status(200).json("OTP verified successfully");
@@ -218,20 +227,27 @@ const verififyOtp = async (req, res) => {
 const updateUpassword = async (req, res) => {
   try {
     const { password, cnfPassword, email } = req.body;
-    if (password != cnfPassword) {
-      return res.status(401).json({ message: "password not matched" });
+    if (password !== cnfPassword) {
+      return res.status(401).json({ message: "Passwords do not match" });
     }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+
     const admin = await Admin.findOneAndUpdate(
       { email: email },
-      { $set: req.body },
+      { $set: { password: hashedPassword } },
       { new: true }
     );
-    res.status(200).json("passsword update successfully");
+    if (!admin) {
+      return res.status(404).json({ message: "Admin not found" });
+    }
+    return res.status(200).json({ message: "Password updated successfully" });
   } catch (error) {
-    console.error("otp not matched:", error);
-    return res.status(500).json({ message: "Internal server error." });
+    console.error("Error updating password:", error);
+    return res.status(500).json({ message: "Internal server error" });
   }
 };
+
 module.exports = {
   updateAdmin,
   registerAdmin,

@@ -65,7 +65,7 @@ export const verififyOtp = async (otp) => {
 export const resetPassword = async (email, password, cnfPassword) => {
   try {
     const res = await Axios.post(`/admin/forget/set-password`, {
-      email,
+      email: email,
       password,
       cnfPassword,
     });

@@ -165,13 +165,10 @@ const AdminLogin = () => {
       const response = await forgetPassword({ email: username });
       console.log(response);
       console.log("forget successful, res:", response);
-      setUsername("");
       setStep("verifyCode");
-      localStorage.setItem("email", username);
     } catch (error) {
       console.log(error);
       setError(error);
-      setUsername("");
       setTimeout(() => {
         setError("");
       }, 2000);
@@ -187,12 +184,10 @@ const AdminLogin = () => {
       const response = await verififyOtp({ otp: verificationCode });
       console.log(response);
       console.log("verify successful, res:", response);
-      setUsername("");
       setStep("resetPassword");
     } catch (error) {
       console.log(error);
       setError(error);
-      setUsername("");
       setTimeout(() => {
         setError("");
       }, 2000);
@@ -205,6 +200,7 @@ const AdminLogin = () => {
         setError("Enter your OTP");
         return;
       }
+      console.log(username);
       const response = await resetPassword(
         username,
         newPassword,
@@ -212,12 +208,10 @@ const AdminLogin = () => {
       );
       console.log(response);
       console.log("verify successful, res:", response);
-      setUsername("");
       setStep("resetPassword");
     } catch (error) {
       console.log(error);
       setError(error);
-      setUsername("");
       setTimeout(() => {
         setError("");
       }, 2000);
