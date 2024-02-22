@@ -128,7 +128,7 @@ const UserTable = ({ title, url, type, columns }) => {
           </div>
         </div>
         <div>
-          <table className="table table-bordered">
+          <table className="table table-bordered  ">
             <thead id="user-table-shadow" className="text-center">
               <tr>
                 <th scope="col">S. No.</th>
@@ -136,7 +136,11 @@ const UserTable = ({ title, url, type, columns }) => {
                   return (
                     <>
                       {ckey < 7 && (
-                        <th key={ckey} scope="col" className="text-capitalize">
+                        <th
+                          key={ckey}
+                          scope="col"
+                          className={"text-capitalize"}
+                        >
                           {c}
                         </th>
                       )}
@@ -168,7 +172,10 @@ const UserTable = ({ title, url, type, columns }) => {
                       return (
                         <>
                           {ckey < 7 && (
-                            <td key={ckey} className="text-capitalize">
+                            <td
+                              key={ckey}
+                              className={c !== "email" ? "text-capitalize" : ""}
+                            >
                               {c === "image" ? (
                                 <img
                                   src={`http://localhost:5000${user[c]}`}
@@ -208,7 +215,7 @@ const UserTable = ({ title, url, type, columns }) => {
                         </td>
                       </>
                     )}
-                    <td>
+                    <td className="d-flex">
                       <Modal
                         btnText={<FaPencilAlt size={20} />}
                         btnClasss="btn btn-transpenrent text-warning mr-2 "

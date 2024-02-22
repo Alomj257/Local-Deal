@@ -91,6 +91,11 @@ const loginAdmin = async (req, res) => {
     if (!isPasswordMatch) {
       return res.status(401).json({ message: "Invalid credentials" });
     }
+    if (admin && !admin.isEnable) {
+      return res
+        .status(400)
+        .json({ message: "Your account has been blocked/inactive" });
+    }
 
     const token = jwt.sign({ adminId: admin._id }, "yourSecretKey", {
       expiresIn: "3h",

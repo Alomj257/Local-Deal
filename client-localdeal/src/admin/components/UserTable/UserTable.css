@@ -1,4 +1,12 @@
-
+.user-table{
+    min-width:80vw ;
+    overflow-x: scroll;
+    -ms-overflow-style: none;  
+  scrollbar-width: none; 
+}
+.user-table::-webkit-scrollbar{
+    display: none;
+}
 .table-icons {
     border: 2px solid #2980b9;
     cursor: pointer;
