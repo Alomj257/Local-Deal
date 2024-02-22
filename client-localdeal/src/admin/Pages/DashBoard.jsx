@@ -18,7 +18,7 @@ const DashBoard = () => {
         <main className="w-100 p-3">
           <div className="text-end position-relative d-flex justify-content-between">
             <span className=" my-auto fw-bold">
-              <span className="text-primary">Hi,</span>{" "}
+              <span className="text-primary pl-2">Hi,</span>{" "}
               <span className="text-capitalize">{auth?.user?.name}</span>
             </span>
             <span className="profile">
