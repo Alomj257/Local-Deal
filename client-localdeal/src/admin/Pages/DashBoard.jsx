@@ -23,11 +23,11 @@ const DashBoard = () => {
             </span>
             <span className="profile d-flex gap-4">
               <span className="messageNot my-auto">
-                <i className="bx bxs-message-dots fs-4"></i>
+                <i className="bx bxs-message-dots fs-5"></i>
                 <span className="msg">Message</span>
               </span>
               <span className="my-auto messageNot">
-                <i className="bx fs-4  bxs-bell"></i>
+                <i className="bx fs-5  bxs-bell"></i>
                 <span className=" notice">Notification</span>
               </span>
               <span>
@@ -44,8 +44,8 @@ const DashBoard = () => {
                         />
                       }
                       btnStyle={{ width: "50px", height: "50px" }}
-                      btnClasss="border-0  bg-transperent rounded-circle p-1 shadow"
-                      bodyClass="bg-light  col-sm-8 col-md-6 text-start"
+                      btnClasss="border-0  bg-white rounded-circle p-2"
+                      bodyClass="bg-white  col-sm-8 col-md-6 text-start"
                     >
                       <ViewUser user={auth?.user} />
                     </Modal>

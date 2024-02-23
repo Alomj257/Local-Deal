@@ -1,8 +1,8 @@
-.dashboard .profile{
+.dashboard .profile {
     cursor: pointer;
 }
 
-.show-profile-list{
+.show-profile-list {
     height: auto;
     list-style: none;
     width: max-content;
@@ -10,44 +10,51 @@
     right: 0;
     position: absolute;
     padding: 1rem 0;
-    border-radius:1rem 0;
+    border-radius: 1rem 0;
     transition: all 0.5s ease-in-out;
 
 }
-.show-profile-list li{
+
+.show-profile-list li {
     padding: 0.5rem 1rem;
     cursor: pointer;
     font-weight: 500;
 }
-.show-profile-list li:hover{
+
+.show-profile-list li:hover {
     background-color: lightslategray;
-    transition: background-color 0.2s ease-in ;
+    transition: background-color 0.2s ease-in;
 }
-.not-profile-list{
+
+.not-profile-list {
     height: 0;
     overflow: hidden;
 }
 
-.admin-outlet{
+.admin-outlet {
     height: 80vh;
     overflow: scroll;
-    -ms-overflow-style: none;  
-  scrollbar-width: none; 
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
-.admin-outlet::-webkit-scrollbar{
+
+.admin-outlet::-webkit-scrollbar {
     display: none;
 }
 
 
-.messageNot .notice,.messageNot .msg{
+.messageNot .notice,
+.messageNot .msg {
     bottom: -5px;
+    margin-left: -48px;
     position: absolute;
     width: 0;
-overflow: hidden;
-font-weight: bold;
+    overflow: hidden;
+    font-weight: bold;
 
 }
 
-.messageNot:hover .notice,.messageNot:hover .msg{
+.messageNot:hover .notice,
+.messageNot:hover .msg {
     width: fit-content;
 }
