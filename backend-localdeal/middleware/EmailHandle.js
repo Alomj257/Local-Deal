@@ -29,8 +29,7 @@ const newsLatterEmailSend = async (message) => {
           text: "details",
           html: `<h1>Thank you for subscribing to our newsletter.</h1>
             <p>
-              I hope you are aware out privacy. This is the one time password when
-              you use this password after that its useless
+              Here we have added a new promotion in our localdeal website, please do visit and check out the promotion at www.localdeal.co.za
             </p>
             <p> ${message}</p>
             <h5>Verification</h5>
