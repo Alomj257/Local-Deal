@@ -105,8 +105,7 @@ const sendPromotionalEmails = async (promotion) => {
 // Function to create a new promotion
 const createPromotion = async (req, res) => {
   try {
-    const newPromotion = await Promotion.create(req.body);
-
+    const newPromotion = await new Promotion(req.body).save();
     // Send promotional emails to subscribers
     // await sendPromotionalEmails(newPromotion);
 
@@ -161,7 +160,7 @@ const deletePromotion = async (req, res) => {
     if (!deletedPromotion) {
       return res.status(404).json({ message: "Promotion not found" });
     }
-    res.json(deletedPromotion);
+    res.status(200).json("promotion deleted successfully");
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

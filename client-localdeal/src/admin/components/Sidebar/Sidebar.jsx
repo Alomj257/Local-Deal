@@ -95,7 +95,7 @@ function Sidebar() {
           {/* <span className="tooltip">Promotion</span> */}
           <ul className="sub-menu">
             <li>
-              <Link to="/admin/category1" className="links_name">
+              <Link to="/admin/promotion/premium" className="links_name">
                 Premium{" "}
               </Link>
             </li>
