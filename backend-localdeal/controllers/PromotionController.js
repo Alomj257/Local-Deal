@@ -62,34 +62,35 @@
 //   deletePromotion,
 // };
 
-
 // controllers/PromotionController.js
 
-const Promotion = require('../models/PromotionModel');
-const NewsletterSubscription = require('../models/NewsletterModel');
-const nodemailer = require('nodemailer');
+const Promotion = require("../models/PromotionModel");
+const NewsletterSubscription = require("../models/NewsletterModel");
+const nodemailer = require("nodemailer");
+const newsLatterEmailSend = require("../middleware/EmailHandle");
 
 // Function to send promotional emails to subscribers
 const sendPromotionalEmails = async (promotion) => {
   try {
     // Retrieve all subscribers
-    const subscribers = await NewsletterSubscription.find({}, 'email');
+    const subscribers = await NewsletterSubscription.find({}, "email");
 
     // Send promotional email to all subscribers
     const transporter = nodemailer.createTransport({
       // configure your email provider here
       // Example for Gmail:
-      service: 'Gmail',
+      service: "Gmail",
       auth: {
-        user: 'jahangir.dev.test@gmail.com',
-        pass: 'gjqc wnbf xejh goee',
+        user: "jahangir.dev.test@gmail.com",
+        pass: "gjqc wnbf xejh goee",
       },
     });
 
     const mailOptions = {
-      from: 'jahangir.dev.test@gmail.com',
-      subject: 'New Promotion Alert!',
-      text: 'Check out our localdeal latest promotion, ' + promotion.description,
+      from: "jahangir.dev.test@gmail.com",
+      subject: "New Promotion Alert!",
+      text:
+        "Check out our localdeal latest promotion, " + promotion.description,
     };
 
     subscribers.forEach(async (subscriber) => {
@@ -97,7 +98,7 @@ const sendPromotionalEmails = async (promotion) => {
       await transporter.sendMail(mailOptions);
     });
   } catch (error) {
-    console.error('Error sending promotional emails:', error);
+    console.error("Error sending promotional emails:", error);
   }
 };
 
@@ -105,12 +106,14 @@ const sendPromotionalEmails = async (promotion) => {
 const createPromotion = async (req, res) => {
   try {
     const newPromotion = await Promotion.create(req.body);
-    
-    // Send promotional emails to subscribers
-    await sendPromotionalEmails(newPromotion);
 
+    // Send promotional emails to subscribers
+    // await sendPromotionalEmails(newPromotion);
+
+    await newsLatterEmailSend.newsLatterEmailSend(newPromotion);
     res.status(201).json(newPromotion);
   } catch (error) {
+    console.log(error);
     res.status(400).json({ error: error.message });
   }
 };
@@ -128,7 +131,7 @@ const getPromotionById = async (req, res) => {
   try {
     const promotion = await Promotion.findById(req.params.id);
     if (!promotion) {
-      return res.status(404).json({ message: 'Promotion not found' });
+      return res.status(404).json({ message: "Promotion not found" });
     }
     res.json(promotion);
   } catch (error) {
@@ -138,9 +141,13 @@ const getPromotionById = async (req, res) => {
 
 const updatePromotion = async (req, res) => {
   try {
-    const updatedPromotion = await Promotion.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    const updatedPromotion = await Promotion.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
+    );
     if (!updatedPromotion) {
-      return res.status(404).json({ message: 'Promotion not found' });
+      return res.status(404).json({ message: "Promotion not found" });
     }
     res.json(updatedPromotion);
   } catch (error) {
@@ -152,7 +159,7 @@ const deletePromotion = async (req, res) => {
   try {
     const deletedPromotion = await Promotion.findByIdAndDelete(req.params.id);
     if (!deletedPromotion) {
-      return res.status(404).json({ message: 'Promotion not found' });
+      return res.status(404).json({ message: "Promotion not found" });
     }
     res.json(deletedPromotion);
   } catch (error) {

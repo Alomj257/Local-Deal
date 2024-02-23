@@ -3,7 +3,10 @@ const Accommodation = require("../../models/categories/AccommodationModel");
 
 const getAllAccommodations = async (req, res) => {
   try {
-    const accommodations = await Accommodation.find();
+    const { limit, page } = req.query;
+    const accommodations = await Accommodation.find()
+      .skip((page - 1) * limit)
+      .limit(limit);
     res.json(accommodations);
   } catch (error) {
     res.status(500).json({ error: error.message });

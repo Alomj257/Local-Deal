@@ -113,7 +113,10 @@ const loginAdmin = async (req, res) => {
 
 const getAllUsers = async (req, res) => {
   try {
-    const allusers = await Admin.find().limit(req.query.limit);
+    const { limit, page } = req.query;
+    const allusers = await Admin.find()
+      .skip((page - 1) * limit)
+      .limit(limit);
     res.status(200).json(allusers);
   } catch (error) {
     res.status(500).json({ message: error.message });

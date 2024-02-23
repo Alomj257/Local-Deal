@@ -3,7 +3,10 @@ const Service = require("../../models/categories/ServiceModel");
 
 const getAllServices = async (req, res) => {
   try {
-    const services = await Service.find();
+    const { page, limit } = req.query;
+    const services = await Service.find()
+      .skip((page - 1) * limit)
+      .limit(limit);
     res.json(services);
   } catch (error) {
     res.status(500).json({ error: error.message });

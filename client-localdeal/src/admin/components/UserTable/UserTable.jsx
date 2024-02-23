@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FaEye, FaPencilAlt } from "react-icons/fa";
+import { FaEye, FaPencilAlt, FaReply } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { Switch } from "@mui/material";
 import { FiFileText, FiPlusSquare } from "react-icons/fi";
@@ -15,13 +15,16 @@ import AddAction from "../CategoryAction/AddAction";
 import ViewAction from "../CategoryAction/ViewAction";
 import { updateadmin } from "../../../services/adminService";
 import * as XLSX from "xlsx";
+import Reply from "../Reply/Reply";
 
 const UserTable = ({ title, url, type, columns }) => {
   const [users, setUsers] = useState([]);
-  const [page] = useState(10);
+  const [limit] = useState(10);
   const [curPage, setCurPage] = useState(1);
   const [filteredUsers, setFilteredUsers] = useState([]);
-  const { data, loading, reFetch } = useFetch(`${url}?limit=${page * curPage}`);
+  const { data, loading, reFetch } = useFetch(
+    `${url}?page=${curPage}&limit=${limit}`
+  );
   const toggleStatus = async (id, olduser) => {
     try {
       setFilteredUsers((prevUsers) =>
@@ -75,6 +78,12 @@ const UserTable = ({ title, url, type, columns }) => {
   const [pageActive, setActivePage] = useState(1);
   const handleCurPage = (active) => {
     setActivePage(active);
+  };
+  const handlePageFetch = async (page) => {
+    if (page > 0) {
+      setCurPage(page);
+    }
+    reFetch();
   };
   const handleExport = () => {
     const wb = XLSX.utils.book_new();
@@ -220,7 +229,15 @@ const UserTable = ({ title, url, type, columns }) => {
                         <>
                           {" "}
                           <Modal
-                            btnText={<FaPencilAlt size={20} />}
+                            btnText={
+                              type === "contact" ? (
+                                <>
+                                  <FaReply /> <small>Reply</small>
+                                </>
+                              ) : (
+                                <FaPencilAlt size={20} />
+                              )
+                            }
                             btnClasss="btn btn-transpenrent text-warning mr-2 "
                             bodyClass="bg-white  col-sm-8 col-md-6"
                             closeIcon="fs-1 text-dark"
@@ -229,6 +246,12 @@ const UserTable = ({ title, url, type, columns }) => {
                               <UpdateAdmin
                                 oldUser={user}
                                 onUserUpdate={handleUserUpdate}
+                              />
+                            ) : type === "contact" ? (
+                              <Reply
+                                url={url}
+                                oldData={user}
+                                onUpdateAction={handleUserUpdate}
                               />
                             ) : (
                               <UpdateAction
@@ -276,16 +299,20 @@ const UserTable = ({ title, url, type, columns }) => {
           </table>
           <div className="px-5 d-flex justify-content-between">
             <div className="my-auto ">
-              Showing {curPage} to {page > users?.length ? users?.length : page}{" "}
-              of {users?.length}
+              Showing {curPage === 1 ? 1 : curPage - 1} to{" "}
+              {limit > users?.length ? users?.length : limit} of{" "}
+              {curPage * limit}
             </div>
             <ul className={` pagination gap-3  `}>
               <li
                 className="fs-2 me-3"
-                onClick={() => setCurPage(curPage > 1 ? curPage - 1 : curPage)}
+                onClick={() => {
+                  // setCurPage(curPage > 1 ? curPage - 1 : curPage);
+                  curPage > 0 && handlePageFetch(curPage - 1);
+                }}
               >
                 <span
-                  onClick={() => handleCurPage(curPage)}
+                  onClick={() => reFetch()}
                   className={`${
                     pageActive < curPage ? "page-active" : ""
                   } page-icon-action rounded-circle`}
@@ -295,7 +322,10 @@ const UserTable = ({ title, url, type, columns }) => {
               </li>
               <li className="my-auto fs-5    rounded-circle">
                 <span
-                  onClick={() => handleCurPage(curPage)}
+                  onClick={() => {
+                    handleCurPage(curPage);
+                    handlePageFetch(curPage);
+                  }}
                   className={`${
                     pageActive === curPage ? "page-active" : ""
                   } page-icon  rounded-circle p-2 px-3`}
@@ -305,7 +335,10 @@ const UserTable = ({ title, url, type, columns }) => {
               </li>
               <li className="my-auto fs-5 ">
                 <span
-                  onClick={() => handleCurPage(curPage + 1)}
+                  onClick={() => {
+                    handleCurPage(curPage + 1);
+                    handlePageFetch(curPage + 1);
+                  }}
                   className={`${
                     pageActive === curPage + 1 ? "page-active" : ""
                   } page-icon rounded-circle p-2 px-3`}
@@ -315,7 +348,10 @@ const UserTable = ({ title, url, type, columns }) => {
               </li>
               <li className={` my-auto fs-5 `}>
                 <span
-                  onClick={() => handleCurPage(curPage + 2)}
+                  onClick={() => {
+                    handleCurPage(curPage + 2);
+                    handlePageFetch(curPage + 2);
+                  }}
                   className={`${
                     pageActive === curPage + 2 ? "page-active" : ""
                   }  page-icon rounded-circle p-2 px-3`}
@@ -324,17 +360,14 @@ const UserTable = ({ title, url, type, columns }) => {
                 </span>
               </li>
               <li
-                className={`fs-2 ms-3`}
+                disabled={curPage > Math.ceil(users?.length / limit)}
+                className={`fs-2 ms-3 btn`}
                 onClick={() => {
-                  setCurPage(
-                    curPage < Math.ceil(users?.length / page)
-                      ? curPage + 1
-                      : curPage
-                  );
+                  handlePageFetch(curPage + 1);
                 }}
               >
                 <span
-                  onClick={() => handleCurPage(curPage + 3)}
+                  // onClick={() => handleCurPage(curPage + 3)}
                   className={`page-icon-action  rounded-circle  ${
                     pageActive > curPage + 2 ? "page-active" : ""
                   }`}

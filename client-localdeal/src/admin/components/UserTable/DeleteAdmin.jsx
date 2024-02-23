@@ -7,12 +7,12 @@ import { deleteActionService } from "../../../services/Category/FoodService";
 const DeleteAdmin = ({ url, user, type, onUserDelete, title }) => {
   const handleDelete = async (id) => {
     try {
-      if (type) {
+      if (type === "user") {
         const res = await deleteAdmin(id);
-        toast.success(res.message);
+        toast.success(res);
       } else {
         const res = await deleteActionService(url, id);
-        toast.success(res.message);
+        toast.success(res);
       }
       onUserDelete();
     } catch (error) {

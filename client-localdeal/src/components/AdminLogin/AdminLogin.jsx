@@ -105,6 +105,7 @@
 
 import React, { useState } from "react";
 import Cookie from "js-cookie";
+import { toast } from "react-toastify";
 import "./AdminLogin.css";
 import adminLogin, {
   forgetPassword,
@@ -166,6 +167,7 @@ const AdminLogin = () => {
       console.log(response);
       console.log("forget successful, res:", response);
       setStep("verifyCode");
+      toast.success(response);
     } catch (error) {
       console.log(error);
       setError(error);
@@ -185,6 +187,7 @@ const AdminLogin = () => {
       console.log(response);
       console.log("verify successful, res:", response);
       setStep("resetPassword");
+      toast.success(response);
     } catch (error) {
       console.log(error);
       setError(error);
@@ -208,8 +211,9 @@ const AdminLogin = () => {
       );
       console.log(response);
       console.log("verify successful, res:", response);
-      setStep("resetPassword");
-      navigate("/admin-login");
+      setStep("login");
+      toast.success(response);
+
     } catch (error) {
       console.log(error);
       setError(error);
