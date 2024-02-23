@@ -1,9 +1,12 @@
 // controllers/categories/EntertainmentController.js
-const Entertainment = require('../../models/categories/EntertainmentModel');
+const Entertainment = require("../../models/categories/EntertainmentModel");
 
 const getAllEntertainment = async (req, res) => {
   try {
-    const entertainment = await Entertainment.find();
+    const { page, limit } = req.query;
+    const entertainment = await Entertainment.find()
+      .skip((page - 1) * limit)
+      .limit(limit);
     res.json(entertainment);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -14,7 +17,7 @@ const getEntertainmentById = async (req, res) => {
   try {
     const entertainment = await Entertainment.findById(req.params.id);
     if (!entertainment) {
-      return res.status(404).json({ message: 'Entertainment not found' });
+      return res.status(404).json({ message: "Entertainment not found" });
     }
     res.json(entertainment);
   } catch (error) {
@@ -33,9 +36,13 @@ const createEntertainment = async (req, res) => {
 
 const updateEntertainment = async (req, res) => {
   try {
-    const updatedEntertainment = await Entertainment.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    const updatedEntertainment = await Entertainment.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
+    );
     if (!updatedEntertainment) {
-      return res.status(404).json({ message: 'Entertainment not found' });
+      return res.status(404).json({ message: "Entertainment not found" });
     }
     res.json(updatedEntertainment);
   } catch (error) {
@@ -45,9 +52,11 @@ const updateEntertainment = async (req, res) => {
 
 const deleteEntertainment = async (req, res) => {
   try {
-    const deletedEntertainment = await Entertainment.findByIdAndDelete(req.params.id);
+    const deletedEntertainment = await Entertainment.findByIdAndDelete(
+      req.params.id
+    );
     if (!deletedEntertainment) {
-      return res.status(404).json({ message: 'Entertainment not found' });
+      return res.status(404).json({ message: "Entertainment not found" });
     }
     res.json(deletedEntertainment);
   } catch (error) {

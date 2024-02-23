@@ -5,7 +5,12 @@ const Contact = () => {
   const columns = ["name", "email", "subject", "message", "createdAt"];
   return (
     <div>
-      <UserTable url="/contact/" title="All Contact List" columns={columns} />
+      <UserTable
+        url="/contact/"
+        title="All Contact List"
+        type="contact"
+        columns={columns}
+      />
     </div>
   );
 };

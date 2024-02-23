@@ -3,7 +3,10 @@ const Activity = require("../../models/categories/ActivityModel");
 
 const getAllActivities = async (req, res) => {
   try {
-    const activities = await Activity.find();
+    const { limit, page } = req.query;
+    const activities = await Activity.find()
+      .skip((page - 1) * limit)
+      .limit(limit);
     res.json(activities);
   } catch (error) {
     res.status(500).json({ error: error.message });

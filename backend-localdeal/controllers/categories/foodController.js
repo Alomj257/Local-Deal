@@ -3,7 +3,10 @@ const Food = require("../../models/categories/FoodModel");
 
 const getAllFoods = async (req, res) => {
   try {
-    const foods = await Food.find();
+    const { limit, page } = req.query;
+    const foods = await Food.find()
+      .skip((page - 1) * limit)
+      .limit(limit);
     res.json(foods);
   } catch (error) {
     res.status(500).json({ error: error.message });

@@ -3,7 +3,10 @@ const Homestore = require("../../models/categories/HomestoreModel");
 
 const getAllHomestores = async (req, res) => {
   try {
-    const homestores = await Homestore.find();
+    const { page, limit } = req.query;
+    const homestores = await Homestore.find()
+      .skip((page - 1) * limit)
+      .limit(limit);
     res.json(homestores);
   } catch (error) {
     res.status(500).json({ error: error.message });

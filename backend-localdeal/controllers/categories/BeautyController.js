@@ -3,7 +3,10 @@ const Beauty = require("../../models/categories/BeautyModel");
 
 const getAllBeautyServices = async (req, res) => {
   try {
-    const beautyServices = await Beauty.find();
+    const { limit, page } = req.query;
+    const beautyServices = await Beauty.find()
+      .skip((page - 1) * limit)
+      .limit(limit);
     res.json(beautyServices);
   } catch (error) {
     res.status(500).json({ error: error.message });
