@@ -1,3 +1,4 @@
+const { sendEmail } = require("../middleware/EmailHandle");
 const Contact = require("../models/ContactModel");
 
 // Handle form submission
@@ -33,5 +34,39 @@ const deleteContact = async (req, res) => {
     res.status(500).json({ message: "Internal Server Error." });
   }
 };
+const replyContact = async (req, res) => {
+  console.log(req.body);
+  try {
+    const message = `<body style="font-family: Arial, sans-serif;">
+    <div style="margin: 20px;">
+        <p>Dear ${req.body.name},</p>
+        <p>Thank you for reaching out to us. We appreciate your message.</p>
+        <p>We wanted to inform you that we have received your message with the following details:</p>
+        <ul>
+            <li><strong>Name:</strong> ${req.body.name}</li>
+            <li><strong>Email:</strong> ${req.body.email}</li>
+            <li><strong>Message:</strong> ${req.body.message}</li>
+        </ul>
+       
+        <h3> Message Reply </h3>
+        <p style="line-height: 1.6;">${req.body.reply}</p>
+        <p>Best regards,</p>
+        <p>Your Company Name</p>
+    </div>
+</body>
+    `;
+    const subject = "Reply from Local Deal";
+    await sendEmail(message, req, subject);
+    res.status(200).json("your message has been sent");
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal Server Error." });
+  }
+};
 
-module.exports = { getAllContacts, submitContactForm, deleteContact };
+module.exports = {
+  getAllContacts,
+  submitContactForm,
+  deleteContact,
+  replyContact,
+};

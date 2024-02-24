@@ -1,9 +1,11 @@
 const express = require("express");
 const mongoose = require("./mongoDBConnection");
 const bodyParser = require("body-parser");
+const dotenv = require("dotenv");
 const cors = require("cors");
 const path = require("path");
 const app = express();
+dotenv.config();
 
 // Define the frontend URL as an allowed origin
 const allowedOrigins = [

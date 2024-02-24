@@ -39,11 +39,12 @@ const subscribeToNewsletter = async (req, res) => {
       email,
     });
     if (existingSubscription) {
-      return res.status(400).json({ message: "your email ready subscribed" });
+      return res.status(400).json({ message: "your email already subscribed" });
     }
     await NewsletterSubscription(req.body).save();
-
-    await sendEmail(email, req);
+    const message = `<h1>Thank you for subscribing our service</h1> <h5> you will get all update from our side </h5>`;
+    const subject = "Welcome our Service Local Deal";
+    await sendEmail(message, req, subject);
 
     res.status(201).json({ message: "Subscription successful." });
   } catch (error) {

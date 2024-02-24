@@ -10,14 +10,14 @@ const newsLatterEmailSend = async (message) => {
         emails.push(allEmails[i].email);
       }
       const transporter = nodemailer.createTransport({
-        host: "smtp.gmail.com",
         service: "gmail",
+        host: process.env.HOST || "smtp.gmail.com",
         port: 587 || 465,
         secure: false,
         requireTLS: true,
         auth: {
-          user: process.env.EMAIL || "spydelicious4613@gmail.com",
-          pass: process.env.PASS || "kzad nwge qavv xvlv",
+          user: process.env.EMAIL,
+          pass: process.env.PASS,
         },
       });
       for (let i = 0; i < emails.length; i++) {
@@ -53,19 +53,19 @@ const newsLatterEmailSend = async (message) => {
 const sendEmailByEmail = (otp, req) => {
   return new Promise((resolve, reject) => {
     const transporter = nodemailer.createTransport({
-      host: "smtp.gmail.com",
-      service: "gmail",
+      host: process.env.HOST || "smtp.gmail.com",
       port: 587 || 465,
+      service: "gmail",
       secure: false,
       requireTLS: true,
       auth: {
-        user: process.env.EMAIL || "spydelicious4613@gmail.com",
-        pass: process.env.PASS || "kzad nwge qavv xvlv",
+        user: process.env.EMAIL,
+        pass: process.env.PASS,
       },
     });
 
     const mailOptions = {
-      from: process.env.EMAIL || "spydelicious4613@gmail.com",
+      from: process.env.EMAIL,
       to: req.body.email,
       subject: "Local Deal no reply",
       text: "details",
@@ -90,31 +90,27 @@ const sendEmailByEmail = (otp, req) => {
     });
   });
 };
-const sendEmail = (message, req) => {
+const sendEmail = (message, req, subject) => {
+  console.log(process.env.EMAIL);
   return new Promise((resolve, reject) => {
     const transporter = nodemailer.createTransport({
-      host: "smtp.gmail.com",
       service: "gmail",
+      host: "smtp.gmail.com",
       port: 587 || 465,
       secure: false,
       requireTLS: true,
       auth: {
-        user: process.env.EMAIL || "spydelicious4613@gmail.com",
-        pass: process.env.PASS || "kzad nwge qavv xvlv",
+        user: process.env.EMAIL,
+        pass: process.env.PASS,
       },
     });
 
     const mailOptions = {
-      from: process.env.EMAIL || "spydelicious4613@gmail.com",
+      from: process.env.EMAIL,
       to: req.body.email,
-      subject: "Welcome to our newsletter!",
+      subject: subject,
       text: "details",
-      html: `<h1>Thank you for subscribing to our newsletter</h1>
-          <p>
-          you get all update from our side
-          </p>
-      
-          
+      html: `${message}
           `,
     };
 

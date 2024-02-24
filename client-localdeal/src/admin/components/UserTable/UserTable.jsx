@@ -19,12 +19,17 @@ import Reply from "../Reply/Reply";
 
 const UserTable = ({ title, url, type, columns }) => {
   const [users, setUsers] = useState([]);
+  const [fullList, setAllData] = useState([]);
   const [limit] = useState(10);
   const [curPage, setCurPage] = useState(1);
   const [filteredUsers, setFilteredUsers] = useState([]);
   const { data, loading, reFetch } = useFetch(
     `${url}?page=${curPage}&limit=${limit}`
   );
+  const allData = useFetch(url);
+  useEffect(() => {
+    setAllData(allData.data);
+  }, [allData.data]);
   const toggleStatus = async (id, olduser) => {
     try {
       setFilteredUsers((prevUsers) =>
@@ -87,7 +92,7 @@ const UserTable = ({ title, url, type, columns }) => {
   };
   const handleExport = () => {
     const wb = XLSX.utils.book_new();
-    const ws = XLSX.utils.json_to_sheet(users);
+    const ws = XLSX.utils.json_to_sheet(fullList);
     XLSX.utils.book_append_sheet(wb, ws, "Mysheet1");
     XLSX.writeFile(wb, "sheet.xlsx");
   };
@@ -110,27 +115,29 @@ const UserTable = ({ title, url, type, columns }) => {
             <span onClick={handleExport} className="d-flex  table-icons m-auto">
               <FiFileText size={25} className="my-auto mr-1" /> Export
             </span>
-            <Modal
-              btnClasss="add-user-btn d-flex btn rounded"
-              bodyClass="bg-white d-flex col-sm-8 col-md-6"
-              btnText={
-                <>
-                  <FiPlusSquare size={25} className="m-auto mr-1" />{" "}
-                  <span className="m-auto ml-2"> Add</span>
-                </>
-              }
-            >
-              {type === "user" ? (
-                <AddUser title={title} onUserAdd={handleAddUser} />
-              ) : (
-                <AddAction
-                  url={url}
-                  title={title}
-                  oldData={data[data?.length - 1]}
-                  onAddAction={handleAddUser}
-                />
-              )}
-            </Modal>
+            {type !== "contact" && (
+              <Modal
+                btnClasss="add-user-btn d-flex btn rounded"
+                bodyClass="bg-white d-flex col-sm-8 col-md-6"
+                btnText={
+                  <>
+                    <FiPlusSquare size={25} className="m-auto mr-1" />{" "}
+                    <span className="m-auto ml-2"> Add</span>
+                  </>
+                }
+              >
+                {type === "user" ? (
+                  <AddUser title={title} onUserAdd={handleAddUser} />
+                ) : (
+                  <AddAction
+                    url={url}
+                    title={title}
+                    oldData={data[data?.length - 1]}
+                    onAddAction={handleAddUser}
+                  />
+                )}
+              </Modal>
+            )}
           </div>
         </div>
         <div>
@@ -250,7 +257,7 @@ const UserTable = ({ title, url, type, columns }) => {
                             ) : type === "contact" ? (
                               <Reply
                                 url={url}
-                                oldData={user}
+                                contact={user}
                                 onUpdateAction={handleUserUpdate}
                               />
                             ) : (
