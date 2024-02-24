@@ -12,7 +12,7 @@ const accommodationSchema = new mongoose.Schema({
   rating: Number,
   facilities: [String],
   imagepath: String,
-});
+}, { timestamps: true }); // Adding timestamps option
 
 const Accommodation = mongoose.model("Accommodation", accommodationSchema);
 

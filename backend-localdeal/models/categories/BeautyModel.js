@@ -12,7 +12,7 @@ const beautySchema = new mongoose.Schema({
   services: [String],
   rating: Number,
   imagepath: String,
-});
+}, { timestamps: true });
 
 const Beauty = mongoose.model("Beauty", beautySchema);
 
