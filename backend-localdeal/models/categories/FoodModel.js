@@ -11,7 +11,7 @@ const foodSchema = new mongoose.Schema({
   discount: String,
   rating: Number,
   imagepath: String,
-});
+}, { timestamps: true });
 
 const Food = mongoose.model("Food", foodSchema);
 

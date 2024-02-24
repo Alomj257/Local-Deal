@@ -12,7 +12,7 @@ const entertainmentSchema = new mongoose.Schema({
   rating: Number,
   schedule: String,
   imagepath: String,
-});
+}, { timestamps: true });
 
 const Entertainment = mongoose.model("Entertainment", entertainmentSchema);
 

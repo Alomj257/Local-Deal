@@ -12,7 +12,7 @@ const homestoreSchema = new mongoose.Schema({
   rating: Number,
   products: [String],
   imagepath: String,
-});
+}, { timestamps: true });
 
 const Homestore = mongoose.model("Homestore", homestoreSchema);
 

@@ -12,7 +12,7 @@ const serviceSchema = new mongoose.Schema({
   provider: String,
   rating: Number,
   imagepath: String,
-});
+}, { timestamps: true });
 
 const Service = mongoose.model("Service", serviceSchema);
 

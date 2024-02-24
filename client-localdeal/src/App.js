@@ -33,6 +33,7 @@ import AdminHome from "./admin/Pages/Category/Home";
 import Contact from "./admin/Pages/Contact";
 import Newslatter from "./admin/Pages/Newslatter";
 import Permotion from "./admin/Pages/promotion/Permotion";
+import DashboardPanel from "./admin/Pages/DashboardPanel";
 
 const App = () => {
   return (
@@ -58,6 +59,7 @@ const App = () => {
           {/* Admin panel */}
           <Route path="/admin" element={<DashBoard />}>
             <Route path="users" element={<User />} />
+            <Route path="" element={<DashboardPanel />} />
             <Route path="promotion" element={<PromotionAdmin />} />
             <Route path="setting" element={<Settings />} />
             <Route path="category" element={<AdminCategory />}>

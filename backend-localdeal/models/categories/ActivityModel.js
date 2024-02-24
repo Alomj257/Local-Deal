@@ -12,7 +12,7 @@ const activitySchema = new mongoose.Schema({
   rating: Number,
   participants: [String],
   imagepath: String,
-});
+}, { timestamps: true });
 
 const Activity = mongoose.model("Activity", activitySchema);
 
