@@ -26,5 +26,5 @@ router.use(
   homestoreRoutes,
   serviceRoutes
 );
-router.use("/permotions", promotionRoutes);
+router.use("/promotions", promotionRoutes);
 module.exports = router;

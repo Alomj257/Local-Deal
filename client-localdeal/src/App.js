@@ -32,6 +32,7 @@ import AdminBeaty from "./admin/Pages/Category/Beaty";
 import AdminHome from "./admin/Pages/Category/Home";
 import Contact from "./admin/Pages/Contact";
 import Newslatter from "./admin/Pages/Newslatter";
+import Permotion from "./admin/Pages/promotion/Permotion";
 
 const App = () => {
   return (
@@ -71,6 +72,9 @@ const App = () => {
             <Route path="logout" element={<Logout />} />
             <Route path="contact" element={<Contact />} />
             <Route path="subscribers" element={<Newslatter />} />
+            <Route path="promotion" element={<Permotion />}>
+              <Route path="premium" element={<PromotionAdmin />} />
+            </Route>
           </Route>
         </Routes>
       </>

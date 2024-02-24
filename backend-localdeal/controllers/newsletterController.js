@@ -38,6 +38,11 @@ const subscribeToNewsletter = async (req, res) => {
     const existingSubscription = await NewsletterSubscription.findOne({
       email,
     });
+    if (existingSubscription) {
+      return res.status(400).json({ message: "your email ready subscribed" });
+    }
+    await NewsletterSubscription(req.body).save();
+
     await sendEmail(email, req);
 
     res.status(201).json({ message: "Subscription successful." });
