@@ -76,6 +76,7 @@ const App = () => {
             <Route path="subscribers" element={<Newslatter />} />
             <Route path="promotion" element={<Permotion />}>
               <Route path="premium" element={<PromotionAdmin />} />
+              <Route path="basic" element={<PromotionAdmin />} />
             </Route>
           </Route>
         </Routes>

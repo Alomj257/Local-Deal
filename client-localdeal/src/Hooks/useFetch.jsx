@@ -5,19 +5,9 @@ const useFetch = (url) => {
   const [loading, setloading] = useState(false);
   const [error, seterror] = useState(false);
   const fetchdata = async () => {
-    Axios.interceptors.request.use(
-      function (config) {
-        console.log("Request Headers:", config.headers);
-        return config;
-      },
-      function (error) {
-        return Promise.reject(error);
-      }
-    );
     setloading(true);
     try {
       const res = await Axios.get(url);
-      console.log(res);
       setdata(res.data);
     } catch (error) {
       seterror(error);

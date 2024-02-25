@@ -100,7 +100,7 @@ function Sidebar() {
               </Link>
             </li>
             <li>
-              <Link to="/admin/category2" className="links_name">
+              <Link to="/admin/promotion/basic" className="links_name">
                 Basic
               </Link>
             </li>

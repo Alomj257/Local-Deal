@@ -16,6 +16,7 @@ import ViewAction from "../CategoryAction/ViewAction";
 import { updateadmin } from "../../../services/adminService";
 import * as XLSX from "xlsx";
 import Reply from "../Reply/Reply";
+import Axios from "../../../Axios";
 
 const UserTable = ({ title, url, type, columns }) => {
   const [users, setUsers] = useState([]);
@@ -23,9 +24,20 @@ const UserTable = ({ title, url, type, columns }) => {
   const [limit] = useState(10);
   const [curPage, setCurPage] = useState(1);
   const [filteredUsers, setFilteredUsers] = useState([]);
-  const { data, loading, reFetch } = useFetch(
-    `${url}?page=${curPage}&limit=${limit}`
-  );
+  const [loading, setLoading] = useState(false);
+  const getData = async (page, limit) => {
+    setLoading(true);
+    try {
+      const res = await Axios.get(
+        `${url}?page=${page ? page : 1}&limit=${limit ? limit : 10}`
+      );
+      setUsers(res.data);
+      setCurPage(page);
+    } catch (error) {
+      console.log(error);
+    }
+    setLoading(false);
+  };
   const allData = useFetch(url);
   useEffect(() => {
     setAllData(allData.data);
@@ -53,9 +65,12 @@ const UserTable = ({ title, url, type, columns }) => {
     }
   };
   useEffect(() => {
-    setUsers(Array.isArray(data) ? data : []);
-    setFilteredUsers(Array.isArray(data) ? data : []);
-  }, [data]);
+    getData(curPage, limit);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  useEffect(() => {
+    setFilteredUsers(Array.isArray(users) ? users : []);
+  }, [users]);
 
   const handleFiltered = (value) => {
     const filteredData = users.filter(
@@ -71,14 +86,14 @@ const UserTable = ({ title, url, type, columns }) => {
     handleFiltered(value);
   };
   const handleUserUpdate = () => {
-    reFetch();
+    getData(curPage, limit);
   };
   const handleDelete = () => {
-    reFetch();
+    getData(curPage, limit);
   };
   const handleAddUser = (user) => {
     setUsers([...users, user]);
-    reFetch();
+    getData(curPage, limit);
   };
   const [pageActive, setActivePage] = useState(1);
   const handleCurPage = (active) => {
@@ -87,8 +102,8 @@ const UserTable = ({ title, url, type, columns }) => {
   const handlePageFetch = async (page) => {
     if (page > 0) {
       setCurPage(page);
+      getData(page, limit);
     }
-    reFetch();
   };
   const handleExport = () => {
     const wb = XLSX.utils.book_new();
@@ -132,7 +147,7 @@ const UserTable = ({ title, url, type, columns }) => {
                   <AddAction
                     url={url}
                     title={title}
-                    oldData={data[data?.length - 1]}
+                    oldData={users[users?.length - 1]}
                     onAddAction={handleAddUser}
                   />
                 )}
@@ -183,7 +198,7 @@ const UserTable = ({ title, url, type, columns }) => {
               ) : Array.isArray(filteredUsers) ? (
                 filteredUsers?.map((user, key) => (
                   <tr key={user?._id}>
-                    <td>{key + 1}</td>
+                    <td>{limit * (curPage - 1) + key + 1}</td>
                     {columns.map((c, ckey) => {
                       return (
                         <>
@@ -306,9 +321,9 @@ const UserTable = ({ title, url, type, columns }) => {
           </table>
           <div className="px-5 d-flex justify-content-between">
             <div className="my-auto ">
-              Showing {curPage === 1 ? 1 : curPage - 1} to{" "}
+              Showing {curPage} to{" "}
               {limit > users?.length ? users?.length : limit} of{" "}
-              {curPage * limit}
+              {fullList?.length}
             </div>
             <ul className={` pagination gap-3  `}>
               <li
@@ -319,7 +334,7 @@ const UserTable = ({ title, url, type, columns }) => {
                 }}
               >
                 <span
-                  onClick={() => reFetch()}
+                  onClick={() => handlePageFetch(curPage)}
                   className={`${
                     pageActive < curPage ? "page-active" : ""
                   } page-icon-action rounded-circle`}

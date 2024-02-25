@@ -119,7 +119,10 @@ const createPromotion = async (req, res) => {
 
 const getAllPromotions = async (req, res) => {
   try {
-    const promotions = await Promotion.find();
+    const { limit, page } = req.query;
+    const promotions = await Promotion.find()
+      .skip((page - 1) * limit)
+      .limit(limit);
     res.json(promotions);
   } catch (error) {
     res.status(500).json({ error: error.message });
