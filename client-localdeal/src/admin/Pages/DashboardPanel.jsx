@@ -1,8 +1,11 @@
-import React from 'react'
+import React from 'react';
+import RegistrationAnalysis from '../../components/RegistrationAnalysis/RegistrationAnalysis';
 
 function DashboardPanel() {
   return (
-    <div>DashboardPanel</div>
+    <div className="dashboard">
+      <RegistrationAnalysis />
+    </div>
   )
 }
 
