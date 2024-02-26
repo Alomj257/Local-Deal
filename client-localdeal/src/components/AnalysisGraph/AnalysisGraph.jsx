@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import './AnalysisGraph.css';
 import Chart from 'chart.js/auto';
 
 function AnalysisGraph() {
@@ -81,9 +82,9 @@ function AnalysisGraph() {
   }, []);
 
   return (
-    <div>
+    <div className='container'>
       <h3 className='mb-2'>Monthly Analysis using graph</h3>
-      <canvas ref={chartRef} width={1200} height={400}/>
+      <canvas ref={chartRef} width={1050} height={400}/>
     </div>
   );
 }
