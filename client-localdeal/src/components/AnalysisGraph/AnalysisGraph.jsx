@@ -83,7 +83,7 @@ function AnalysisGraph() {
 
   return (
     <div className='container'>
-      <h3 className='mb-2'>Monthly Analysis using graph</h3>
+      <h3 className='analysis-graph mb-3'>Monthly Analysis using graph</h3>
       <canvas ref={chartRef} width={1050} height={400}/>
     </div>
   );

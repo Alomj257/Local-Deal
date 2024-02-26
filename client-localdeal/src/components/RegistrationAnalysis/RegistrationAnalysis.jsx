@@ -5,7 +5,7 @@ function RegistrationAnalysis() {
     return (
         <div>
             <div class="row mt-3">
-                <h3 className='mb-2'>Business registered Analyais</h3>
+                <h3 className='mb-3'>Business registered Analyais</h3>
                 <div class="col-md-4 col-xl-3">
                     <div class="card bg-c-blue registration-analysis-card">
                         <div class="card-block">
