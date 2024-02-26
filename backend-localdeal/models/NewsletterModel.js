@@ -6,7 +6,7 @@ const newsletterSubscriptionSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
-});
+}, { timestamps: true });
 
 const NewsletterSubscription = mongoose.model('NewsletterSubscription', newsletterSubscriptionSchema);
 

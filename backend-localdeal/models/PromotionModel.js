@@ -10,7 +10,7 @@ const promotionSchema = new mongoose.Schema({
   offer: String,
   description: String,
   link: String
-});
+}, { timestamps: true });
 
 const Promotion = mongoose.model('Promotion', promotionSchema);
 
